@@ -1,0 +1,53 @@
+description = "Default layout"
+==
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Clashfreaks - {{ this.page.title }}</title>
+  <meta name="description" content="{{ this.page.meta_description }}">
+  <meta name="title" content="{{ this.page.meta_title }}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{{'assets/css/bootstrap.min.css'|theme}}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{{'assets/css/mdb.min.css'|theme}}" rel="stylesheet">
+  <link href="{{'assets/css/style.css'|theme}}" rel="stylesheet">
+  {% styles %}
+</head>
+
+<body>
+
+  <!-- Header -->
+    <header id="layout-header">
+        {% partial 'site/header' %}
+    </header>
+
+    <!-- Content -->
+    <section id="layout-content">
+        {% page %}
+    </section>
+
+    <!-- Footer -->
+    <footer id="layout-footer" class="page-footer font-small special-color-dark pt-4">
+        {% partial 'site/footer' %}
+    </footer>
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{{'assets/js/jquery-3.4.1.min.js'|theme}}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{{'assets/js/popper.min.js'|theme}}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{{'assets/js/bootstrap.min.js'|theme}}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{{'assets/js/mdb.min.js'|theme}}"></script>
+  {% framework extras %}
+  {% scripts %}
+</body>
+
+</html>
