@@ -1,0 +1,7 @@
+{% if staticMenu.menuItems %}
+    <ul>
+        {% partial staticMenu ~ "::items" items=staticMenu.menuItems %}
+    </ul>
+{%else%}
+Hello
+{% endif %}

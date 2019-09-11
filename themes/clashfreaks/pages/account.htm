@@ -1,0 +1,24 @@
+title = "Account"
+url = "/account"
+layout = "default"
+description = "Manage User Account"
+meta_title = "ClashFreaks Account Page"
+meta_description = "Register and login to the clashfreaks website."
+is_hidden = 0
+
+[account]
+redirect = "home"
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "all"
+redirect = "home"
+==
+<main class="container">
+        <!--Main layout-->
+            <div class="mt-3 mb-3 pt-5">
+                    {% component 'account' %}
+            </div>
+    <!--/.Main layout-->
+</main>
