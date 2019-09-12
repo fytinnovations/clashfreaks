@@ -1,11 +1,20 @@
+[viewBag]
+==
 <!-- Footer Elements -->
 <div class="container">
     
 </div>
 <!-- Footer Elements -->
+{% set startYear = 2019 %}
+{% set currentYear = now.year %}
 
+{% if startYear == currentYear %}
+    {% set copyrightYears = startYear %}
+{% else %}
+    {% set copyrightYears = startYear ~ ' - ' ~ currentYear %}
+{% endif %}
 <!-- Copyright -->
-<div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+<div class="footer-copyright text-center py-3">© {{ copyrightYears }} Copyright:
+    <a href="http://fytinnovations.com"> Fyt Innovations</a>
 </div>
 <!-- Copyright -->
