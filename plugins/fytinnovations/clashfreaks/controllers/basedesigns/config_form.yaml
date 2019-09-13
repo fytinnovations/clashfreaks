@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Base Design
+
+# Model Form Field configuration
+form: $/fytinnovations/clashfreaks/models/basedesign/fields.yaml
+
+# Model Class name
+modelClass: Fytinnovations\ClashFreaks\Models\BaseDesign
+
+# Default redirect location
+defaultRedirect: fytinnovations/clashfreaks/basedesigns
+
+# Create page
+create:
+    title: Create Base Design
+    redirect: fytinnovations/clashfreaks/basedesigns/update/:id
+    redirectClose: fytinnovations/clashfreaks/basedesigns
+
+# Update page
+update:
+    title: Edit Base Design
+    redirect: fytinnovations/clashfreaks/basedesigns
+    redirectClose: fytinnovations/clashfreaks/basedesigns
+
+# Preview page
+preview:
+    title: Preview Base Design

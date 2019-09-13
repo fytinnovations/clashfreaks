@@ -1,0 +1,17 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        type: text
+        span: auto
+    slug:
+        label: Slug
+        type: text
+        preset: name
+        span: auto
+    village_type:
+        label: Village Type
+        type: relation

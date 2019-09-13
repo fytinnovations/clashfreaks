@@ -1,6 +1,0 @@
-plugin:
-    name: 'fytinnovations.clashfreaks::lang.plugin.name'
-    description: 'fytinnovations.clashfreaks::lang.plugin.description'
-    author: Fytinnovations
-    icon: oc-icon-users
-    homepage: 'https://fytinnovations.com'

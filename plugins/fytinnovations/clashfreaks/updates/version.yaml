@@ -1,2 +1,5 @@
 1.0.1:
     - Initialize plugin.
+    - create_village_types_table.php
+    - create_town_halls_table.php
+    - create_base_designs_table.php
