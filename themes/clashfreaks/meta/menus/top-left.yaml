@@ -1,6 +1,19 @@
 name: Top-Left
 items:
     -
+        title: 'Base Designs'
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: base-designs
+        reference: base-designs
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
         title: 'Strategy & Guides'
         nesting: ''
         type: cms-page
@@ -17,8 +30,10 @@ items:
         title: 'Request A Feature'
         nesting: '0'
         type: static-page
+        url: ''
         code: request-feature
         reference: request-feature
+        cmsPage: ''
         replace: '0'
         viewBag:
             isHidden: '0'

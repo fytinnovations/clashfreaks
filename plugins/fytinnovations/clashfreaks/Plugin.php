@@ -2,11 +2,17 @@
 
 use System\Classes\PluginBase;
 use Backend;
+use RainLab\User\Models\User as FrontEndUser;
+use Backend\Models\User as BackendUser;
 
 class Plugin extends PluginBase
 {
     public function registerComponents()
     {
+        return [
+            'Fytinnovations\ClashFreaks\Components\BaseDesignList'=>"baseDesignList",
+            'Fytinnovations\ClashFreaks\Components\BaseDesignInfo'=>"baseDesignInfo"
+        ];
     }
 
     public function registerSettings()
@@ -49,6 +55,21 @@ class Plugin extends PluginBase
                 ]
             ]
         ];
+    }
+
+    public function boot(){
+        FrontendUser::extend(function($model) {
+            $model->morphMany=[
+                'basedesigns_created' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'created_by'],
+                'basedesigns_updated' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'updated_by']
+            ];
+        });
+        BackendUser::extend(function($model) {
+            $model->morphMany=[
+                'basedesigns_created' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'created_by'],
+                'basedesigns_updated' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'updated_by']
+            ];
+        });
     }
 
 }

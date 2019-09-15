@@ -3,6 +3,31 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+    name:
+        label: Name
+        type: text
+        span: auto
+    slug:
+        label: Slug
+        type: text
+        preset: name
+        span: auto
+    description:
+        label: Description
+        type: textarea
+
+    url:
+        label : Shareable URL
+        type: text
+        span: full
+    is_active:
+        label : Active
+        type: switch
+        default: false
+    town_hall:
+        label: Town Hall
+        type: relation
+    images:
+        label: Base Images
+        type: fileupload
+        mode: image

@@ -6,3 +6,13 @@ columns:
     id:
         label: ID
         searchable: true
+    name:
+        label: Name
+    url:
+        label: Url
+    is_active:
+        label: Is Active
+    town_hall:
+        label: Town Hall
+        relation: town_hall
+        select: name

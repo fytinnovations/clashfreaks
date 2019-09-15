@@ -13,12 +13,15 @@ class CreateBaseDesignsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->index();
+            $table->text('description');
             $table->string('url');
             $table->boolean('is_active');
             $table->timestamps();
             $table->integer('town_hall_id')->unsigned();
-            $table->integer('createable_id')->unsigned();
-            $table->integer('updateable_id')->unsigned();
+            $table->integer('created_by_id')->nullable();
+            $table->string('created_by_type')->nullable();
+            $table->integer('updated_by_id')->nullable();
+            $table->string('updated_by_type')->nullable();
             $table->foreign('town_hall_id','town_hall_id')->references('id')->on('fytinnovations_clashfreaks_town_halls');
         });
     }
