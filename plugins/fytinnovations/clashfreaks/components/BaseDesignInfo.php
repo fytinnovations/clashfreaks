@@ -21,6 +21,10 @@ class BaseDesignInfo extends ComponentBase
 
     public function baseInfo(){
         $slug=$this->param('slug');
-        return BaseDesign::where('slug',$slug)->firstOrFail();
+        return BaseDesign::where('slug',$slug)->with('created_by')->firstOrFail();
     }
+
+    // public function onRun(){
+    //     dd($this->baseInfo());
+    // }
 }

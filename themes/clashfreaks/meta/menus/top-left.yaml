@@ -27,14 +27,10 @@ items:
             cssClass: ''
             isExternal: '0'
     -
-        title: 'Request A Feature'
-        nesting: '0'
-        type: static-page
-        url: ''
-        code: request-feature
-        reference: request-feature
-        cmsPage: ''
-        replace: '0'
+        title: 'Contact Us'
+        type: cms-page
+        code: contactUs
+        reference: contact-us
         viewBag:
             isHidden: '0'
             cssClass: ''

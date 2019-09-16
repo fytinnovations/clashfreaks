@@ -1,4 +1,3 @@
 static-pages:
     404: {  }
     error: {  }
-    request-feature: {  }
