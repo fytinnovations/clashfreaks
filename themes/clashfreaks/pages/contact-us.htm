@@ -17,32 +17,30 @@ recaptcha_size = "normal"
 ==
 <main class="container">
     <!--Main layout-->
-        <div class="mt-5">
+    <div class="mt-5">
         <!-- First row -->
         <div class="row">
             <div class="col-md-9">
-                <form data-request="{{ genericForm }}::onFormSubmit">
-
-                    {{ form_token() }}
-
-                    <div id="{{ genericForm }}_forms_flash"></div>
-
-                    <input type="text" id="name" name="name" class="form-control mb-3" placeholder="Your name">
-
-                    <input type="text" id="email" name="email" class="form-control mb-3" placeholder="Your Email">
-
-                    <input type="text" id="subject" name="subject" class="form-control mb-3" placeholder="Subject">
- 
-                    <textarea class="form-control mb-3" id="comments" name="comments" rows="8" cols="80" placeholder="Your comment"></textarea>
-
-                    <button id="simpleContactSubmitButton" type="submit" class="btn btn-default">Submit</button>
-
-                </form>
+                <div class="jumbotron">
+                    <h2 class="display-4">Contact the Creator</h2>
+                    <p class="lead">Throw your queries,feature request and feedback through the below form</p>
+                    <hr class="my-4">
+                    <form data-request="{{ genericForm }}::onFormSubmit">
+                        {{ form_token() }}
+                        <div id="{{ genericForm }}_forms_flash"></div>
+                        <input type="text" id="name" name="name" class="form-control mb-3" placeholder="Your name">
+                        <input type="text" id="email" name="email" class="form-control mb-3" placeholder="Your Email">
+                        <input type="text" id="subject" name="subject" class="form-control mb-3" placeholder="Subject">
+                        <textarea class="form-control mb-3" id="comments" name="comments" rows="8" cols="80"
+                            placeholder="Your comment"></textarea>
+                        <button id="simpleContactSubmitButton" type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
             </div>
             <div class="col-md-3">
                 Hello Advertise
             </div>
         </div>
         <!-- /.First row -->
-        </div>
+    </div>
 </main>

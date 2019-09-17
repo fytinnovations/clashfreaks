@@ -11,7 +11,8 @@ class Plugin extends PluginBase
     {
         return [
             'Fytinnovations\ClashFreaks\Components\BaseDesignList'=>"baseDesignList",
-            'Fytinnovations\ClashFreaks\Components\BaseDesignInfo'=>"baseDesignInfo"
+            'Fytinnovations\ClashFreaks\Components\BaseDesignInfo'=>"baseDesignInfo",
+            'Fytinnovations\ClashFreaks\Components\TopHomeVillageClanList'=>"topHomeVillageClanList",
         ];
     }
 

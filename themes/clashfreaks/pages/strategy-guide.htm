@@ -1,6 +1,74 @@
 title = "strategy & guide"
-url = "/strategy-guide"
+url = "/strategy-guide/:slug"
 layout = "default"
 description = "This page displays a single strategy or guide"
 is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "strategy-guides"
+
+[ssbuttons]
+fa = "no"
+twitter = 1
+facebook = 1
+google+ = 1
+stumbleupon = 1
+linkedin = 1
+order_twitter = 1
+order_facebook = 2
+order_google+ = 3
+order_stumbleupon = 4
+order_linkedin = 5
 ==
+<main class="container">
+    <!--Main layout-->
+    <div class="mt-5">
+        <!-- First row -->
+        <div class="row">
+            <div class="col-md-9">
+                {% set post = blogPost.post %}
+                <div class="jumbotron">
+                    <h2 class="display-4">{{ post.title }}</h2>
+                    <div class="content">{{ post.content_html|raw }}</div>
+                    {% if post.featured_images.count %}
+                    <div id="base_design_carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for image in post.featured_images %}
+                            <div class="carousel-item {{ loop.index==1 ? 'active' : null }}">
+                                <img class="d-block w-100" data-src="{{ image.filename }}" src="{{ image.path }}"
+                                    alt="{{ image.description }}">
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#base_design_carousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#base_design_carousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    {% endif %}
+                    <p class="lead mt-2">
+                        Posted
+                        {% if post.categories.count %} in
+                        {% for category in post.categories %}
+                        <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        on {{ post.published_at|date('M d, Y') }}
+                        by <strong>{{ post.user.full_name}}</strong>
+                    </p>
+                    {% component 'ssbuttons' %}
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                Hello Advertise
+            </div>
+        </div>
+        <!-- /.First row -->
+    </div>
+</main>

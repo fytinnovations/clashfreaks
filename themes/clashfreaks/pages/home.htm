@@ -1,18 +1,28 @@
 title = "Home"
 url = "/"
 layout = "default"
+is_hidden = 0
+
+[topHomeVillageClanList]
 ==
-<main class="container">
+<main class="container-fluid">
     <!--Main layout-->
-        <div class="mt-5">
+    <div class="mt-5">
         <!-- First row -->
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-3">
+                {% component 'topHomeVillageClanList' %}
             </div>
             <div class="col-md-3">
-                Hello Advertise
+                {% component 'topHomeVillageClanList' %}
+            </div>
+            <div class="col-md-3">
+                {% component 'topHomeVillageClanList' %}
+            </div>
+            <div class="col-md-3">
+                {% component 'topHomeVillageClanList' %}
             </div>
         </div>
         <!-- /.First row -->
-        </div>
+    </div>
 </main>
