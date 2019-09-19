@@ -1,10 +1,12 @@
 <?php namespace Fytinnovations\ClashFreaks\Components;
 
 use Cms\Classes\ComponentBase;
-use Fytinnovations\ClashFreaks\Classes\ClashAPIAdapter as ClashRequest;
+use Fytinnovations\ClashFreaks\Classes\ClashOfClans;
 
 class TopHomeVillageClanList extends ComponentBase
 {
+    private $request;
+
     public function componentDetails()
     {
         return [
@@ -18,7 +20,11 @@ class TopHomeVillageClanList extends ComponentBase
         return [];
     }
 
+    public function init(){
+        $this->request = new ClashOfClans;
+    }
+
     public function onRun(){
-        ClashRequest::getTopPlayers();
+        dd($this->request->getTopPlayers());
     }
 }
