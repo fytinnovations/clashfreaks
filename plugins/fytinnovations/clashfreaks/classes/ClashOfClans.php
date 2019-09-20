@@ -4,9 +4,12 @@ namespace Fytinnovations\ClashFreaks\Classes;
 
 use Cache;
 use October\Rain\Exception\ApplicationException;
+
 class ClashOfClans
 {
     private $api_key;
+
+    const INTERNATION_LOCATION_ID = 32000006;
 
     public $base_url = "https://api.clashofclans.com/v1/";
 
@@ -21,47 +24,69 @@ class ClashOfClans
             "endpoint" => $this->base_url . "locations",
             "key" => __FUNCTION__
         ];
-        $data = $this->request($header);
+        $data = $this->cachedRequest($header);
         return $data;
     }
 
-    public function getTopPlayers($locationID,$limit,$offset)
+    public function getTopPlayers($locationID = self::INTERNATION_LOCATION_ID, $after=null,$before=null,$limit=5)
     {
         $header = [
-            "endpoint" => $this->base_url . "locations/32000113/rankings/players",
-            "key" => __FUNCTION__
+            "endpoint" => $this->base_url . "locations/.$locationID./rankings/players",
+            "key" => __FUNCTION__ . $locationID . $limit . $after
         ];
-        $data = $this->request($header);
+        $data = $this->cachedRequest($header);
         return $data;
     }
 
-    public function request($header)
+    public function getTopClans($locationID = self::INTERNATION_LOCATION_ID, $after=null,$before=null,$limit=5)
     {
-        //Fetches or stores in the cache for later usage for 1 hour
-        $response = Cache::remember($header["key"], 3600, function () use ($header) {
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
-                CURLOPT_URL =>$header["endpoint"],
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => "",
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 30,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => "GET",
-                CURLOPT_POSTFIELDS => "",
-                CURLOPT_HTTPHEADER => array(
-                    "authorization: Bearer $this->api_key"
-                ),
-            ));
-            $response = curl_exec($curl);
-            $err = curl_error($curl);
-            curl_close($curl);
-            if ($err) {
-                throw new ApplicationException("Eror making request to the server. Try again later");
-            } else {
-                return $response;
-            }
+        $offsetQuery=$after?'&after?$after':"";
+        $header = [
+            "endpoint" => $this->base_url . "locations/" . $locationID .
+                "/rankings/clans?limit=$limit".$offsetQuery,
+            "key" => __FUNCTION__ . $locationID . $limit . $after
+        ];
+        $data = $this->cachedRequest($header);
+        return $data;
+    }
+
+    /**
+     * Caches the request for an hour 
+     *
+     * @param [type] $header
+     * @return void
+     */
+    private function cachedRequest($header)
+    {
+        $response = Cache::remember($header["key"], now()->addMinutes(60), function () use ($header) {
+            return $this->request($header);
         });
         return $response;
+    }
+
+    private function request($header)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $header["endpoint"],
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => "",
+            CURLOPT_HTTPHEADER => array(
+                "authorization: Bearer $this->api_key"
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            throw new ApplicationException("Eror making request to the server. Try again later");
+        } else {
+            return json_decode($response);
+        }
     }
 }

@@ -1,16 +1,31 @@
-<div class="card mb-5 text-white bg-dark">
-    <div class="card-body">
-        <h5 class="font-weight-bold mb-3">Panel title</h5>
-        <p class="mb-0">Some quick example text to build on the panel title and make up the bulk of the panel's content.
-        </p>
+{% put styles %}
+<style>
+    .clan-list-icons {
+        width: 30px;
+    }
+</style>
+{% endput %}
+{% set locations= __SELF__.locations.items%}
+{% set clans= __SELF__.clans.items%}
+<form data-request="onFilter"
+    data-request-update="'@pagination': '#home_clan_list'">
+    <div class="card mb-5 text-white bg-dark">
+        <div class="card-body">
+            <h5 class="font-weight-bold mb-3">Top Clans</h5>
+            <select class="custom-select custom-select-sm" name="location_id" onchange="$(this).request('onFilter')">
+                <option value="32000006" selected>International</option>
+                {% for location in locations %}
+                {% if(location.name)%}
+                <option value="{{location.id}}">{{location.name}}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <ul class="list-group text-dark list-group-flush" id="top_clans_list">
+            {% partial __SELF__ ~ '::list' clans=clans %}
+        </ul>
+        <div class="card-body" id="home_clan_list">
+            {% partial __SELF__ ~ '::pagination' %}
+        </div>
     </div>
-    <ul class="list-group text-dark list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
-    <div class="card-body">
-        <a href="#!" class="card-link">Previous</a>
-        <a href="#!" class="card-link">Next</a>
-    </div>
-</div>
+</form>
