@@ -1,0 +1,17 @@
+{% put styles %}
+<style>
+    .trophy-display .fa-trophy {
+        color: goldenrod;
+    }
+</style>
+{% endput %}
+{% for player in players %}
+<li class="list-group-item">
+    <span class="badge badge-dark mr-2">{{player.rank}}</span>
+    <img src="{{player.league.iconUrls.small}}" alt="thumbnail" class="clan-list-icons mr-2">
+    {{player.name}}
+    <span class="float-right trophy-display"><i class="fas fa-trophy"></i>&nbsp;{{player.trophies}}</span>
+</li>
+{% else %}
+<li class="list-group-item"> This country does not have any players</li>
+{% endfor %}

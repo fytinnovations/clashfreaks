@@ -9,7 +9,9 @@ class ClashOfClans
 {
     private $api_key;
 
-    const INTERNATION_LOCATION_ID = 32000006;
+    const DEFAULT_CLAN_LOCATION_ID = 32000006;
+
+    const PLAYER_DEFAULT_LOCATION_ID = 32000113;
 
     public $base_url = "https://api.clashofclans.com/v1/";
 
@@ -28,23 +30,22 @@ class ClashOfClans
         return $data;
     }
 
-    public function getTopPlayers($locationID = self::INTERNATION_LOCATION_ID, $after=null,$before=null,$limit=10)
+    public function getTopPlayers($locationID = self::PLAYER_DEFAULT_LOCATION_ID,$limit=10)
     {
         $header = [
-            "endpoint" => $this->base_url . "locations/.$locationID./rankings/players",
-            "key" => __FUNCTION__ . $locationID . $limit . $after
+            "endpoint" => $this->base_url . "locations/$locationID/rankings/players?limit=$limit",
+            "key" => __FUNCTION__ . $locationID . $limit
         ];
         $data = $this->cachedRequest($header);
         return $data;
     }
 
-    public function getTopClans($locationID = self::INTERNATION_LOCATION_ID, $after=null,$before=null,$limit=10)
+    public function getTopClans($locationID = self::DEFAULT_CLAN_LOCATION_ID,$limit=10)
     {
-        $offsetQuery=$after?'&after?$after':"";
         $header = [
             "endpoint" => $this->base_url . "locations/" . $locationID .
-                "/rankings/clans?limit=$limit".$offsetQuery,
-            "key" => __FUNCTION__ . $locationID . $limit . $after
+                "/rankings/clans?limit=$limit",
+            "key" => __FUNCTION__ . $locationID . $limit 
         ];
         $data = $this->cachedRequest($header);
         return $data;

@@ -13,6 +13,7 @@ class Plugin extends PluginBase
             'Fytinnovations\ClashFreaks\Components\BaseDesignList'=>"baseDesignList",
             'Fytinnovations\ClashFreaks\Components\BaseDesignInfo'=>"baseDesignInfo",
             'Fytinnovations\ClashFreaks\Components\TopHomeVillageClanList'=>"topHomeVillageClanList",
+            'Fytinnovations\ClashFreaks\Components\TopHomeVillagePlayerList'=>"topHomeVillagePlayerList",
         ];
     }
 

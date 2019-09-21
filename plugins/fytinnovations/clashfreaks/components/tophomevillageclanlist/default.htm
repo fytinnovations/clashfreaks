@@ -10,7 +10,7 @@
 <div class="card mb-5 text-white bg-dark">
     <div class="card-body">
         <h5 class="font-weight-bold mb-3">Top 10 Clans</h5>
-        <select class="custom-select custom-select-sm" name="location_id" data-request="onFilter" data-track-input>
+        <select class="custom-select custom-select-sm" name="location_id" data-request="{{__SELF__}}::onFilter" data-track-input>
             <option value="32000006" selected>International</option>
             {% for location in locations %}
             {% if(location.name)%}

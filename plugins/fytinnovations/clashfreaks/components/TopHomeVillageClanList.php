@@ -11,7 +11,7 @@ class TopHomeVillageClanList extends ComponentBase
     {
         return [
             'name'        => 'TopHomeVillageClanList Component',
-            'description' => 'Displays a list of top players in a location'
+            'description' => 'Displays a list of top clans in a location'
         ];
     }
 
