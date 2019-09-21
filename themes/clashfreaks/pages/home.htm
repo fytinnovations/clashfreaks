@@ -5,24 +5,33 @@ is_hidden = 0
 
 [topHomeVillageClanList]
 [topHomeVillagePlayerList]
+[topBuilderVillagePlayerList]
+[topBuilderVillageClanList]
 ==
+{% put styles %}
+<style>
+    #top_stats_home li.list-group-item {
+        height:60px;
+    }
+</style>
+{% endput %}
 <main class="container-fluid">
     <!--Main layout-->
-    <div class="mt-5">
+    <div class="mt-5" id="top_stats_home">
         <!-- First row -->
         <div class="row">
             <div class="col-md-6">
-                <h2 class="text-center">Home Village</h2>
+                <h2 class="h1-responsive font-weight-bold text-center my-5">Home Village</h2>
                 <div class="row">
                     <div class="col-md-6">{% component 'topHomeVillageClanList' %}</div>
                     <div class="col-md-6">{% component 'topHomeVillagePlayerList' %}</div>
                 </div>
             </div>
             <div class="col-md-6">
-                <h2 class="text-center">Builder Village</h2>
+                <h2 class="h1-responsive font-weight-bold text-center my-5">Builder Village</h2>
                 <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6"></div>
+                    <div class="col-md-6">{% component 'topBuilderVillageClanList' %}</div>
+                    <div class="col-md-6">{% component 'topBuilderVillagePlayerList' %}</div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,28 @@
+{% put styles %}
+<style>
+    .clan-list-icons {
+        width: 30px;
+    }
+</style>
+{% endput %}
+{% set locations= __SELF__.locations.items%}
+{% set players= __SELF__.players.items%}
+<div class="card mb-5 text-white bg-dark">
+    <div class="card-body">
+        <h5 class="font-weight-bold mb-3">Top 10 Players</h5>
+        <select class="custom-select custom-select-sm" name="location_id" data-request="{{__SELF__}}::onFilter" data-track-input>
+            <option value="32000113" selected>India</option>
+            {% for location in locations %}
+            {% if(location.name)%}
+            <option value="{{location.id}}">{{location.name}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    <ul class="list-group text-dark list-group-flush" id="top_builder_players_list">
+        {% partial __SELF__ ~ '::list' players=players %}
+    </ul>
+    <div class="card-body">
+        
+    </div>
+</div>

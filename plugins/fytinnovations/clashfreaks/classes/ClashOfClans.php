@@ -39,12 +39,31 @@ class ClashOfClans
         $data = $this->cachedRequest($header);
         return $data;
     }
+    public function getTopBuilderPlayers($locationID = self::PLAYER_DEFAULT_LOCATION_ID,$limit=10)
+    {
+        $header = [
+            "endpoint" => $this->base_url . "locations/$locationID/rankings/players-versus?limit=$limit",
+            "key" => __FUNCTION__ . $locationID . $limit
+        ];
+        $data = $this->cachedRequest($header);
+        return $data;
+    }
 
     public function getTopClans($locationID = self::DEFAULT_CLAN_LOCATION_ID,$limit=10)
     {
         $header = [
             "endpoint" => $this->base_url . "locations/" . $locationID .
                 "/rankings/clans?limit=$limit",
+            "key" => __FUNCTION__ . $locationID . $limit 
+        ];
+        $data = $this->cachedRequest($header);
+        return $data;
+    }
+    public function getTopBuilderClans($locationID = self::DEFAULT_CLAN_LOCATION_ID,$limit=10)
+    {
+        $header = [
+            "endpoint" => $this->base_url . "locations/" . $locationID .
+                "/rankings/clans-versus?limit=$limit",
             "key" => __FUNCTION__ . $locationID . $limit 
         ];
         $data = $this->cachedRequest($header);
