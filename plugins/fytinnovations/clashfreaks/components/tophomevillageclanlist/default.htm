@@ -7,25 +7,22 @@
 {% endput %}
 {% set locations= __SELF__.locations.items%}
 {% set clans= __SELF__.clans.items%}
-<form data-request="onFilter"
-    data-request-update="'@pagination': '#home_clan_list'">
-    <div class="card mb-5 text-white bg-dark">
-        <div class="card-body">
-            <h5 class="font-weight-bold mb-3">Top Clans</h5>
-            <select class="custom-select custom-select-sm" name="location_id" onchange="$(this).request('onFilter')">
-                <option value="32000006" selected>International</option>
-                {% for location in locations %}
-                {% if(location.name)%}
-                <option value="{{location.id}}">{{location.name}}</option>
-                {% endif %}
-                {% endfor %}
-            </select>
-        </div>
-        <ul class="list-group text-dark list-group-flush" id="top_clans_list">
-            {% partial __SELF__ ~ '::list' clans=clans %}
-        </ul>
-        <div class="card-body" id="home_clan_list">
-            {% partial __SELF__ ~ '::pagination' %}
-        </div>
+<div class="card mb-5 text-white bg-dark">
+    <div class="card-body">
+        <h5 class="font-weight-bold mb-3">Top 10 Clans</h5>
+        <select class="custom-select custom-select-sm" name="location_id" data-request="onFilter" data-track-input>
+            <option value="32000006" selected>International</option>
+            {% for location in locations %}
+            {% if(location.name)%}
+            <option value="{{location.id}}">{{location.name}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
     </div>
-</form>
+    <ul class="list-group text-dark list-group-flush" id="top_clans_list">
+        {% partial __SELF__ ~ '::list' clans=clans %}
+    </ul>
+    <div class="card-body">
+        
+    </div>
+</div>

@@ -29,24 +29,13 @@ class TopHomeVillageClanList extends ComponentBase
     }
 
     public function clans(){
-        $clans=$this->request->getTopClans();
-        $this->page['after_home_clan_list']=$clans->paging->cursors->after;
-        return $clans;
+        return $this->request->getTopClans();
     }
 
-    public function onFilter(){
+    public function onFilter(){ 
         $locationId=post('location_id');
         $clans=$this->request->getTopClans($locationId);
-        $this->page['before_home_clan_list']=$clans->paging->cursors->before;
-        $this->page['after_home_clan_list']=$clans->paging->cursors->after;
-
         return ['#top_clans_list' =>$this->renderPartial('@list.htm',['clans'=>$clans->items])];
-    }
-
-    public function onPaginate(){
-        $clans=$this->request->getTopClans(post('location_id'));
-        $this->page['before_home_clan_list']=$clans->paging->cursors->before;
-        $this->page['after_home_clan_list']=$clans->paging->cursors->after;
     }
 
 }

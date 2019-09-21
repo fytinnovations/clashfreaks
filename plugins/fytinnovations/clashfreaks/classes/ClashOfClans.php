@@ -28,7 +28,7 @@ class ClashOfClans
         return $data;
     }
 
-    public function getTopPlayers($locationID = self::INTERNATION_LOCATION_ID, $after=null,$before=null,$limit=5)
+    public function getTopPlayers($locationID = self::INTERNATION_LOCATION_ID, $after=null,$before=null,$limit=10)
     {
         $header = [
             "endpoint" => $this->base_url . "locations/.$locationID./rankings/players",
@@ -38,7 +38,7 @@ class ClashOfClans
         return $data;
     }
 
-    public function getTopClans($locationID = self::INTERNATION_LOCATION_ID, $after=null,$before=null,$limit=5)
+    public function getTopClans($locationID = self::INTERNATION_LOCATION_ID, $after=null,$before=null,$limit=10)
     {
         $offsetQuery=$after?'&after?$after':"";
         $header = [
