@@ -2,7 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Fytinnovations\ClashFreaks\Models\BaseDesign;
-
+use Auth;
 
 class BaseDesignInfo extends ComponentBase
 {
@@ -24,7 +24,7 @@ class BaseDesignInfo extends ComponentBase
         return BaseDesign::where('slug',$slug)->with('created_by')->firstOrFail();
     }
 
-    // public function onRun(){
-    //     dd($this->baseInfo());
-    // }
+    public function onRateBase(){
+        $user = Auth::getUser();
+    }
 }

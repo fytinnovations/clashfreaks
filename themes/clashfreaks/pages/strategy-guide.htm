@@ -9,17 +9,22 @@ slug = "{{ :slug }}"
 categoryPage = "strategy-guides"
 
 [ssbuttons]
-fa = "no"
+fa = "maxcdn"
 twitter = 1
 facebook = 1
-google+ = 1
-stumbleupon = 1
-linkedin = 1
+google+ = 0
+stumbleupon = 0
+linkedin = 0
 order_twitter = 1
 order_facebook = 2
 order_google+ = 3
 order_stumbleupon = 4
 order_linkedin = 5
+
+[forumEmbedTopic]
+embedCode = "{{ :slug }}"
+channelSlug = "strategy-guide"
+memberPage = "account"
 ==
 <main class="container">
     <!--Main layout-->
@@ -62,6 +67,67 @@ order_linkedin = 5
                         by <strong>{{ post.user.full_name}}</strong>
                     </p>
                     {% component 'ssbuttons' %}
+                    <hr>
+                    <div class="rainlab-forum">
+
+                        {% flash %}
+                        <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        </div>
+                        {% endflash %}
+
+                        {% if returnUrl %}
+                        <p>&larr; <a href="{{ returnUrl }}">Back to {{ channel.title }}</a></p>
+                        {% endif %}
+
+                        {% if topic %}
+
+                        <h4 class="text-uppercase">{{ topic.subject }}</h4>
+
+                        <div class="row">
+                            <div class="col-md-3 col-md-push-9">
+
+                                <div id="topicControlPanel">
+                                    {% partial "@controlpanel" %}
+                                </div>
+
+                            </div>
+                            <div class="col-md-9 col-md-pull-3">
+
+                                {% partial "@posts" %}
+
+                                {% partial "@pagination" %}
+
+                                <h4>Reply to this discussion</h4>
+                                {% if not topic.canPost %}
+                                <p>
+                                    You cannot edit posts or make replies:
+                                    {% if not member %}You should be logged in before you can post.{% endif %}
+                                    {% if member.is_banned %}Your account is banned.{% endif %}
+                                    {% if topic.is_locked %}This topic is locked.{% endif %}
+                                </p>
+                                {% else %}
+                                {% partial "@postform" %}
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                        {% elseif channel %}
+
+                        <h4>Create a new discussion topic</h4>
+                        {% partial "@createform" %}
+
+                        {% else %}
+
+                        <p>Topic not found</p>
+
+                        {% endif %}
+
+
+
+                    </div>
                 </div>
 
             </div>

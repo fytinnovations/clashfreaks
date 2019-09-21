@@ -5,6 +5,11 @@ description = "This page displays a single base design by a user"
 is_hidden = 0
 
 [baseDesignInfo]
+
+[forumEmbedTopic]
+embedCode = "{{ :slug }}"
+channelSlug = "base-design"
+memberPage = "account"
 ==
 <main class="container">
 
@@ -13,7 +18,11 @@ is_hidden = 0
         <!-- First row -->
         <div class="row">
             <div class="col-md-9">
-                {% component 'baseDesignInfo' %}
+                <div class="jumbotron">
+                    {% component 'baseDesignInfo' %}
+                    <hr>
+                    {% component 'forumEmbedTopic' %}
+                </div>
             </div>
             <div class="col-md-3">
                 Hello Advertise
