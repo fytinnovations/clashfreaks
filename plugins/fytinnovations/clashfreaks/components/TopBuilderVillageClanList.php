@@ -10,7 +10,7 @@ class TopBuilderVillageClanList extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'TopBuilderVillageClanList Component',
+            'name'        => 'Builder Top Clans',
             'description' => 'Displays a list of top clans in a location'
         ];
     }

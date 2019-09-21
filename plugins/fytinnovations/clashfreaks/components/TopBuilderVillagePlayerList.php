@@ -13,7 +13,7 @@ class TopBuilderVillagePlayerList extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'TopBuilderVillagePlayerList Component',
+            'name'        => 'Top Builder Players',
             'description' => 'Displays a list of top players in a location'
         ];
     }

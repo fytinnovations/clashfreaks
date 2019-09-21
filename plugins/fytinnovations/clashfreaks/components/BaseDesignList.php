@@ -8,7 +8,7 @@ class BaseDesignList extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'BaseDesignList Component',
+            'name'        => 'BaseDesignList',
             'description' => 'Displays a list of base designs'
         ];
     }

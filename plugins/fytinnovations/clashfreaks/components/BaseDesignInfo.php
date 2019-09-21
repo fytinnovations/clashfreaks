@@ -9,7 +9,7 @@ class BaseDesignInfo extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'BaseInfo Component',
+            'name'        => 'BaseInfo',
             'description' => 'No description provided yet...'
         ];
     }

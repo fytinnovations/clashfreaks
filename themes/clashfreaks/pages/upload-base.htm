@@ -4,74 +4,7 @@ layout = "default"
 description = "This page displays a form to upload a base"
 is_hidden = 0
 
-[genericForm]
-messages_success = "Your form was successfully submitted"
-messages_errors = "There were errors with your submission"
-inline_errors = "disabled"
-sanitize_data = "disabled"
-anonymize_ip = "disabled"
-recaptcha_theme = "light"
-recaptcha_type = "image"
-recaptcha_size = "normal"
-
-[uploadForm]
-messages_success = "Your form was successfully submitted"
-messages_errors = "There were errors with your submission"
-inline_errors = "disabled"
-sanitize_data = "disabled"
-anonymize_ip = "disabled"
-recaptcha_theme = "light"
-recaptcha_type = "image"
-recaptcha_size = "normal"
-uploader_enable = 1
-uploader_multi = 1
-placeholderText = "Click or drag files to upload"
-removeText = "Are you sure ?"
-maxSize = 5
-fileTypes[] = "jpg"
-fileTypes[] = "jpeg"
-fileTypes[] = "bmp"
-fileTypes[] = "png"
-fileTypes[] = "webp"
-fileTypes[] = "gif"
-fileTypes[] = "svg"
-fileTypes[] = "js"
-fileTypes[] = "map"
-fileTypes[] = "ico"
-fileTypes[] = "css"
-fileTypes[] = "less"
-fileTypes[] = "scss"
-fileTypes[] = "ics"
-fileTypes[] = "odt"
-fileTypes[] = "doc"
-fileTypes[] = "docx"
-fileTypes[] = "ppt"
-fileTypes[] = "pptx"
-fileTypes[] = "pdf"
-fileTypes[] = "swf"
-fileTypes[] = "txt"
-fileTypes[] = "xml"
-fileTypes[] = "ods"
-fileTypes[] = "xls"
-fileTypes[] = "xlsx"
-fileTypes[] = "eot"
-fileTypes[] = "woff"
-fileTypes[] = "woff2"
-fileTypes[] = "ttf"
-fileTypes[] = "flv"
-fileTypes[] = "wmv"
-fileTypes[] = "mp3"
-fileTypes[] = "ogg"
-fileTypes[] = "wav"
-fileTypes[] = "avi"
-fileTypes[] = "mov"
-fileTypes[] = "mp4"
-fileTypes[] = "mpeg"
-fileTypes[] = "webm"
-fileTypes[] = "mkv"
-fileTypes[] = "rar"
-fileTypes[] = "xml"
-fileTypes[] = "zip"
+[uploadBase]
 ==
 <main class="container">
 
@@ -81,58 +14,7 @@ fileTypes[] = "zip"
         <div class="row">
             <div class="col-md-9">
                 <div class="jumbotron">
-                    {{ form_ajax(uploadForm ~ '::onFormSubmit') }}
-
-                    <div id="{{ uploadForm }}_forms_flash"></div>
-
-                    <div class="form-group">
-                        <h2>Upload a new base</h2>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" id="email" name="email" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="position">Position:</label>
-                        <select class="form-control" id="position" name="position">
-                            <option value=""></option>
-                            <option value="Lead">Lead</option>
-                            <option value="Senior">Senior</option>
-                            <option value="Direct">Direct</option>
-                            <option value="Corporate">Corporate</option>
-                            <option value="Dynamic">Dynamic</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="skills">Skills:</label>
-                        <textarea id="skills" name="skills" class="form-control" rows="8" cols="80"
-                            placeholder="Summary of skills"></textarea>
-                    </div>
-
-                    <hr>
-
-                    <div class="form-group">
-                        <h4>Upload your resume</h4>
-                        {% partial '@file-upload' %}
-                    </div>
-
-                    <hr>
-
-                    <div class="form-group">
-                        {% partial '@recaptcha' %}
-                    </div>
-
-                    {{ form_submit() }}
-
-                    {{ form_close() }}
+                   {% component 'uploadBase' %}
                 </div>
             </div>
             <div class="col-md-3">

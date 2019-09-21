@@ -10,6 +10,9 @@ use Auth;
  */
 class BaseDesign extends Model
 {
+    use \October\Rain\Database\Traits\Sluggable;
+
+    protected $slugs = ['slug' => 'name'];
     /**
      * @var string The database table used by the model.
      */
@@ -23,7 +26,7 @@ class BaseDesign extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [];
+    protected $fillable = ['name','description','town_hall_id','url','description','is_active'];
 
     /**
      * @var array Relations

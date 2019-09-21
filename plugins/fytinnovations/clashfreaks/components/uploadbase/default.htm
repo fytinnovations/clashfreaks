@@ -1,0 +1,80 @@
+{% put styles %}
+<style>
+    .base-images {
+        width: 100%;
+        height: 100px;
+        overflow: scroll;
+        padding: 15px;
+        margin: auto;
+    }
+
+    .base-images img {
+        width: 20%;
+    }
+
+    .custom-file-label {
+        overflow: hidden;
+    }
+
+    #base-image-uploads {
+        display: none;
+    }
+</style>
+{% endput %}
+<h2 class="text-wrap">Upload a base</h2>
+<p class="lead">You can upload a base using the below form.</p>
+<form data-request="onBaseUpload">
+    <label for="base_name_inp">Base name</label>
+    <input type="text" name="name" id="base_name_inp" class="form-control mb-3" placeholder="E.g Sacred Hearts Trilogy">
+    <label for="base_description">Description</label>
+    <textarea name="description" id="base_description" class="form-control mb-3" cols="30" rows="3"
+        placeholder="A short description or guide to use the base"></textarea>
+    <label for="base_url_inp">Base Url</label>
+    <input type="text" name="url" id="base_url_inp" class="form-control mb-3" placeholder="In game shareable URL">
+    <label for="base_village_type_inp">Village Type</label>
+    <select class="custom-select mb-3" name="village_type" id="base_village_type_inp"
+        data-request="{{__SELF__}}::onVillageTypeChange" data-track-input>
+        {% for type in __SELF__.village_types %}
+        <option value="{{type.id}}">{{type.name}}</option>
+        {% endfor %}
+    </select>
+    <label for="base_th_level_inp">Town Hall Level</label>
+    <select class="custom-select mb-3" name="town_hall" id="base_th_level_inp" data-track-input>
+        {% partial __SELF__ ~ '::town_hall_list' town_halls= __SELF__.town_halls%}
+    </select>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="base-image-uploads">Upload Base Images</span>
+        </div>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="base_upload_inp" aria-describedby="base-image-uploads"
+                multiple>
+            <label class="custom-file-label" for="base_upload_inp">Choose Base Images</label>
+        </div>
+        <div class="base-images mt-4 text-center" id="base_image_preview">
+            <h3 class="text-center">Base Images Preview</h3>
+            <p class="text-center">Upload atleast 3 base images of ratio 16:9 for better display</p>
+        </div>
+    </div>
+    <div class="buttons text-center">
+        <input type="submit" class="btn btn-success" value="Submit Base">
+    </div>
+</form>
+{% put scripts %}
+<script>
+    $(function () {
+        $("#base_upload_inp").change(function () {
+            $("#base_image_preview").html("");
+            let files = $(this)[0].files;
+            let preview_images = "";
+            for (var i = 0; i < files.length; i++) {
+                let img = document.createElement("img");
+                img.setAttribute("src", URL.createObjectURL(files[i]))
+                img.classList.add("img-fluid", "z-depth-1", "img-responsive", "mr-2");
+                $("#base_image_preview").append(img);
+            }
+            console.log(preview_images);
+        });
+    });
+</script>
+{% endput %}
