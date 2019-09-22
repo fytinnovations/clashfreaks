@@ -13,6 +13,8 @@ anonymize_ip = "disabled"
 recaptcha_theme = "light"
 recaptcha_type = "image"
 recaptcha_size = "normal"
+
+[createPost]
 ==
 <main class="container">
 
@@ -22,38 +24,10 @@ recaptcha_size = "normal"
         <div class="row">
             <div class="col-md-9">
                 <div class="jumbotron">
-                    <form data-request="{{ genericForm }}::onFormSubmit">
-
-                        {{ form_token() }}
-
-                        <div id="{{ genericForm }}_forms_flash"></div>
-
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="text" id="email" name="email" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subject">Subject:</label>
-                            <input type="text" id="subject" name="subject" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="comments">Subject:</label>
-                            <textarea id="comments" class="form-control" name="comments" rows="8" cols="80"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                        </div>
-
-                        <button id="simpleContactSubmitButton" type="submit" class="btn btn-default">Submit</button>
-
-                    </form>
+                    <h2 class="display-4">Create a Post</h2>
+                    <p class="lead">Share your strategy with the world and clanmates. Rise in power</p>
+                    <hr>
+                    {% component 'createPost' %}
                 </div>
             </div>
             <div class="col-md-3">

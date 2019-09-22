@@ -49,7 +49,7 @@
         &nbsp;Out of 5
 </span>
 <hr class="my-4">
-<h2 class="text-wrap">Your Ratings {{baseInfo.user_ratings}}</h2>
+<h2 class="text-wrap">Your Ratings</h2>
 <span id="baseRatings"></span>
 <hr class="my-4">
 <!--Section: Author Box-->
@@ -84,6 +84,7 @@
             displayToaster("Copied Link", "Link copied to clipboard");
         });
         $('#baseRatings').mdbRate();
+        displayUserRatings({{baseInfo.user_ratings}});
         $('.rate-popover').click(function () {
             let ratedStars= $(this).data('index')+1;
             $.request('onRateBase', {
@@ -96,6 +97,13 @@
                 }
             })
         });
+
+        function displayUserRatings(starsRated){
+            $stars = $("#baseRatings").children();
+            for (var i = 0; i <starsRated; i++) {
+                $($stars.get(i)).addClass('amber-text');
+            }
+        }
     });
 </script>
 {% endput %}

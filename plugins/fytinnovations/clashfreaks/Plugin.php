@@ -17,6 +17,7 @@ class Plugin extends PluginBase
             'Fytinnovations\ClashFreaks\Components\TopBuilderVillagePlayerList'=>"topBuilderVillagePlayerList",
             'Fytinnovations\ClashFreaks\Components\TopBuilderVillageClanList'=>"topBuilderVillageClanList",
             'Fytinnovations\ClashFreaks\Components\UploadBase'=>"uploadBase",
+            'Fytinnovations\ClashFreaks\Components\CreatePost'=>"createPost",
         ];
     }
 
