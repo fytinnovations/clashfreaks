@@ -32,7 +32,10 @@ class BaseDesign extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'ratings' =>'Fytinnovations\ClashFreaks\Models\BaseRating',
+        'ratings_count'=>['Fytinnovations\ClashFreaks\Models\BaseRating','count'=>true]
+    ];
     public $belongsTo = [
         'town_hall'=>"Fytinnovations\ClashFreaks\Models\TownHall"
     ];
@@ -71,5 +74,10 @@ class BaseDesign extends Model
         }
         //After updation of the base touch the updated_by.
         $this->updated_by=$user;
+    }
+
+    public function getRatingsAttribute($value)
+    {
+        return (int) $this->ratings()->avg('ratings');
     }
 }

@@ -69,6 +69,11 @@ class Plugin extends PluginBase
                 'basedesigns_updated' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'updated_by']
             ];
         });
+        FrontendUser::extend(function($model) {
+            $model->hasMany=[
+                'ratings' => ['Fytinnovations\ClashFreaks\Models\BaseRating'],
+            ];
+        });
         BackendUser::extend(function($model) {
             $model->morphMany=[
                 'basedesigns_created' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'created_by'],

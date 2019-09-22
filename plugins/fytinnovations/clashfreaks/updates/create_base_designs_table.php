@@ -15,7 +15,7 @@ class CreateBaseDesignsTable extends Migration
             $table->string('slug')->index();
             $table->text('description');
             $table->string('url');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(0);
             $table->timestamps();
             $table->integer('town_hall_id')->unsigned();
             $table->integer('created_by_id')->nullable();

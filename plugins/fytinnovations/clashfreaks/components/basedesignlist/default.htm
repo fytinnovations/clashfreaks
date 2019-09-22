@@ -44,11 +44,9 @@
                 <input type="text" value="{{baseDesign.url}}">
                 <button class="btn btn-sm btn-primary copy_url_btn"><i class="far fa-clone"></i> Copy Url</button>
                 <span class="text-center disabled-star">
+                        {% for i in 1..baseDesign.ratings %}
                         <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
-                        <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
-                        <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
-                        <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
-                        <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
+                        {% endfor %}
                         <br>Out of 5
                 </span>
             </div>

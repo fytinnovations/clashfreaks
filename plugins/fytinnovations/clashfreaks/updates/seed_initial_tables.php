@@ -53,20 +53,6 @@ class SeedInitialTables extends Seeder
         $home_village->townhalls()->add($th10);
         $home_village->townhalls()->add($th11);
         $home_village->townhalls()->add($th12);
-        
-        // $user = User::create([
-        //     'name' => 'Aniket FrontEnd User',
-        //     'email' => 'aniket@clashfreaks.com',
-        //     'password' => 'changeme',
-        //     'password_confirmation' => 'changeme',
-        // ]);
-
-        // // in order to log in as this user, we must be activated
-        // $user->is_activated = true;
-        // $user->activated_at = now();
-        // $user->player_tag='#ABC';
-        // $user->save();
-        
         for ($i=0; $i < 10 ; $i++) { 
             $faker = Faker\Factory::create();
             $base_design = BaseDesign::create([
@@ -81,6 +67,14 @@ class SeedInitialTables extends Seeder
             $file = new File;
             $file->fromUrl('https://picsum.photos/640/360');
             $base_design->images()->add($file);
+            $base_design->ratings()->create([
+                'user_id'=>20,
+                'ratings'=>$faker->numberBetween($min = 1, $max = 5)
+            ]);
+            $base_design->ratings()->create([
+                'user_id'=>21,
+                'ratings'=>$faker->numberBetween($min = 1, $max = 5)
+            ]);
         }
     }
 }

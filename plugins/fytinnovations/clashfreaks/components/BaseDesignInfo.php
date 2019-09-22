@@ -2,6 +2,7 @@
 
 use Cms\Classes\ComponentBase;
 use Fytinnovations\ClashFreaks\Models\BaseDesign;
+use Fytinnovations\ClashFreaks\Models\BaseRating;
 use Auth;
 
 class BaseDesignInfo extends ComponentBase
@@ -26,5 +27,6 @@ class BaseDesignInfo extends ComponentBase
 
     public function onRateBase(){
         $user = Auth::getUser();
+        $baseRating= BaseRating::firstOrNew(['user_id' => $user]);
     }
 }
