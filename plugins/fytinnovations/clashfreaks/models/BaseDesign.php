@@ -80,4 +80,13 @@ class BaseDesign extends Model
     {
         return (int) $this->ratings()->avg('ratings');
     }
+
+    public function getUserRatingsAttribute($value){
+        try {
+            $user_ratings=$this->ratings()->where('user_id',Auth::getUser()->id)->firstOrFail()->ratings;
+        } catch (\Throwable $th) {
+           return 0;
+        }
+        return $user_ratings;
+    }
 }

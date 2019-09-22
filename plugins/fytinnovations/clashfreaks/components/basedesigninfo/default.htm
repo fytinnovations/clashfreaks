@@ -49,7 +49,7 @@
         &nbsp;Out of 5
 </span>
 <hr class="my-4">
-<h2 class="text-wrap">Your Ratings</h2>
+<h2 class="text-wrap">Your Ratings {{baseInfo.user_ratings}}</h2>
 <span id="baseRatings"></span>
 <hr class="my-4">
 <!--Section: Author Box-->
@@ -92,7 +92,7 @@
                     baseId:{{baseInfo.id}}
                 },
                 success: function (data) {
-                    console.log(data);
+                    displayToaster("Ratings Saved", "Your ratings to  this base are saved");
                 }
             })
         });

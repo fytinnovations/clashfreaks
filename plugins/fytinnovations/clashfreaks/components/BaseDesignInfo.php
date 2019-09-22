@@ -27,6 +27,8 @@ class BaseDesignInfo extends ComponentBase
 
     public function onRateBase(){
         $user = Auth::getUser();
-        $baseRating= BaseRating::firstOrNew(['user_id' => $user]);
+        $baseRating= BaseRating::firstOrNew(['user_id' => $user->id,'base_design_id'=>post('baseId')]);
+        $baseRating->ratings=post('ratedStars');
+        $baseRating->save();
     }
 }

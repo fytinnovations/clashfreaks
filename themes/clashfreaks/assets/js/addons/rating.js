@@ -25,7 +25,7 @@
       $stars.addClass('fas fa-star');
     }
 
-    $stars.on('mouseover', function () {
+    $stars.on('click', function () {
       var index = $(this).attr('data-index');
       markStarsAsActive(index);
     });
