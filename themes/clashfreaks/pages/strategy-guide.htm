@@ -35,6 +35,7 @@ memberPage = "account"
                 {% set post = blogPost.post %}
                 <div class="jumbotron">
                     <h2 class="display-4">{{ post.title }}</h2>
+                    <hr>
                     <div class="content">{{ post.content_html|raw }}</div>
                     {% if post.featured_images.count %}
                     <div id="base_design_carousel" class="carousel slide" data-ride="carousel">

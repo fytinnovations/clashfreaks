@@ -1,20 +1,20 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-
-<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <label for="blog_name">Post Name</label>
-<input type="text" name="name" id="blog_name" class="form-control mb-3" placeholder="E.g Sacred Hearts Trilogy">
+<input type="text" name="name" id="blog_name" class="form-control mb-3" placeholder="E.g GoboHo TH9 Strategy">
 <label for="base_village_type_inp">Post Category</label>
-<select class="custom-select mb-3" name="village_type" id="base_village_type_inp"
-    data-request="{{__SELF__}}::onVillageTypeChange" data-track-input>
-    {% for type in __SELF__.village_types %}
-    <option value="{{type.id}}">{{type.name}}</option>
+<select class="custom-select mb-3" name="village_type" id="base_village_type_inp">
+    {% for category in __SELF__.categories %}
+    <option value="{{category.id}}">{{category.name}}</option>
     {% endfor %}
 </select>
-<textarea name="description" id="post_content" class="form-control mb-3" cols="30" rows="3"
-    placeholder="A short description or guide to use the base"></textarea>
-
-{% put scripts %}
-<script>
-    var simplemde = new SimpleMDE();
-</script>
-{% endput %}
+<div class="custom-file">
+    <input type="file" class="custom-file-input" id="base_upload_inp" aria-describedby="base-image-uploads" multiple
+        name="images[]">
+    <label class="custom-file-label" for="base_upload_inp">Choose File</label>
+    <span class="mt-2">Upload a pdf,doc with your post</span>
+</div>
+<div class="buttons text-center mt-5">
+    <input type="submit" class="btn btn-success" value="Submit Post">
+</div>
+<div class="alert alert-info mt-5" role="alert">
+    We will review your post before uploading to make sure we have the best content onboard
+</div>

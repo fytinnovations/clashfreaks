@@ -10,6 +10,19 @@ is_hidden = 0
 embedCode = "{{ :slug }}"
 channelSlug = "base-design"
 memberPage = "account"
+
+[ssbuttons]
+fa = "maxcdn"
+twitter = 1
+facebook = 1
+google+ = 0
+stumbleupon = 0
+linkedin = 0
+order_twitter = 1
+order_facebook = 2
+order_google+ = 3
+order_stumbleupon = 4
+order_linkedin = 5
 ==
 <main class="container">
 
@@ -20,6 +33,8 @@ memberPage = "account"
             <div class="col-md-9">
                 <div class="jumbotron">
                     {% component 'baseDesignInfo' %}
+                    <hr>
+                    {% component 'ssbuttons' %}
                     <hr>
                     {% component 'forumEmbedTopic' %}
                 </div>
