@@ -1,8 +1,10 @@
 title = "Player"
-url = "/player/:id"
+url = "/player/:tag"
 layout = "default"
 description = "Displays a single player profile"
 is_hidden = 0
+
+[playerProfile]
 ==
 <main class="container">
 
@@ -12,7 +14,7 @@ is_hidden = 0
         <div class="row">
             <div class="col-md-9">
                 <div class="jumbotron">
-                        
+                    {% component 'playerProfile' %}
                 </div>
             </div>
             <div class="col-md-3">

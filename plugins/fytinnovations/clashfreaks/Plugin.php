@@ -4,6 +4,7 @@ use System\Classes\PluginBase;
 use Backend;
 use RainLab\User\Models\User as FrontEndUser;
 use Backend\Models\User as BackendUser;
+use RainLab\Blog\Models\Post;
 
 class Plugin extends PluginBase
 {
@@ -18,6 +19,7 @@ class Plugin extends PluginBase
             'Fytinnovations\ClashFreaks\Components\TopBuilderVillageClanList'=>"topBuilderVillageClanList",
             'Fytinnovations\ClashFreaks\Components\UploadBase'=>"uploadBase",
             'Fytinnovations\ClashFreaks\Components\CreatePost'=>"createPost",
+            'Fytinnovations\ClashFreaks\Components\PlayerProfile'=>"playerProfile",
         ];
     }
 
@@ -79,6 +81,11 @@ class Plugin extends PluginBase
             $model->morphMany=[
                 'basedesigns_created' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'created_by'],
                 'basedesigns_updated' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'updated_by']
+            ];
+        });
+        Post::extend(function($model){
+            $model->attachOne=[
+                'raw_file'=>['System\Models\File']
             ];
         });
     }

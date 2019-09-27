@@ -1,3 +1,97 @@
-<p>This is the default markup for component PlayerProfile</p>
+{% put styles %}
+<style>
+    #army-stats img {
+        width: 60px;
+    }
 
-<small>You can delete this file if you want</small>
+    .troop-stats {
+        display: inline-block;
+        position: relative;
+    }
+
+    .troop-stats span {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+    }
+</style>
+{% endput %}
+{% set player = __SELF__.player%}
+<h2 class="text-wrap">{{player.name}}</h2>
+<p class="lead">{{player.tag}}</p>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="army-stats-tab" data-toggle="tab" href="#army-stats" role="tab"
+            aria-controls="army-stats" aria-selected="true">Army Stats</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+            aria-selected="false">Achievements</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="army-stats" role="tabpanel" aria-labelledby="army-stats-tab">
+        <div class="card text-white bg-dark mt-3">
+            <div class="card-header">Heroes</div>
+            <div class="card-body">
+                <p class="card-text text-white">
+                    {% for hero in player.heroes%}
+                    {% set heroImg='assets/img/coc-troops/icon_'~str_studly(hero.name)~'.png' %}
+                    <div class="troop-stats">
+                        <img src="{{heroImg|theme}}" alt="{{hero.name}}">
+                        <span class="badge badge-pill badge-danger">{{hero.level}}</span>
+                    </div>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+        <div class="card text-white bg-dark mt-3">
+            <div class="card-header">Troops</div>
+            <div class="card-body">
+                {% for troop in player.troops%}
+                {% set troopImg='assets/img/coc-troops/icon_'~str_studly(troop.name)~'.png' %}
+                <div class="troop-stats">
+                    <img src="{{troopImg|theme}}" alt="{{troop.name}}">
+                    <span class="badge badge-pill badge-danger">{{troop.level}}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="card text-white bg-dark mt-3">
+            <div class="card-header">Spell</div>
+            <div class="card-body">
+                {% for spell in player.spells%}
+                {% set spellImg='assets/img/coc-spells/'~str_studly(spell.name)~'.png' %}
+                <div class="troop-stats">
+                    <img src="{{spellImg|theme}}" alt="{{spell.name}}">
+                    <span class="badge badge-pill badge-danger">{{spell.level}}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="row mt-3">
+            {% for achievement in player.achievements%}
+            <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
+                <div class="card text-white bg-dark">
+                    <div class="card-header">{{achievement.name}}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{achievement.completionInfo|default(achievement.info)}}</h5>
+                        <p class="card-text text-white">
+                            <span class="text-center disabled-star">
+                                {% for i in 1..achievement.stars %}
+                                <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
+                                {% endfor %}
+                            </span>
+                            <span class="float-right">
+                                {{achievement.value}}/ {{achievement.target}}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+</div>

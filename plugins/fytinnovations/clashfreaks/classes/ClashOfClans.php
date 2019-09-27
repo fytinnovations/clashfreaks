@@ -30,7 +30,7 @@ class ClashOfClans
         return $data;
     }
 
-    public function getTopPlayers($locationID = self::PLAYER_DEFAULT_LOCATION_ID,$limit=10)
+    public function getTopPlayers($locationID = self::PLAYER_DEFAULT_LOCATION_ID, $limit = 10)
     {
         $header = [
             "endpoint" => $this->base_url . "locations/$locationID/rankings/players?limit=$limit",
@@ -39,7 +39,7 @@ class ClashOfClans
         $data = $this->cachedRequest($header);
         return $data;
     }
-    public function getTopBuilderPlayers($locationID = self::PLAYER_DEFAULT_LOCATION_ID,$limit=10)
+    public function getTopBuilderPlayers($locationID = self::PLAYER_DEFAULT_LOCATION_ID, $limit = 10)
     {
         $header = [
             "endpoint" => $this->base_url . "locations/$locationID/rankings/players-versus?limit=$limit",
@@ -49,22 +49,32 @@ class ClashOfClans
         return $data;
     }
 
-    public function getTopClans($locationID = self::DEFAULT_CLAN_LOCATION_ID,$limit=10)
+    public function getTopClans($locationID = self::DEFAULT_CLAN_LOCATION_ID, $limit = 10)
     {
         $header = [
             "endpoint" => $this->base_url . "locations/" . $locationID .
                 "/rankings/clans?limit=$limit",
-            "key" => __FUNCTION__ . $locationID . $limit 
+            "key" => __FUNCTION__ . $locationID . $limit
         ];
         $data = $this->cachedRequest($header);
         return $data;
     }
-    public function getTopBuilderClans($locationID = self::DEFAULT_CLAN_LOCATION_ID,$limit=10)
+    public function getTopBuilderClans($locationID = self::DEFAULT_CLAN_LOCATION_ID, $limit = 10)
     {
         $header = [
             "endpoint" => $this->base_url . "locations/" . $locationID .
                 "/rankings/clans-versus?limit=$limit",
-            "key" => __FUNCTION__ . $locationID . $limit 
+            "key" => __FUNCTION__ . $locationID . $limit
+        ];
+        $data = $this->cachedRequest($header);
+        return $data;
+    }
+
+    public function getPlayerProfile($playerTag)
+    {
+        $header = [
+            "endpoint" => $this->base_url . "players/" . urlencode($playerTag),
+            "key" => __FUNCTION__ . $playerTag
         ];
         $data = $this->cachedRequest($header);
         return $data;

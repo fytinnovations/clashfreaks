@@ -1,20 +1,28 @@
-<label for="blog_name">Post Name</label>
-<input type="text" name="name" id="blog_name" class="form-control mb-3" placeholder="E.g GoboHo TH9 Strategy">
-<label for="base_village_type_inp">Post Category</label>
-<select class="custom-select mb-3" name="village_type" id="base_village_type_inp">
+{{ form_open({ request: 'onPost',files:true}) }}
+{% flash %}
+<div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+</div>
+{% endflash %}
+<label for="post_title">Post Name</label>
+<input type="text" name="title" id="post_title" class="form-control mb-3" placeholder="E.g GoboHo TH9 Strategy">
+<label for="post_category">Post Category</label>
+<select class="custom-select mb-3" name="category" id="post_category">
     {% for category in __SELF__.categories %}
     <option value="{{category.id}}">{{category.name}}</option>
     {% endfor %}
 </select>
 <div class="custom-file">
-    <input type="file" class="custom-file-input" id="base_upload_inp" aria-describedby="base-image-uploads" multiple
+    <input type="file" class="custom-file-input" name="raw_file" id="raw_file" aria-describedby="base-image-uploads" multiple
         name="images[]">
-    <label class="custom-file-label" for="base_upload_inp">Choose File</label>
+    <label class="custom-file-label" for="raw_file">Choose File</label>
     <span class="mt-2">Upload a pdf,doc with your post</span>
 </div>
 <div class="buttons text-center mt-5">
     <input type="submit" class="btn btn-success" value="Submit Post">
 </div>
+{{ form_close() }}
 <div class="alert alert-info mt-5" role="alert">
-    We will review your post before uploading to make sure we have the best content onboard
+    We will review your post before uploading to make sure we have the best content onboard.
 </div>
