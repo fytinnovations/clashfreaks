@@ -1,6 +1,25 @@
 title = "Clan"
-url = "/clan/:id"
+url = "/clan/:tag"
 layout = "default"
 description = "Displays a single clan profile"
 is_hidden = 0
+[clanProfile]
 ==
+<main class="container">
+
+    <!--Main layout-->
+    <div class="mt-5">
+        <!-- First row -->
+        <div class="row">
+            <div class="col-md-9">
+                <div class="jumbotron">
+                    {% component 'clanProfile' %}
+                </div>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <!-- /.First row -->
+    </div>
+</main>

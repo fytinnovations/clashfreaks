@@ -79,6 +79,24 @@ class ClashOfClans
         $data = $this->cachedRequest($header);
         return $data;
     }
+    public function getClanProfile($clanTag)
+    {
+        $header = [
+            "endpoint" => $this->base_url . "clans/" . urlencode($clanTag),
+            "key" => __FUNCTION__ . $clanTag
+        ];
+        $data = $this->cachedRequest($header);
+        return $data;
+    }
+    public function searchClans($name)
+    {
+        $header = [
+            "endpoint" => $this->base_url . "clans?limit=5&name=" .urlencode($name),
+            "key" => __FUNCTION__ . $name
+        ];
+        $data = $this->cachedRequest($header);
+        return $data;
+    }
 
     /**
      * Caches the request for an hour 

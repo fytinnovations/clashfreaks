@@ -14,12 +14,53 @@
         bottom: 0px;
         right: 0px;
     }
+
+    #player-heading {
+        position: relative;
+    }
+
+    #player-heading h2 img {
+        width: 40px;
+    }
+
+    #player-heading .action-btns {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        #player-heading .action-btns {
+            position: static;
+        }
+    }
 </style>
 {% endput %}
 {% set player = __SELF__.player%}
-<h2 class="text-wrap">{{player.name}}</h2>
-<p class="lead">{{player.tag}}</p>
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<div id="player-heading">
+    <h2 class="text-wrap"><img src="{{player.league.iconUrls.medium}}"
+            alt="{{player.league.iconUrls.large}}">{{player.name}}</h2>
+    <span class="badge badge-dark">{{player.tag}}</span>
+    <span class="badge badge-primary">Town Hall: {{player.townHallLevel}}</span>
+    <span class="badge badge-secondary">Builder Hall: {{player.builderHallLevel}}</span>
+    <p>
+        <span class="badge badge-primary">Exp.Level: {{player.expLevel}}</span>
+        <span class="badge badge-warning">War Stars: {{player.warStars}}</span>
+    </p>
+    <h5>Legend Statistics</h5>
+    <p>
+        <span class="badge badge-primary">Legend Trophies: {{player.legendStatistics.legendTrophies}}</span>
+        <span class="badge badge-secondary">Best Season: {{player.legendStatistics.bestSeason.id}}</span>
+        <span class="badge badge-warning">Best Season Rank: {{player.legendStatistics.bestSeason.rank}}</span>
+        <span class="badge badge-light">Best Season Trophies: {{player.legendStatistics.bestSeason.trophies}}</span>
+    </p>
+    <div class="action-btns">
+        <button id="add-to-favorite-btn" class="btn btn-sm btn-warning">Add to Favorite</button>
+        <a id="visit-clan-btn" class="btn btn-sm btn-success"
+            href="{{'clan'|page({ tag: '%23'~player.clan.tag|ltrim('#') })}}">Visit Player Clan</a>
+    </div>
+</div>
+<ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="army-stats-tab" data-toggle="tab" href="#army-stats" role="tab"
             aria-controls="army-stats" aria-selected="true">Army Stats</a>
@@ -39,7 +80,7 @@
                     {% set heroImg='assets/img/coc-troops/icon_'~str_studly(hero.name)~'.png' %}
                     <div class="troop-stats">
                         <img src="{{heroImg|theme}}" alt="{{hero.name}}">
-                        <span class="badge badge-pill badge-danger">{{hero.level}}</span>
+                        <span class="badge badge-pill badge-dark">{{hero.level}}</span>
                     </div>
                     {% endfor %}
                 </p>
@@ -52,7 +93,7 @@
                 {% set troopImg='assets/img/coc-troops/icon_'~str_studly(troop.name)~'.png' %}
                 <div class="troop-stats">
                     <img src="{{troopImg|theme}}" alt="{{troop.name}}">
-                    <span class="badge badge-pill badge-danger">{{troop.level}}</span>
+                    <span class="badge badge-pill badge-dark">{{troop.level}}</span>
                 </div>
                 {% endfor %}
             </div>
@@ -64,7 +105,7 @@
                 {% set spellImg='assets/img/coc-spells/'~str_studly(spell.name)~'.png' %}
                 <div class="troop-stats">
                     <img src="{{spellImg|theme}}" alt="{{spell.name}}">
-                    <span class="badge badge-pill badge-danger">{{spell.level}}</span>
+                    <span class="badge badge-pill badge-dark">{{spell.level}}</span>
                 </div>
                 {% endfor %}
             </div>

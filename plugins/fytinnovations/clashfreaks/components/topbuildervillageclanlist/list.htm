@@ -9,7 +9,7 @@
 <li class="list-group-item">
     <span class="badge badge-dark mr-2">{{clan.rank}}</span>
     <img src="{{clan.badgeUrls.small}}" alt="thumbnail" class="clan-list-icons mr-2">
-    {{clan.name}}
+    <a href="{{'clan'|page({ tag: '%23'~clan.tag|ltrim('#') })}}">{{clan.name}}</a>
     <span class="float-right trophy-display"><i class="fas fa-trophy"></i>&nbsp;{{clan.clanVersusPoints}}</span>
 </li>
 {% else %}

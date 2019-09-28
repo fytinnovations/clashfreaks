@@ -20,6 +20,8 @@ class Plugin extends PluginBase
             'Fytinnovations\ClashFreaks\Components\UploadBase'=>"uploadBase",
             'Fytinnovations\ClashFreaks\Components\CreatePost'=>"createPost",
             'Fytinnovations\ClashFreaks\Components\PlayerProfile'=>"playerProfile",
+            'Fytinnovations\ClashFreaks\Components\ClanProfile'=>"clanProfile",
+            'Fytinnovations\ClashFreaks\Components\SearchBox'=>"searchBox",
         ];
     }
 

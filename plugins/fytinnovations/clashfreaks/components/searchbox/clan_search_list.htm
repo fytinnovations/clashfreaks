@@ -1,0 +1,7 @@
+{% for clan in clans %}
+<li class="text-left list-group-item text-black">
+    <a href="{{'clan'|page({ tag: '%23'~clan.tag|ltrim('#') })}}">
+        <img src="{{clan.badgeUrls.medium}}" alt="{{clan.badgeUrls.large}}">{{clan.name}}
+    </a>
+</li>
+{% endfor%}
