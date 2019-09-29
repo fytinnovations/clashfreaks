@@ -77,6 +77,8 @@ class Plugin extends PluginBase
         FrontendUser::extend(function($model) {
             $model->hasMany=[
                 'ratings' => ['Fytinnovations\ClashFreaks\Models\BaseRating'],
+                'favorite_clans'=>['Fytinnovations\ClashFreaks\Models\FavoriteClan'],
+                'favorite_players'=>['Fytinnovations\ClashFreaks\Models\FavoritePlayer'],
             ];
         });
         BackendUser::extend(function($model) {
