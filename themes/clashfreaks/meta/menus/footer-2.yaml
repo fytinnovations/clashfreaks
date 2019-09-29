@@ -1,0 +1,26 @@
+items:
+    -
+        title: 'Attack Strategies'
+        nesting: '0'
+        type: blog-category
+        code: ''
+        reference: '3'
+        cmsPage: strategy-guides
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'War strategies'
+        nesting: '0'
+        type: blog-category
+        code: ''
+        reference: '5'
+        cmsPage: strategy-guides
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: 'Footer 2'

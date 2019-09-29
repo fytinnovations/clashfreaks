@@ -1,0 +1,38 @@
+items:
+    -
+        title: 'Base Designs'
+        type: cms-page
+        code: ''
+        reference: base-designs
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Create a post'
+        type: cms-page
+        code: ''
+        reference: createpost
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Strategy & Guides'
+        type: cms-page
+        code: ''
+        reference: strategy-guides
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Upload a base'
+        type: cms-page
+        code: ''
+        reference: upload-base
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: Footer1

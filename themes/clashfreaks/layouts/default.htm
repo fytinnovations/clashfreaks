@@ -14,24 +14,24 @@ security = "all"
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Clashfreaks - {{ this.page.title }}</title>
-  <meta name="description" content="{{ this.page.meta_description }}">
-  <meta name="title" content="{{ this.page.meta_title }}">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link href="{{'assets/css/bootstrap.min.css'|theme}}" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="{{'assets/css/mdb.min.css'|theme}}" rel="stylesheet">
-  <link href="{{'assets/css/style.css'|theme}}" rel="stylesheet">
-  {% styles %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Clashfreaks - {{ this.page.title }}</title>
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <meta name="title" content="{{ this.page.meta_title }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{{'assets/css/bootstrap.min.css'|theme}}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{{'assets/css/mdb.min.css'|theme}}" rel="stylesheet">
+    <link href="{{'assets/css/style.css'|theme}}" rel="stylesheet">
+    {% styles %}
 </head>
 
 <body>
-  <!-- Header -->
+    <!-- Header -->
     <header id="layout-header" class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark special-color-dark">
             <a class="navbar-brand" href="{{ 'home'|page }}">
@@ -48,14 +48,14 @@ security = "all"
                     {% if user %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <!-- <i class="fas fa-user"></i> -->
-                        <img src="{{user.avatarThumb(25)}}" alt="">
+                            aria-haspopup="true" aria-expanded="false">
+                            <!-- <i class="fas fa-user"></i> -->
+                            <img src="{{user.avatarThumb(25)}}" alt="">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                        aria-labelledby="navbarDropdownMenuLink-333">
-                        <a class="dropdown-item" href="{{ 'account'|page }}">My Account</a>
-                        <a data-request="onLogout" class="dropdown-item">Logout</a>
+                            aria-labelledby="navbarDropdownMenuLink-333">
+                            <a class="dropdown-item" href="{{ 'account'|page }}">My Account</a>
+                            <a data-request="onLogout" class="dropdown-item">Logout</a>
                         </div>
                     </li>
                     {% else %}
@@ -69,16 +69,16 @@ security = "all"
     </header>
 
     <!-- Content -->
-    <section id="layout-content">            
+    <section id="layout-content">
         {% page %}
     </section>
     <div style="position: fixed;right: 5px;top: 60px;z-index: 50">
-            <!-- Then put toasts within -->
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="2000">
+        <!-- Then put toasts within -->
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="2000">
             <div class="toast-header">
                 <strong class="mr-auto" id="toast_title">Copied To Clipboard</strong>&nbsp
                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="toast-body" id="toast_description">
@@ -91,19 +91,19 @@ security = "all"
         {% partial 'site/footer' %}
     </footer>
 
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script type="text/javascript" src="{{'assets/js/jquery-3.4.1.min.js'|theme}}"></script>
-  <script type="text/javascript" src="{{'assets/js/addons/rating.js'|theme}}"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="{{'assets/js/popper.min.js'|theme}}"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="{{'assets/js/bootstrap.min.js'|theme}}"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="{{'assets/js/mdb.min.js'|theme}}"></script>
-  <script type="text/javascript" src="{{'assets/js/script.js'|theme}}"></script>
-  {% framework extras %}
-  {% scripts %}
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="{{'assets/js/jquery-3.4.1.min.js'|theme}}"></script>
+    <script type="text/javascript" src="{{'assets/js/addons/rating.js'|theme}}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{'assets/js/popper.min.js'|theme}}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{{'assets/js/bootstrap.min.js'|theme}}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{{'assets/js/mdb.min.js'|theme}}"></script>
+    <script type="text/javascript" src="{{'assets/js/script.js'|theme}}"></script>
+    {% framework extras %}
+    {% scripts %}
 </body>
 
 </html>

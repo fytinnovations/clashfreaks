@@ -1,20 +1,47 @@
 [viewBag]
+
+[staticMenu]
+code = "footer1"
+
+[staticMenu staticMenu2]
+code = "footer-2"
 ==
 <!-- Footer Elements -->
-<div class="container">
-    
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-xs-12">
+
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6" style="width:50%">
+            {% component 'staticMenu' %}
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6" style="width:50%">
+            {% if staticMenu2.menuItems %}
+            <ul class="navbar-nav mr-auto">
+                {% partial staticMenu2 ~ "::items" items=staticMenu2.menuItems %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <p>This content is not affiliated with, endorsed, sponsored, or specifically approved by Supercell and
+                Supercell
+                is
+                not responsible for it. For more information see Supercell’s Fan Content</p>
+            <p>Policy: <a href="www.supercell.com/fan-content-policy">www.supercell.com/fan-content-policy</a></p>
+        </div>
+    </div>
 </div>
 <!-- Footer Elements -->
 {% set startYear = 2019 %}
 {% set currentYear = now.year %}
 
 {% if startYear == currentYear %}
-    {% set copyrightYears = startYear %}
+{% set copyrightYears = startYear %}
 {% else %}
-    {% set copyrightYears = startYear ~ ' - ' ~ currentYear %}
+{% set copyrightYears = startYear ~ ' - ' ~ currentYear %}
 {% endif %}
 <!-- Copyright -->
 <div class="footer-copyright text-center py-3">© {{ copyrightYears }} Copyright:
-    <a href="http://fytinnovations.com"> Fyt Innovations</a>
+    <a href="http://fytinnovations.com"> FYT Innovations</a>
 </div>
 <!-- Copyright -->

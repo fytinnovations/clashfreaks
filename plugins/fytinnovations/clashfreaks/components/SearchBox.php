@@ -37,8 +37,14 @@ class SearchBox extends ComponentBase
     public function onClanSearch()
     {
         $clan_name = post('clan_name');
-        $clans = $this->request->searchClans($clan_name);
+        $location_id=post('location_id');
+        $clans = $this->request->searchClans($clan_name,$location_id);
         return ['#clan_search_list' => $this->renderPartial('@clan_search_list.htm', ['clans' => $clans->items])];
+    }
+
+    public function locations()
+    {
+        return $this->request->getLocations();
     }
 
 }

@@ -88,11 +88,11 @@ class ClashOfClans
         $data = $this->cachedRequest($header);
         return $data;
     }
-    public function searchClans($name)
+    public function searchClans($name,$locationID)
     {
         $header = [
-            "endpoint" => $this->base_url . "clans?limit=5&name=" .urlencode($name),
-            "key" => __FUNCTION__ . $name
+            "endpoint" => $this->base_url . "clans?limit=5&name=" .urlencode($name).'&locationId='.$locationID,
+            "key" => __FUNCTION__ . $name.$locationID
         ];
         $data = $this->cachedRequest($header);
         return $data;

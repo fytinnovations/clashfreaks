@@ -29,11 +29,11 @@
         width: 50%;
     }
 
-    #player_search_list img{
+    #player_search_list img {
         width: 40px;
     }
 
-    #clan_search_list img{
+    #clan_search_list img {
         width: 40px;
     }
 
@@ -46,6 +46,7 @@
     }
 </style>
 {% endput %}
+{% set locations= __SELF__.locations.items%}
 <div id="searchbox" class="card bg-dark">
     <div class="card-body">
         <ul class="nav nav-tabs mt-2 text-white" id="searchTab" role="tablist">
@@ -73,11 +74,21 @@
                 </ul>
             </div>
 
-            <div class="tab-pane search-pane fade" id="clan-search" role="tabpanel" aria-labelledby="clan-search-tab">
+            <div class="tab-pane fade" id="clan-search" role="tabpanel" aria-labelledby="clan-search-tab">
                 {{ form_ajax({ request: 'onClanSearch'}) }}
-                <input type="text" name="clan_name" class="form-control mt-3"
-                    placeholder="Clan Name Eg. SACRED HEARTS">
-                <button class="btn btn-sm btn-info" type="submit"><i class="fas fa-search"></i></button>
+                <select class="custom-select custom-select-sm mt-3" name="location_id">
+                <option value="32000006" selected>International</option>
+                {% for location in locations %}
+                {% if(location.name)%}
+                <option value="{{location.id}}">{{location.name}}</option>
+                {% endif %}
+                {% endfor %}
+                </select>
+                <div class="search-pane">
+                    <input type="text" name="clan_name" class="form-control mt-3"
+                        placeholder="Clan Name Eg. SACRED HEARTS">
+                    <button class="btn btn-sm btn-info" type="submit"><i class="fas fa-search"></i></button>
+                </div>
                 {{ form_close() }}
                 <ul class="list-group mt-2" id="clan_search_list">
                     {% partial __SELF__ ~ '::clan_search_list' %}

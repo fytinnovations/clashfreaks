@@ -1,7 +1,5 @@
-{% if staticMenu.menuItems %}
+{% if __SELF__.menuItems %}
     <ul>
-        {% partial staticMenu ~ "::items" items=staticMenu.menuItems %}
+        {% partial __SELF__ ~ "::items" items=__SELF__.menuItems %}
     </ul>
-{%else%}
-Hello
 {% endif %}
