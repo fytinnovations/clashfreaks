@@ -1,0 +1,30 @@
+title = "Base Designs"
+url = "/base-designs"
+layout = "default"
+description = "This page displays list of base designs uploaded by users"
+is_hidden = 0
+
+[baseDesignList]
+==
+<main class="container">
+
+    <!--Main layout-->
+    <div class="mt-5">
+        <!-- First row -->
+        <div class="row">
+            <div class="col-md-9">
+                {% component 'baseDesignList' %}
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Contribute</h5>
+                        <p class="card-text">Have a base design you wish to share with fellow clashers?.</p>
+                        <a href="{{'upload-base'|page}}" class="btn btn-success">Upload Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.First row -->
+    </div>
+</main>

@@ -1,0 +1,48 @@
+title = "Base Design"
+url = "/base-design/:slug"
+layout = "default"
+description = "This page displays a single base design by a user"
+is_hidden = 0
+
+[baseDesignInfo]
+
+[forumEmbedTopic]
+embedCode = "{{ :slug }}"
+channelSlug = "base-design"
+memberPage = "account"
+
+[ssbuttons]
+fa = "maxcdn"
+twitter = 1
+facebook = 1
+google+ = 0
+stumbleupon = 0
+linkedin = 0
+order_twitter = 1
+order_facebook = 2
+order_google+ = 3
+order_stumbleupon = 4
+order_linkedin = 5
+==
+<main class="container">
+
+    <!--Main layout-->
+    <div class="mt-5">
+        <!-- First row -->
+        <div class="row">
+            <div class="col-md-9">
+                <div class="jumbotron">
+                    {% component 'baseDesignInfo' %}
+                    <hr>
+                    {% component 'ssbuttons' %}
+                    <hr>
+                    {% component 'forumEmbedTopic' %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                Hello Advertise
+            </div>
+        </div>
+        <!-- /.First row -->
+    </div>
+</main>

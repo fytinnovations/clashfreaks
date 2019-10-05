@@ -34,4 +34,8 @@ return [
         'secret' => '',
     ],
 
+    'clash_of_clans'=>[
+        'api_key' => env('CLASH_OF_CLANS_API_KEY')
+    ]
+
 ];

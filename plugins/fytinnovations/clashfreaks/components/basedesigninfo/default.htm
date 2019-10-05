@@ -1,0 +1,109 @@
+{% set baseInfo=__SELF__.baseInfo%}
+<style>
+    #base_design_carousel img {
+        height: 464px;
+    }
+
+    #base_ratings .fa-star {
+        width: 200%;
+        height: 200%;
+        ;
+    }
+
+    @media only screen and (max-width: 600px) {
+        #base_design_carousel img {
+            width: 100%;
+            height: 180px;
+        }
+    }
+</style>
+<div id="base_design_carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        {% for images in baseInfo.images %}
+        <div class="carousel-item {{ loop.index==1 ? 'active' : null }}">
+            <img class="d-block w-100" src="{{images.getPath}}" alt="First slide">
+        </div>
+        {% endfor %}
+    </div>
+    <a class="carousel-control-prev" href="#base_design_carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#base_design_carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<h2 class="text-wrap">{{baseInfo.name}}</h2>
+<p class="lead">{{baseInfo.description}}</p>
+<hr class="my-4">
+<p><strong>Uploaded : </strong>{{ baseInfo.created_at | time_diff }}</p>
+<input type="text" value="{{baseInfo.url}}">
+<button class="btn btn-sm btn-primary copy_url_btn"><i class="far fa-clone"></i> Copy Url</button>
+<hr class="my-4">
+<h2 class="text-wrap">Average Ratings</h2>
+<span class="text-center disabled-star">
+        {% for i in 1..baseInfo.ratings %}
+        <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
+        {% endfor %}
+        &nbsp;Out of 5
+</span>
+<hr class="my-4">
+<h2 class="text-wrap">Your Ratings</h2>
+<span id="baseRatings"></span>
+<hr class="my-4">
+<!--Section: Author Box-->
+<section class="my-5">
+    <!-- Card header -->
+    <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
+        <p class="mr-4 mb-0">About the author</p>
+        <ul class="list-unstyled list-inline mb-0">
+            <li class="list-inline-item"><a href="" class="mr-3"><i class="fas fa-user mr-1"></i>See profile</a></li>
+        </ul>
+    </div>
+    <div class="media mt-4 px-1">
+        <img class="card-img-100 d-flex z-depth-1 mr-3" src="{{baseInfo.created_by.avatarThumb(50)}}"
+            alt="Generic placeholder image">
+        <div class="media-body">
+            <h5 class="font-weight-bold mt-0">
+                <a href="">{{baseInfo.created_by.name}}</a>
+            </h5>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod consectetur accusamus velit nostrum et
+            magnam.
+        </div>
+    </div>
+</section>
+<!--Section: Author Box-->
+{% put scripts %}
+<script>
+    $(document).ready(function () {
+        $('.copy_url_btn').click(function () {
+            var copyText = $(this).closest("div.card-buttons").find("input");
+            copyText.select();
+            document.execCommand("copy");
+            displayToaster("Copied Link", "Link copied to clipboard");
+        });
+        $('#baseRatings').mdbRate();
+        displayUserRatings({{baseInfo.user_ratings}});
+        $('.rate-popover').click(function () {
+            let ratedStars= $(this).data('index')+1;
+            $.request('onRateBase', {
+                data:{
+                    ratedStars:ratedStars,
+                    baseId:{{baseInfo.id}}
+                },
+                success: function (data) {
+                    displayToaster("Ratings Saved", "Your ratings to  this base are saved");
+                }
+            })
+        });
+
+        function displayUserRatings(starsRated){
+            $stars = $("#baseRatings").children();
+            for (var i = 0; i <starsRated; i++) {
+                $($stars.get(i)).addClass('amber-text');
+            }
+        }
+    });
+</script>
+{% endput %}

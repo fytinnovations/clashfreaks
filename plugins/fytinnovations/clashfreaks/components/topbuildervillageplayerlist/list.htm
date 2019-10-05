@@ -1,0 +1,16 @@
+{% put styles %}
+<style>
+    .trophy-display .fa-trophy {
+        color: goldenrod;
+    }
+</style>
+{% endput %}
+{% for player in players %}
+<li class="list-group-item">
+    <span class="badge badge-dark mr-2">{{player.rank}}</span>
+    <a href="{{'player'|page({ tag: '%23'~player.tag|ltrim('#') })}}">{{player.name}}</a>
+    <span class="float-right trophy-display"><i class="fas fa-trophy"></i>&nbsp;{{player.versusTrophies}}</span>
+</li>
+{% else %}
+<li class="list-group-item"> This location does not have any players</li>
+{% endfor %}

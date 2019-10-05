@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Village Type
+
+# Model Form Field configuration
+form: $/fytinnovations/clashfreaks/models/villagetype/fields.yaml
+
+# Model Class name
+modelClass: Fytinnovations\ClashFreaks\Models\VillageType
+
+# Default redirect location
+defaultRedirect: fytinnovations/clashfreaks/villagetypes
+
+# Create page
+create:
+    title: Create Village Type
+    redirect: fytinnovations/clashfreaks/villagetypes/update/:id
+    redirectClose: fytinnovations/clashfreaks/villagetypes
+
+# Update page
+update:
+    title: Edit Village Type
+    redirect: fytinnovations/clashfreaks/villagetypes
+    redirectClose: fytinnovations/clashfreaks/villagetypes
+
+# Preview page
+preview:
+    title: Preview Village Type

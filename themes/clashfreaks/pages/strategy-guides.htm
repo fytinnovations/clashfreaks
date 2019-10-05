@@ -1,0 +1,150 @@
+title = "Strategy & Guides"
+url = "/strategy-guides/:slug?"
+layout = "default"
+description = "This page displays a list of blogs and categories"
+is_hidden = 0
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "strategy-guides"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "{{ :slug }}"
+postsPerPage = 5
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "strategy-guides"
+postPage = "strategy-guide"
+==
+{% put styles %}
+
+<style>
+    #category_list .active a {
+        color: white;
+    }
+</style>
+
+{% endput %}
+<main class="container">
+    <!--Main layout-->
+    <div class="mt-5">
+        <!-- First row -->
+        <div class="row">
+            <div class="col-md-9">
+                <div class="jumbotron">
+                    <h2 class="display-4">{{ this.param.slug ? blogPosts.category.name : 'Strategies & Guides' }}</h2>
+                    <p class="lead">{{ this.param.slug ? blogPosts.category.description : 'Make and improve your gameplay with these
+                                    amazing game strategies and guides' }}</p>
+                    <hr class="my-4">
+                    {% set posts = blogPosts.posts %}
+                    {% for post in posts %}
+                    <!-- Grid row -->
+                    <div class="row mb-5">
+
+                        <!-- Grid column -->
+                        <div class="col-lg-5 col-xl-4">
+                            <!-- Featured image -->
+                            <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
+                                <img class="img-fluid" src="{{post.featured_images[0].getPath}}" alt="Sample image">
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-lg-7 col-xl-8">
+                            <!-- Post title -->
+                            <h3 class="font-weight-bold mb-3"><strong>{{ post.title }}</strong></h3>
+                            <!-- Excerpt -->
+                            <p class="dark-grey-text">{{ post.summary|raw }}</p>
+                            <p class="info">
+                                Posted
+                                {% if post.categories.count %} in {% endif %}
+                                {% for category in post.categories %}
+                                <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                                on {{ post.published_at|date('M d, Y') }}
+                            </p>
+                            <!-- Post data -->
+                            <p>by <a class="font-weight-bold">{{post.user.full_name}}</a></p>
+                            <!-- Read more button -->
+                            <a class="btn btn-primary btn-md" href="{{ post.url }}">Read more</a>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    {% else %}
+                    <li class="no-data">{{ blogPosts.noPostsMessage }}</li>
+                    {% endfor %}
+                    <!-- Grid row -->
+
+                    {% set posts = blogPosts.posts %}
+
+                    {% if posts.lastPage > 1 %}
+                    <div class="base-designs-pagination float-right">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pg-blue">
+                                {% if posts.currentPage > 1 %}
+                                <li class="page-item ">
+                                    <a class="page-link"
+                                        href="{{ this.page.baseFileName|page~'?page='}}{{posts.currentPage - 1}}"
+                                        tabindex="-1">Previous</a>
+                                </li>
+                                {% endif %}
+                                {% for counter in 1..posts.lastPage %}
+                                <li class="page-item {{ posts.currentPage == counter ? 'active' : null }}">
+                                    <a class="page-link"
+                                        href="{{ this.page.baseFileName|page~'?page='~counter}}">{{counter}}</a>
+                                </li>
+                                {% endfor %}
+                                {% if posts.lastPage > posts.currentPage %}
+                                <li class="page-item ">
+                                    <a class="page-link"
+                                        href="{{ this.page.baseFileName|page~'?page='}}{{posts.currentPage + 1}}">Next</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Contribute</h5>
+                        <p class="card-text">Have a plan or strategy you wish to share with fellow clashers?.</p>
+                        <a href="{{'createpost'|page}}" class="btn btn-primary">Create Post
+                            Now</a>
+                    </div>
+                </div>
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Browse Categories</h5>
+                        {% if blogCategories.categories|length > 0 %}
+                        <ul class="list-group" id="category_list">
+                            {% set currentCategorySlug = blogCategories.currentCategorySlug %}
+                            {% for category in blogCategories.categories %}
+                            {% set postCount = category.post_count %}
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center {% if category.slug == currentCategorySlug %}active{% endif %}">
+                                <a href="{{ category.url }}">{{ category.name }}</a>
+                                {% if postCount %}
+                                <span class="badge badge-danger badge-pill">{{ postCount }}</span>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p>No categories were found.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.First row -->
+    </div>
+</main>

@@ -1,0 +1,37 @@
+name: Top-Left
+items:
+    -
+        title: 'Base Designs'
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: base-designs
+        reference: base-designs
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Strategy & Guides'
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: strategy-guides
+        reference: strategy-guides
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Contact Us'
+        type: cms-page
+        code: contactUs
+        reference: contact-us
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

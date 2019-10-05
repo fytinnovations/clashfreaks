@@ -1,0 +1,21 @@
+description = "Footer Menu"
+
+[viewBag]
+==
+{% for item in items if not item.viewBag.isHidden %}
+    <li role="presentation" class="nav-item {{ item.isActive ? 'active' : '' }} {{ item.isChildActive ? 'child-active' : '' }} {{ item.viewBag.cssClass }}">
+        {% if item.url %}
+            <a href="{{ item.url }}" {{ item.viewBag.isExternal ? 'target="_blank"' }} class="nav-link">
+                {{ item.title }}
+            </a>
+        {% else %}
+            <span class="nav-link">{{ item.title }}</span>
+        {% endif %}
+
+        {% if item.items %}
+            <ul class="navbar-nav mr-auto">
+                {% partial __SELF__ ~ "::items" items=item.items %}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}

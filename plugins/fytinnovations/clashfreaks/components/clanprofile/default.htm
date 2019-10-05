@@ -1,0 +1,120 @@
+{% put styles %}
+<style>
+    #clan-heading {
+        position: relative;
+    }
+
+    #clan-heading .action-btns {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    #clan-heading h2 img {
+        width: 40px;
+    }
+
+    .card-header img {
+        width: 40px;
+    }
+
+    .card .card-body .card-text {
+        line-height: 0.5;
+    }
+
+    @media only screen and (max-width: 600px) {
+        #clan-heading .action-btns {
+            position: static;
+        }
+    }
+</style>
+{% endput %}
+{% set clan = __SELF__.clan%}
+<div id="clan-heading">
+    <h2 class="text-wrap"><img src="{{clan.badgeUrls.medium}}" alt="{{clan.badgeUrls.large}}">{{clan.name}}</h2>
+    <span class="badge badge-dark">{{clan.tag}}</span>
+    <p class="lead mt-2">
+        {{clan.description}}
+    </p>
+    <h5>Clan Statistics</h5>
+    <p>
+        <span class="badge badge-primary">Level: {{clan.clanLevel}}</span>
+        <span class="badge badge-secondary">Required Trophies: {{clan.requiredTrophies}}</span>
+        <span class="badge badge-warning">War Frequency: {{clan.warFrequency}}</span>
+        <span class="badge badge-success">War Wins: {{clan.warWins}}</span>
+        <span class="badge badge-danger">War Lost: {{clan.warLosses}}</span>
+        <span class="badge badge-light">War Ties: {{clan.warTies}}</span>
+        <span class="badge badge-info">Total Members: {{clan.members}}</span>
+    </p>
+    <div class="action-btns">
+        <button id="add-to-favorite-btn" class="btn btn-sm btn-warning" data-request="onAddToFavorite"
+            data-request-success="this.innerHTML='Added to favorites'">Add to
+            Favorite</button>
+    </div>
+</div>
+<ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="army-stats-tab" data-toggle="tab" href="#army-stats" role="tab"
+            aria-controls="army-stats" aria-selected="true">Members</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+            aria-selected="false">War Log</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="army-stats" role="tabpanel" aria-labelledby="army-stats-tab">
+        <div class="row mt-3">
+            {% for member in clan.memberList%}
+            <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
+                <div class="card text-white bg-dark">
+                    <div class="card-header">
+                        <img src="{{member.league.iconUrls.medium}}"
+                            alt="{{member.league.iconUrls.large}}">{{member.name}} - <i>{{member.role}}</i>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text text-white mt-0">
+                            Trophies: <i class="fas fa fa-trophy"> {{member.trophies}}</i>
+                        </p>
+                        <p class="card-text text-white mt-0">
+                            Versus Trophies: <i class="fas fa fa-trophy"> {{member.versusTrophies}}</i>
+                        </p>
+                        <p class="card-text text-white mt-0">
+                            Troops Donated: {{member.donations}}
+                        </p>
+                        <p class="card-text text-white mt-0">
+                            Troops Recevied: {{member.donationsReceived}}
+                        </p>
+                        <span class="float-left"><a class="btn btn-sm btn-success"
+                                href="{{'player'|page({ tag: '%23'~member.tag|ltrim('#') })}}">Visit Profile</a></span>
+                    </div>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="row mt-3">
+            {% for achievement in clan.achievements%}
+            <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
+                <div class="card text-white bg-dark">
+                    <div class="card-header">{{achievement.name}}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{achievement.completionInfo|default(achievement.info)}}</h5>
+                        <p class="card-text text-white">
+                            <span class="text-center disabled-star">
+                                {% for i in 1..achievement.stars %}
+                                <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
+                                {% endfor %}
+                            </span>
+                            <span class="float-right">
+                                {{achievement.value}}/ {{achievement.target}}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+</div>

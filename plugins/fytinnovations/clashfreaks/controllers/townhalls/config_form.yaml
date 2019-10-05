@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Town Hall
+
+# Model Form Field configuration
+form: $/fytinnovations/clashfreaks/models/townhall/fields.yaml
+
+# Model Class name
+modelClass: Fytinnovations\ClashFreaks\Models\TownHall
+
+# Default redirect location
+defaultRedirect: fytinnovations/clashfreaks/townhalls
+
+# Create page
+create:
+    title: Create Town Hall
+    redirect: fytinnovations/clashfreaks/townhalls/update/:id
+    redirectClose: fytinnovations/clashfreaks/townhalls
+
+# Update page
+update:
+    title: Edit Town Hall
+    redirect: fytinnovations/clashfreaks/townhalls
+    redirectClose: fytinnovations/clashfreaks/townhalls
+
+# Preview page
+preview:
+    title: Preview Town Hall

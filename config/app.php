@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'debug' => true,
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => env('APP_URL', 'http://localhost/clashfreaks'),
 
     /*
     |--------------------------------------------------------------------------
@@ -101,7 +101,7 @@ return [
     |
     */
 
-    'key' => 'base64:G2gytTrFrxhgudjztDvrDmua0nq8HLQA30HkDm5F6Wc=',
+    'key' => env('APP_KEY', ''),
 
     'cipher' => 'AES-256-CBC',
 

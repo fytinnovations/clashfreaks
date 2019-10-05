@@ -1,0 +1,99 @@
+{% put styles %}
+<style>
+    #searchbox {
+        text-align: center;
+        margin: auto;
+        width: 50%;
+    }
+
+    .search-pane button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 4px;
+    }
+
+    .search-pane {
+        position: relative;
+    }
+
+    #searchbox #searchTab a.active {
+        color: black;
+    }
+
+    #searchbox #searchTab a {
+        color: white;
+    }
+
+    #searchTab li {
+        width: 50%;
+    }
+
+    #player_search_list img {
+        width: 40px;
+    }
+
+    #clan_search_list img {
+        width: 40px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        #searchbox {
+            text-align: center;
+            margin: auto;
+            width: 100%;
+        }
+    }
+</style>
+{% endput %}
+{% set locations= __SELF__.locations.items%}
+<div id="searchbox" class="card bg-dark">
+    <div class="card-body">
+        <ul class="nav nav-tabs mt-2 text-white" id="searchTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="player-search-tab" data-toggle="tab" href="#player-search" role="tab"
+                    aria-controls="player-search" aria-selected="true"><i class="fas fa-user prefix"></i> Search
+                    Player</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="clan-search-tab" data-toggle="tab" href="#clan-search" role="tab"
+                    aria-controls="clan-search" aria-selected="false"><i class="fas fa-users prefix"></i> Search
+                    Clan</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="searchTabContent">
+            <div class="tab-pane search-pane fade show active" id="player-search" role="tabpanel"
+                aria-labelledby="player-search-tab">
+                {{ form_ajax({ request: 'onPlayerSearch'}) }}
+                <input type="text" class="form-control mt-3" name="player_tag"
+                    placeholder="Player Tag Eg. #VYGPJQGC"><button class="btn btn-sm btn-info" type="submit"><i
+                        class="fas fa-search"></i></button>
+                {{ form_close() }}
+                <ul class="list-group mt-2" id="player_search_list">
+                    {% partial __SELF__ ~ '::player_search_list' %}
+                </ul>
+            </div>
+
+            <div class="tab-pane fade" id="clan-search" role="tabpanel" aria-labelledby="clan-search-tab">
+                {{ form_ajax({ request: 'onClanSearch'}) }}
+                <select class="custom-select custom-select-sm mt-3" name="location_id">
+                <option value="32000006" selected>International</option>
+                {% for location in locations %}
+                {% if(location.name)%}
+                <option value="{{location.id}}">{{location.name}}</option>
+                {% endif %}
+                {% endfor %}
+                </select>
+                <div class="search-pane">
+                    <input type="text" name="clan_name" class="form-control mt-3"
+                        placeholder="Clan Name Eg. SACRED HEARTS">
+                    <button class="btn btn-sm btn-info" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                {{ form_close() }}
+                <ul class="list-group mt-2" id="clan_search_list">
+                    {% partial __SELF__ ~ '::clan_search_list' %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+{% if player.name %}
+<li class="text-left list-group-item text-black">
+        <a href="{{'player'|page({ tag: '%23'~player.tag|ltrim('#') })}}"><img src="{{player.league.iconUrls.medium}}"
+            alt="{{player.league.iconUrls.large}}">{{player.name}}</a>
+    <span class="float-right trophy-display"><i class="fas fa-trophy"></i>&nbsp;{{player.versusTrophies}}</span>
+</li>
+{% endif%}
