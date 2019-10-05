@@ -1,0 +1,35 @@
+title = "Favorites"
+url = "/favorites"
+layout = "default"
+description = "Displays favorites of a user"
+is_hidden = 0
+
+[favoritePlayers]
+
+[favoriteClans]
+==
+<main class="container">
+
+    <!--Main layout-->
+    <div class="mt-5">
+        <!-- First row -->
+        <div class="row">
+            <div class="col-md-9">
+                <div class="jumbotron">
+                    <div class="row">
+                    <div class="col-md-6">
+                        {% component 'favoritePlayers' %}
+                    </div>
+                    <div class="col-md-6">
+                        {% component 'favoriteClans' %}
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                Hello Advertise
+            </div>
+        </div>
+        <!-- /.First row -->
+    </div>
+</main>

@@ -49,18 +49,7 @@
     {% partial __SELF__ ~ '::town_hall_list' town_halls= __SELF__.town_halls%}
 </select>
 <div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="base-image-uploads">Upload Base Images</span>
-    </div>
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="base_upload_inp" aria-describedby="base-image-uploads" multiple
-            name="images[]">
-        <label class="custom-file-label" for="base_upload_inp">Choose Base Images</label>
-    </div>
-    <div class="base-images mt-4 text-center" id="base_image_preview">
-        <h3 class="text-center">Base Images Preview</h3>
-        <p class="text-center">Upload atleast 3 base images of ratio 16:9 for better display</p>
-    </div>
+    {% component 'imageUploader' %}
 </div>
 <div class="buttons text-center">
     <input type="submit" class="btn btn-success" value="Submit Base">
@@ -69,20 +58,3 @@
         We will review your base design before uploading to make sure we have the best content onboard
     </div>
 {{ form_close() }}
-{% put scripts %}
-<script>
-    $(function () {
-        $("#base_upload_inp").change(function () {
-            $("#base_image_preview").html("");
-            let files = $(this)[0].files;
-            let preview_images = "";
-            for (var i = 0; i < files.length; i++) {
-                let img = document.createElement("img");
-                img.setAttribute("src", URL.createObjectURL(files[i]))
-                img.classList.add("img-fluid", "z-depth-1", "img-responsive", "mr-2");
-                $("#base_image_preview").append(img);
-            }
-        });
-    });
-</script>
-{% endput %}

@@ -44,8 +44,7 @@ class UploadBase extends ComponentBase
         $baseDesign->description=post('description');
         $baseDesign->url= post('url');
         $baseDesign->town_hall_id=post('town_hall');
-        $baseDesign->images= Input::file('images');
-        $baseDesign->save();
+        $baseDesign->save(null, post('_session_key'));
         Flash::success("Thankyou for contributing we will upload the base after reviewing it.");
     }
 
