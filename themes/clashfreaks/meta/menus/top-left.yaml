@@ -14,12 +14,21 @@ items:
             cssClass: ''
             isExternal: '0'
     -
-        title: 'Strategy & Guides'
+        title: Blogs
+        type: cms-page
+        code: strategy-guides
+        reference: blogs
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Contact Us'
         nesting: ''
         type: cms-page
         url: ''
-        code: strategy-guides
-        reference: strategy-guides
+        code: contactUs
+        reference: contact-us
         cmsPage: ''
         replace: ''
         viewBag:
@@ -27,10 +36,14 @@ items:
             cssClass: ''
             isExternal: '0'
     -
-        title: 'Contact Us'
+        title: Favorites
+        nesting: ''
         type: cms-page
-        code: contactUs
-        reference: contact-us
+        url: ''
+        code: ''
+        reference: favorites
+        cmsPage: ''
+        replace: ''
         viewBag:
             isHidden: '0'
             cssClass: ''

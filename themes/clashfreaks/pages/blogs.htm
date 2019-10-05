@@ -1,5 +1,5 @@
-title = "Strategy & Guides"
-url = "/strategy-guides/:slug?"
+title = "Blogs"
+url = "/blogs/:slug?"
 layout = "default"
 description = "This page displays a list of blogs and categories"
 is_hidden = 0
@@ -7,7 +7,7 @@ is_hidden = 0
 [blogCategories]
 slug = "{{ :slug }}"
 displayEmpty = 0
-categoryPage = "strategy-guides"
+categoryPage = "blogs"
 
 [blogPosts]
 pageNumber = "{{ :page }}"
@@ -15,8 +15,8 @@ categoryFilter = "{{ :slug }}"
 postsPerPage = 5
 noPostsMessage = "No posts found"
 sortOrder = "published_at desc"
-categoryPage = "strategy-guides"
-postPage = "strategy-guide"
+categoryPage = "blogs"
+postPage = "blog"
 ==
 {% put styles %}
 
@@ -34,9 +34,8 @@ postPage = "strategy-guide"
         <div class="row">
             <div class="col-md-9">
                 <div class="jumbotron">
-                    <h2 class="display-4">{{ this.param.slug ? blogPosts.category.name : 'Strategies & Guides' }}</h2>
-                    <p class="lead">{{ this.param.slug ? blogPosts.category.description : 'Make and improve your gameplay with these
-                                    amazing game strategies and guides' }}</p>
+                    <h2 class="display-4">{{ this.param.slug ? blogPosts.category.name : 'Blogs' }}</h2>
+                    <p class="lead">{{ this.param.slug ? blogPosts.category.description : 'Posts Related to Clash Of Clans and Clash Royale' }}</p>
                     <hr class="my-4">
                     {% set posts = blogPosts.posts %}
                     {% for post in posts %}
@@ -113,14 +112,6 @@ postPage = "strategy-guide"
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card mb-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Contribute</h5>
-                        <p class="card-text">Have a plan or strategy you wish to share with fellow clashers?.</p>
-                        <a href="{{'createpost'|page}}" class="btn btn-primary">Create Post
-                            Now</a>
-                    </div>
-                </div>
                 <div class="card mb-5">
                     <div class="card-body">
                         <h5 class="card-title">Browse Categories</h5>

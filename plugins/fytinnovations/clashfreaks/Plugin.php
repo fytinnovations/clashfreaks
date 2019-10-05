@@ -22,6 +22,8 @@ class Plugin extends PluginBase
             'Fytinnovations\ClashFreaks\Components\PlayerProfile'=>"playerProfile",
             'Fytinnovations\ClashFreaks\Components\ClanProfile'=>"clanProfile",
             'Fytinnovations\ClashFreaks\Components\SearchBox'=>"searchBox",
+            'Fytinnovations\ClashFreaks\Components\FavoritePlayers'=>"favoritePlayers",
+            'Fytinnovations\ClashFreaks\Components\FavoriteClans'=>"favoriteClans",
         ];
     }
 

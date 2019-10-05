@@ -1,0 +1,16 @@
+{% put styles %}
+<style>
+    .trophy-display .fa-trophy {
+        color: goldenrod;
+    }
+</style>
+{% endput %}
+{% set clans = __SELF__.favoriteClans%}
+<div class="card text-white bg-dark">
+  <div class="card-header">Favorite Clans</div>
+  <div class="card-body">
+    <ul class="list-group" id="favorite_clan_list">
+      {% partial __SELF__ ~ '::list' clans=clans %}
+    </ul>
+  </div>
+</div>

@@ -85,6 +85,7 @@ class ClashOfClans
             "endpoint" => $this->base_url . "clans/" . urlencode($clanTag),
             "key" => __FUNCTION__ . $clanTag
         ];
+        
         $data = $this->cachedRequest($header);
         return $data;
     }

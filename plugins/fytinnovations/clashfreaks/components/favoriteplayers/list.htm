@@ -1,0 +1,12 @@
+{% for player in players%}
+<li class="list-group-item d-flex justify-content-between align-items-center text-dark">
+    <img src="{{player.league.iconUrls.small}}" alt="thumbnail" class="list-image-icons mr-2">
+    <a href="{{'player'|page({ tag: '%23'~player.tag|ltrim('#') })}}">{{player.name}}</a>
+    <span class="float-right trophy-display"><i class="fas fa-trophy"></i>&nbsp;{{player.trophies}}</span>
+    <button data-request="{{__SELF__}}::onDelete"data-request-data="tag: '{{player.tag}}'"><i class="far fa-trash-alt text-danger"></i></button>
+</li>
+{% else %}
+<li class="list-group-item d-flex justify-content-between align-items-center text-dark">
+    You dont have any favorite players
+</li>
+{% endfor %}
