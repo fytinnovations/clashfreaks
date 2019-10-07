@@ -3,6 +3,7 @@
 namespace Fytinnovations\ClashFreaks\Classes;
 
 use Cache;
+use Illuminate\Support\Facades\Redirect;
 use October\Rain\Exception\ApplicationException;
 
 class ClashOfClans

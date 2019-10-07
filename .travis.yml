@@ -1,1 +1,29 @@
-language: php
+matrix:
+  allow_failures:
+    - php: nightly
+
+  include:
+    - language: php
+      services:
+        - mysql
+      php:
+        - 7.1
+        - 7.2
+        - 7.3
+        - nightly
+      sudo: false
+      before_install:
+        - mysql -e 'CREATE DATABASE IF NOT EXISTS clashfreaks;'
+      install:
+        - composer self-update
+        - travis_retry composer install --no-interaction --prefer-source
+      before_script:
+        - php artisan october:env
+        - php artisan key:generate
+        - echo "DB_HOST=127.0.0.1" > .env
+        - echo "DB_DATABASE=clashfreaks" >> .env
+        - echo "DB_USERNAME=root" >> .env
+        - echo "DB_PASSWORD=" >> .env
+        - php artisan october:up -v
+        - composer install
+      script: ../vendor/bin/phpunit
