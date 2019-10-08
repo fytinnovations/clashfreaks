@@ -8,6 +8,8 @@ use RainLab\Blog\Models\Post;
 
 class Plugin extends PluginBase
 {
+    public $require = ['Rainlab.User'];
+
     public function registerComponents()
     {
         return [

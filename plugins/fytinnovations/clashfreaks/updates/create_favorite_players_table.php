@@ -20,7 +20,7 @@ class CreateFavoritePlayersTable extends Migration
 
     public function down()
     {
-        Schema::table('fytinnovations_clashfreaks_favorite_clans', function ($table) {
+        Schema::table('fytinnovations_clashfreaks_favorite_players', function ($table) {
             $table->dropForeign('favorite_player_user');
         });
         Schema::dropIfExists('fytinnovations_clashfreaks_favorite_players');
