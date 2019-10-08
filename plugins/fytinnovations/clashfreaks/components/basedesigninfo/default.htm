@@ -43,14 +43,17 @@
 <hr class="my-4">
 <h2 class="text-wrap">Average Ratings</h2>
 <span class="text-center disabled-star">
-        {% for i in 1..baseInfo.ratings %}
-        <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
-        {% endfor %}
-        &nbsp;Out of 5
+    {% for i in 1..baseInfo.ratings %}
+    <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
+    {% endfor %}
+    &nbsp;Out of 5
 </span>
 <hr class="my-4">
+{% if user %}
 <h2 class="text-wrap">Your Ratings</h2>
 <span id="baseRatings"></span>
+{% endif %}
+<h2 class="text-wrap"><a href="{{'account'|page}}">Login</a> to rate this base</h2>
 <hr class="my-4">
 <!--Section: Author Box-->
 <section class="my-5">
@@ -84,26 +87,26 @@
             displayToaster("Copied Link", "Link copied to clipboard");
         });
         $('#baseRatings').mdbRate();
-        displayUserRatings({{baseInfo.user_ratings}});
-        $('.rate-popover').click(function () {
-            let ratedStars= $(this).data('index')+1;
-            $.request('onRateBase', {
-                data:{
-                    ratedStars:ratedStars,
-                    baseId:{{baseInfo.id}}
+        displayUserRatings({{ baseInfo.user_ratings }});
+    $('.rate-popover').click(function () {
+        let ratedStars = $(this).data('index') + 1;
+        $.request('onRateBase', {
+            data: {
+                ratedStars: ratedStars,
+                baseId: {{ baseInfo.id }}
                 },
-                success: function (data) {
-                    displayToaster("Ratings Saved", "Your ratings to  this base are saved");
-                }
+        success: function (data) {
+            displayToaster("Ratings Saved", "Your ratings to  this base are saved");
+        }
             })
         });
 
-        function displayUserRatings(starsRated){
-            $stars = $("#baseRatings").children();
-            for (var i = 0; i <starsRated; i++) {
-                $($stars.get(i)).addClass('amber-text');
-            }
+    function displayUserRatings(starsRated) {
+        $stars = $("#baseRatings").children();
+        for (var i = 0; i < starsRated; i++) {
+            $($stars.get(i)).addClass('amber-text');
         }
+    }
     });
 </script>
 {% endput %}

@@ -3,7 +3,7 @@
     - create_village_types_table.php
     - create_town_halls_table.php
     - create_base_designs_table.php
-    - create_base_ratings_table.php
+    # - create_base_ratings_table.php
     - create_favorite_clans_table.php
     - create_favorite_players_table.php
     - user_add_profile_fields.php

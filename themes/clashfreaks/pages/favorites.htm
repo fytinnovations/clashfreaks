@@ -25,6 +25,9 @@ is_hidden = 0
                             {% component 'favoriteClans' %}
                         </div>
                     </div>
+                    {% else %}
+                    <h3>Favorites</h3>
+                    <p class="lead">Add players and clans to your favorite list. <a href="{{'account'|page}}">Login to continue</a></p>
                     {% endif %}
                 </div>
             </div>
