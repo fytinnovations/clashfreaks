@@ -17,7 +17,7 @@
         }
     }
 </style>
-<div id="base_design_carousel" class="carousel slide" data-ride="carousel">
+<div id="base_design_carousel" class="carousel slide mb-3" data-ride="carousel">
     <div class="carousel-inner">
         {% for images in baseInfo.images %}
         <div class="carousel-item {{ loop.index==1 ? 'active' : null }}">
@@ -35,7 +35,7 @@
     </a>
 </div>
 <h2 class="text-wrap">{{baseInfo.name}}</h2>
-<p class="lead">{{baseInfo.description}}</p>
+<p class="lead"><b>Description</b>: {{baseInfo.description}}</p>
 <hr class="my-4">
 <p><strong>Uploaded : </strong>{{ baseInfo.created_at | time_diff }}</p>
 <input type="text" value="{{baseInfo.url}}">
@@ -52,8 +52,10 @@
 {% if user %}
 <h2 class="text-wrap">Your Ratings</h2>
 <span id="baseRatings"></span>
-{% endif %}
+{% else %}
 <h2 class="text-wrap"><a href="{{'account'|page}}">Login</a> to rate this base</h2>
+{% endif %}
+
 <hr class="my-4">
 <!--Section: Author Box-->
 <section class="my-5">
