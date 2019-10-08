@@ -15,7 +15,7 @@ class CreateFavoriteClansTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('clan_tag');
-            $table->foreign('user_id', 'player_user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -23,7 +23,7 @@ class CreateFavoriteClansTable extends Migration
     public function down()
     {
         Schema::table('fytinnovations_clashfreaks_favorite_clans', function ($table) {
-            $table->dropForeign('player_user_id');
+            $table->dropForeign('fytinnovations_clashfreaks_favorite_clans_user_id_foreign');
         });
         Schema::dropIfExists('fytinnovations_clashfreaks_favorite_clans');
     }

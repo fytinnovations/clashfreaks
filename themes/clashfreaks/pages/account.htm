@@ -28,28 +28,26 @@ imageMode = "crop"
 [favoriteClans]
 ==
 <?php
+use Rainlab\User\Models\User;
 function onInit()
 {
     if(Auth::getUser()){
         $this->imageUploader->bindModel('avatar', Auth::getUser());
     }else{
-        $this->imageUploader->bindModel('avatar',null);
+        $this->imageUploader->bindModel('avatar', new User());
     }
 }
 ?>
 ==
 <main class="container">
-        <!--Main layout-->
-        <div class="mt-3 mb-3 pt-5">
-                <div class="jumbotron">
-                        <h2 class="display-4">Account settings</h2>
-                        <p class="lead">Manage your account settings.</p>
-                        <hr class="my-4">
-                        {% if user %}
-                        {% component 'imageUploader' %}
-                        {% endif %}
-                        {% component 'account' %}
-                </div>
+    <!--Main layout-->
+    <div class="mt-3 mb-3 pt-5">
+        <div class="jumbotron">
+            <h2 class="display-4">Account settings</h2>
+            <p class="lead">Manage your account settings.</p>
+            <hr class="my-4">
+            {% component 'account' %}
         </div>
-        <!--/.Main layout-->
+    </div>
+    <!--/.Main layout-->
 </main>
