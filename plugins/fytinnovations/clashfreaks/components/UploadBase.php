@@ -40,11 +40,13 @@ class UploadBase extends ComponentBase
 
     public function onBaseUpload(){
         $baseDesign = new BaseDesign();
+        $session_key= post('_session_key');
         $baseDesign->name= post('name');
         $baseDesign->description=post('description');
         $baseDesign->url= post('url');
         $baseDesign->town_hall_id=post('town_hall');
-        $baseDesign->save(null, post('_session_key'));
+        $baseDesign->save(null,$session_key);
+        $baseDesign->cancelDeferred($session_key);
         Flash::success("Thankyou for contributing we will upload the base after reviewing it.");
     }
 
