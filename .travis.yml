@@ -24,6 +24,7 @@ matrix:
         - echo "DB_DATABASE=clashfreaks" >> .env
         - echo "DB_USERNAME=root" >> .env
         - echo "DB_PASSWORD=" >> .env
+        - php artisan plugin:install RainLab.User
         - php artisan october:up -v
         - composer install
       script: ../vendor/bin/phpunit
