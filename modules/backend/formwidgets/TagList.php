@@ -1,7 +1,6 @@
 <?php namespace Backend\FormWidgets;
 
 use Backend\Classes\FormWidgetBase;
-use October\Rain\Database\Relations\Relation as RelationBase;
 
 /**
  * Tag List Form Widget
@@ -169,15 +168,7 @@ class TagList extends FormWidgetBase
         $options = $this->formField->options();
 
         if (!$options && $this->mode === static::MODE_RELATION) {
-            $options = RelationBase::noConstraints(function () {
-                $query = $this->getRelationObject()->newQuery();
-
-                // Even though "no constraints" is applied, belongsToMany constrains the query
-                // by joining its pivot table. Remove all joins from the query.
-                $query->getQuery()->getQuery()->joins = [];
-
-                return $query->lists($this->nameFrom);
-            });
+            $options = $this->getRelationModel()->lists($this->nameFrom);
         }
 
         return $options;

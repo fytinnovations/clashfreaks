@@ -12,6 +12,8 @@ class Plugin extends PluginBase
 {
     public $require = ['RainLab.User'];
 
+    public $elevated = true;
+
     public function registerComponents()
     {
         return [

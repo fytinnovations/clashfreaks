@@ -544,6 +544,6 @@ class VersionManager
             $scripts = [];
         }
 
-        return [$comments, $scripts];
+        return array($comments, $scripts);
     }
 }

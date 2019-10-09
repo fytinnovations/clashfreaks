@@ -88,13 +88,6 @@ class ServiceProvider extends ModuleServiceProvider
             Schema::defaultStringLength(191);
         }
 
-        // Fix use of Storage::url() for local disks that haven't been configured correctly
-        foreach (Config::get('filesystems.disks') as $key => $config) {
-            if ($config['driver'] === 'local' && ends_with($config['root'], '/storage/app') && empty($config['url'])) {
-                Config::set("filesystems.disks.$key.url", '/storage/app');
-            }
-        }
-
         Paginator::defaultSimpleView('system::pagination.simple-default');
 
         /*

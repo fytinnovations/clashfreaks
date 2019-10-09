@@ -60,7 +60,6 @@ class BaseDesign extends Model
         else{
             $user = Auth::getUser();
         }
-        print_r($user);
         //After creation of the base attach it to the logged in user.
         $user->basedesigns_created()->add($this);
         $user->basedesigns_updated()->add($this);

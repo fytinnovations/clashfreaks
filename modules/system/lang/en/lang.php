@@ -99,8 +99,7 @@ return [
         'name' => [
             'label' => 'Plugin Name',
             'help' => 'Name the plugin by its unique code. For example, RainLab.Blog'
-        ],
-        'by_author' => 'By :name'
+        ]
     ],
     'plugins' => [
         'manage' => 'Manage plugins',
