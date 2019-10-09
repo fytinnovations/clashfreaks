@@ -23,6 +23,7 @@
 {% endput %}
 <h2 class="text-wrap">Upload a base</h2>
 <p class="lead">You can upload a base using the below form.</p>
+<hr>
 {{ form_open({ request: 'onBaseUpload',files:true}) }}
 {% flash %}
 <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">

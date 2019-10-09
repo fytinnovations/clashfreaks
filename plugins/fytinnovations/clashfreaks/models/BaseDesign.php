@@ -55,7 +55,7 @@ class BaseDesign extends Model
         if(App::runningInBackend()){
             $user = BackendAuth::getUser();
         }else if(App::runningInConsole()){
-            $user= User::find(20);
+            $user= User::find(1);
         }
         else{
             $user = Auth::getUser();

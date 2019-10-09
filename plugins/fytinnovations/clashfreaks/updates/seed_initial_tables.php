@@ -68,11 +68,11 @@ class SeedInitialTables extends Seeder
             $file->fromUrl('https://picsum.photos/640/360');
             $base_design->images()->add($file);
             $base_design->ratings()->create([
-                'user_id'=>20,
+                'user_id'=>1,
                 'ratings'=>$faker->numberBetween($min = 1, $max = 5)
             ]);
             $base_design->ratings()->create([
-                'user_id'=>21,
+                'user_id'=>1,
                 'ratings'=>$faker->numberBetween($min = 1, $max = 5)
             ]);
         }
