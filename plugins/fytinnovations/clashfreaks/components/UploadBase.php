@@ -17,35 +17,48 @@ class UploadBase extends ComponentBase
             'description' => 'Create a form to allow base upload'
         ];
     }
+    public function init()
+    {
+        $component = $this->addComponent(
+            'Responsiv\Uploader\Components\ImageUploader',
+            'imageUploader',
+            ['deferredBinding' => false]
+        );
+
+        $component->bindModel('images', new BaseDesign);
+    }
 
     public function defineProperties()
     {
         return [];
     }
 
-    public function village_types(){
+    public function village_types()
+    {
         return VillageType::all();
     }
 
-    public function town_halls(){
-        return TownHall::where('village_type_id',1)->get();
+    public function town_halls()
+    {
+        return TownHall::where('village_type_id', 1)->get();
     }
 
-    public function onVillageTypeChange(){
+    public function onVillageTypeChange()
+    {
         $village_type = post('village_type');
-        $town_halls = TownHall::where('village_type_id',$village_type)->get();
-        return ['#base_th_level_inp' =>$this->renderPartial('@town_hall_list.htm',['town_halls'=>$town_halls])];
+        $town_halls = TownHall::where('village_type_id', $village_type)->get();
+        return ['#base_th_level_inp' => $this->renderPartial('@town_hall_list.htm', ['town_halls' => $town_halls])];
     }
 
-    public function onBaseUpload(){
+    public function onBaseUpload()
+    {
         $baseDesign = new BaseDesign();
-        $session_key= post('_session_key');
-        $baseDesign->name= post('name');
-        $baseDesign->description=post('description');
-        $baseDesign->url= post('url');
-        $baseDesign->town_hall_id=post('town_hall');
-        $baseDesign->save(null,$session_key);
+        $session_key = post('_session_key');
+        $baseDesign->name = post('name');
+        $baseDesign->description = post('description');
+        $baseDesign->url = post('url');
+        $baseDesign->town_hall_id = post('town_hall');
+        $baseDesign->save();
         Flash::success("Thankyou for contributing we will upload the base after reviewing it.");
     }
-
 }

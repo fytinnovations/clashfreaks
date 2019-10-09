@@ -60,8 +60,7 @@ class BaseDesign extends Model
         else{
             $user = Auth::getUser();
         }
-        //After creation of the base attach it to the logged in user.
-        $this->commitDeferred(post('_session_key'));
+        //After creation of the base attach it to the logged in user
         $user->basedesigns_created()->add($this);
         $user->basedesigns_updated()->add($this);
     }
