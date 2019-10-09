@@ -6,7 +6,6 @@ use Cms\Classes\ComponentBase;
 use Fytinnovations\ClashFreaks\Models\VillageType;
 use Fytinnovations\ClashFreaks\Models\TownHall;
 use Fytinnovations\ClashFreaks\Models\BaseDesign;
-use Input;
 use October\Rain\Support\Facades\Flash;
 
 class UploadBase extends ComponentBase
@@ -46,7 +45,6 @@ class UploadBase extends ComponentBase
         $baseDesign->url= post('url');
         $baseDesign->town_hall_id=post('town_hall');
         $baseDesign->save(null,$session_key);
-        $baseDesign->cancelDeferred($session_key);
         Flash::success("Thankyou for contributing we will upload the base after reviewing it.");
     }
 
