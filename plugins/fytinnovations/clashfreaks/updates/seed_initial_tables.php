@@ -7,7 +7,6 @@ use Fytinnovations\ClashFreaks\Models\TownHall;
 use Fytinnovations\ClashFreaks\Models\VillageType;
 use Fytinnovations\ClashFreaks\Models\BaseDesign;
 use Faker;
-use Rainlab\User\Models\User;
 use System\Models\File;
 
 class SeedInitialTables extends Seeder
@@ -48,15 +47,11 @@ class SeedInitialTables extends Seeder
             'name'                 => 'Town Hall 12',
             'slug'                 => 'town-hall-12',
         ]);
-
-        User::create([
-            'name' => "Aniket",
-            'email' => "aniketmagadum@fytinnovations.com",
-            'is_activated' => 1,
-            "activated_at" => "2019-10-09 04:30:04",
-            "username" => "aniketmagadum@fytinnovations.com",
-            "password"=>"Aniket@123",
-            "surname" => "Magadum",
+        $user = Auth::register([
+            'name' => 'Aniket',
+            'email' => 'aniketmagadum@fytinnovations.com',
+            'password' => 'Aniket@123',
+            'password_confirmation' => 'Aniket@123',
         ]);
         $builder_village->townhalls()->add($th7);
         $builder_village->townhalls()->add($th8);

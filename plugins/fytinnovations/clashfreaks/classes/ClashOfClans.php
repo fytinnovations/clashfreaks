@@ -86,15 +86,15 @@ class ClashOfClans
             "endpoint" => $this->base_url . "clans/" . urlencode($clanTag),
             "key" => __FUNCTION__ . $clanTag
         ];
-        
+
         $data = $this->cachedRequest($header);
         return $data;
     }
-    public function searchClans($name,$locationID)
+    public function searchClans($name, $locationID)
     {
         $header = [
-            "endpoint" => $this->base_url . "clans?limit=5&name=" .urlencode($name).'&locationId='.$locationID,
-            "key" => __FUNCTION__ . $name.$locationID
+            "endpoint" => $this->base_url . "clans?limit=5&name=" . urlencode($name) . '&locationId=' . $locationID,
+            "key" => __FUNCTION__ . $name . $locationID
         ];
         $data = $this->cachedRequest($header);
         return $data;
@@ -132,12 +132,16 @@ class ClashOfClans
         ));
         $response = curl_exec($curl);
         $err = curl_error($curl);
-        dd($response);
-        curl_close($curl);
         if ($err) {
             throw new ApplicationException("Eror making request to the server. Try again later");
         } else {
-            return json_decode($response);
+            switch ($http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE)) {
+                case 200:  # OK
+                    return json_decode($response);
+                default:
+                    throw new ApplicationException("Eror making request to the server. Try again later");
+            }
         }
+        curl_close($curl);
     }
 }
