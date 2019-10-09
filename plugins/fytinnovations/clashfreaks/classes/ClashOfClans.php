@@ -139,7 +139,7 @@ class ClashOfClans
                 case 200:  # OK
                     return json_decode($response);
                 default:
-                App::make('Cms\Classes\CmsController')->run('/500');
+                App::abort(500);
             }
         }
         curl_close($curl);
