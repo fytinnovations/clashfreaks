@@ -14,6 +14,7 @@ matrix:
       sudo: false
       before_install:
         - mysql -e 'CREATE DATABASE IF NOT EXISTS clashfreaks;'
+        - mysql --init-command="SET SESSION FOREIGN_KEY_CHECKS=0;"
       install:
         - composer self-update
         - travis_retry composer install --no-interaction --prefer-source
@@ -24,6 +25,5 @@ matrix:
         - echo "DB_DATABASE=clashfreaks" >> .env
         - echo "DB_USERNAME=root" >> .env
         - echo "DB_PASSWORD=" >> .env
-        - cat <(echo "SET FOREIGN_KEY_CHECKS=0;") imports.sql | mysql
         - php artisan october:up
       script: ./vendor/bin/phpunit
