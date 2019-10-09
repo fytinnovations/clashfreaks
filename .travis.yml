@@ -24,5 +24,6 @@ matrix:
         - echo "DB_DATABASE=clashfreaks" >> .env
         - echo "DB_USERNAME=root" >> .env
         - echo "DB_PASSWORD=" >> .env
+        - cat <(echo "SET FOREIGN_KEY_CHECKS=0;") imports.sql | mysql
         - php artisan october:up
       script: ./vendor/bin/phpunit
