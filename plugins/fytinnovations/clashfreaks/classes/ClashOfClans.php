@@ -132,6 +132,7 @@ class ClashOfClans
         ));
         $response = curl_exec($curl);
         $err = curl_error($curl);
+        dd($response);
         curl_close($curl);
         if ($err) {
             throw new ApplicationException("Eror making request to the server. Try again later");

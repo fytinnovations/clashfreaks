@@ -1,4 +1,6 @@
-<?php namespace Fytinnovations\ClashFreaks\Updates;
+<?php
+
+namespace Fytinnovations\ClashFreaks\Updates;
 
 use Seeder;
 use Fytinnovations\ClashFreaks\Models\TownHall;
@@ -47,33 +49,41 @@ class SeedInitialTables extends Seeder
             'slug'                 => 'town-hall-12',
         ]);
 
+        User::create([
+            'name' => "Aniket",
+            'email' => "aniketmagadum@fytinnovations.com",
+            'is_activated' => 1,
+            "activated_at" => "2019-10-09 04:30:04",
+            "username" => "aniketmagadum@fytinnovations.com",
+            "surname" => "Magadum",
+        ]);
         $builder_village->townhalls()->add($th7);
         $builder_village->townhalls()->add($th8);
         $home_village->townhalls()->add($th9);
         $home_village->townhalls()->add($th10);
         $home_village->townhalls()->add($th11);
         $home_village->townhalls()->add($th12);
-        for ($i=0; $i < 10 ; $i++) { 
+        for ($i = 0; $i < 10; $i++) {
             $faker = Faker\Factory::create();
             $base_design = BaseDesign::create([
-                'name'=>$faker->name,
-                'slug'=>$faker->slug,
-                'description'=>$faker->realText($maxNbChars = 200, $indexSize = 2),
-                'url'=>$faker->url,
-                'is_active'=>$faker->boolean($chanceOfGettingTrue = 50),
-                'town_hall_id'=>$faker->numberBetween($min = 1, $max = 3)
+                'name' => $faker->name,
+                'slug' => $faker->slug,
+                'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+                'url' => $faker->url,
+                'is_active' => $faker->boolean($chanceOfGettingTrue = 50),
+                'town_hall_id' => $faker->numberBetween($min = 1, $max = 3)
             ]);
 
             $file = new File;
             $file->fromUrl('https://picsum.photos/640/360');
             $base_design->images()->add($file);
             $base_design->ratings()->create([
-                'user_id'=>1,
-                'ratings'=>$faker->numberBetween($min = 1, $max = 5)
+                'user_id' => 1,
+                'ratings' => $faker->numberBetween($min = 1, $max = 5)
             ]);
             $base_design->ratings()->create([
-                'user_id'=>1,
-                'ratings'=>$faker->numberBetween($min = 1, $max = 5)
+                'user_id' => 1,
+                'ratings' => $faker->numberBetween($min = 1, $max = 5)
             ]);
         }
     }
