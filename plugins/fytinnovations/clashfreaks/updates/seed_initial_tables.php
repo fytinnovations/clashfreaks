@@ -55,6 +55,7 @@ class SeedInitialTables extends Seeder
             'is_activated' => 1,
             "activated_at" => "2019-10-09 04:30:04",
             "username" => "aniketmagadum@fytinnovations.com",
+            "password"=>"Aniket@123",
             "surname" => "Magadum",
         ]);
         $builder_village->townhalls()->add($th7);
