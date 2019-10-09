@@ -7,6 +7,7 @@ use Fytinnovations\ClashFreaks\Models\VillageType;
 use Fytinnovations\ClashFreaks\Models\TownHall;
 use Fytinnovations\ClashFreaks\Models\BaseDesign;
 use October\Rain\Support\Facades\Flash;
+use Input;
 
 class UploadBase extends ComponentBase
 {
@@ -16,16 +17,6 @@ class UploadBase extends ComponentBase
             'name'        => 'UploadBase Component',
             'description' => 'Create a form to allow base upload'
         ];
-    }
-    public function init()
-    {
-        $component = $this->addComponent(
-            'Responsiv\Uploader\Components\ImageUploader',
-            'imageUploader',
-            ['deferredBinding' => false]
-        );
-
-        $component->bindModel('images', new BaseDesign);
     }
 
     public function defineProperties()
@@ -58,6 +49,7 @@ class UploadBase extends ComponentBase
         $baseDesign->description = post('description');
         $baseDesign->url = post('url');
         $baseDesign->town_hall_id = post('town_hall');
+        $baseDesign->images= Input::file('images');
         $baseDesign->save();
         Flash::success("Thankyou for contributing we will upload the base after reviewing it.");
     }
