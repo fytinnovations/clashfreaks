@@ -31,4 +31,6 @@ matrix:
         - php artisan october:up -v
       script:
         - ./vendor/bin/phpunit
+        - cd plugins/fytinnovations/clashfreaks
         - ../../../vendor/bin/phpunit
+        
