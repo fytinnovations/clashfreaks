@@ -47,9 +47,11 @@
         <span class="badge badge-info">Total Members: {{clan.members}}</span>
     </p>
     <div class="action-btns">
+        {% if user.favorite_clans %}
         <button id="add-to-favorite-btn" class="btn btn-sm btn-warning" data-request="onAddToFavorite"
             data-request-success="this.innerHTML='Added to favorites'">Add to
             Favorite</button>
+        {% endif %}
     </div>
 </div>
 <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">

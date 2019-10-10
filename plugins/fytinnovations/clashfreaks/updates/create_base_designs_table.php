@@ -22,14 +22,14 @@ class CreateBaseDesignsTable extends Migration
             $table->string('created_by_type')->nullable();
             $table->integer('updated_by_id')->nullable();
             $table->string('updated_by_type')->nullable();
-            $table->foreign('town_hall_id','town_hall_id')->references('id')->on('fytinnovations_clashfreaks_town_halls');
+            $table->foreign('town_hall_id')->references('id')->on('fytinnovations_clashfreaks_town_halls');
         });
     }
 
     public function down()
     {
         Schema::table('fytinnovations_clashfreaks_base_designs', function ($table) {
-            $table->dropForeign('town_hall_id');
+            $table->dropForeign('fytinnovations_clashfreaks_base_designs_town_hall_id_foreign');
         });
         Schema::dropIfExists('fytinnovations_clashfreaks_base_designs');
     }

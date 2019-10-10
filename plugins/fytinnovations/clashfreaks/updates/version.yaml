@@ -7,4 +7,4 @@
     - create_favorite_clans_table.php
     - create_favorite_players_table.php
     - user_add_profile_fields.php
-    - seed_initial_tables.php
+    - DatabaseSeeder.php

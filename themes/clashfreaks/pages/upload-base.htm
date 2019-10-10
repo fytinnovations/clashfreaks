@@ -5,23 +5,6 @@ description = "This page displays a form to upload a base"
 is_hidden = 0
 
 [uploadBase]
-
-[imageUploader]
-placeholderText = "Click or drag images to upload"
-maxSize = 5
-fileTypes = ".gif,.jpg,.jpeg,.png"
-imageWidth = 100
-imageHeight = 100
-imageMode = "crop"
-deferredBinding = "1"
-==
-<?php
-use Fytinnovations\ClashFreaks\Models\BaseDesign;
-function onInit()
-{
-    $this->imageUploader->bindModel('images', new BaseDesign);
-}
-?>
 ==
 <main class="container">
 

@@ -1,4 +1,6 @@
-<?php namespace Fytinnovations\ClashFreaks;
+<?php
+
+namespace Fytinnovations\ClashFreaks;
 
 use System\Classes\PluginBase;
 use Backend;
@@ -8,28 +10,31 @@ use RainLab\Blog\Models\Post;
 
 class Plugin extends PluginBase
 {
+    public $require = ['RainLab.User'];
+
+    public $elevated = true;
+
     public function registerComponents()
     {
         return [
-            'Fytinnovations\ClashFreaks\Components\BaseDesignList'=>"baseDesignList",
-            'Fytinnovations\ClashFreaks\Components\BaseDesignInfo'=>"baseDesignInfo",
-            'Fytinnovations\ClashFreaks\Components\TopHomeVillageClanList'=>"topHomeVillageClanList",
-            'Fytinnovations\ClashFreaks\Components\TopHomeVillagePlayerList'=>"topHomeVillagePlayerList",
-            'Fytinnovations\ClashFreaks\Components\TopBuilderVillagePlayerList'=>"topBuilderVillagePlayerList",
-            'Fytinnovations\ClashFreaks\Components\TopBuilderVillageClanList'=>"topBuilderVillageClanList",
-            'Fytinnovations\ClashFreaks\Components\UploadBase'=>"uploadBase",
-            'Fytinnovations\ClashFreaks\Components\CreatePost'=>"createPost",
-            'Fytinnovations\ClashFreaks\Components\PlayerProfile'=>"playerProfile",
-            'Fytinnovations\ClashFreaks\Components\ClanProfile'=>"clanProfile",
-            'Fytinnovations\ClashFreaks\Components\SearchBox'=>"searchBox",
-            'Fytinnovations\ClashFreaks\Components\FavoritePlayers'=>"favoritePlayers",
-            'Fytinnovations\ClashFreaks\Components\FavoriteClans'=>"favoriteClans",
+            'Fytinnovations\ClashFreaks\Components\BaseDesignList' => "baseDesignList",
+            'Fytinnovations\ClashFreaks\Components\BaseDesignInfo' => "baseDesignInfo",
+            'Fytinnovations\ClashFreaks\Components\TopHomeVillageClanList' => "topHomeVillageClanList",
+            'Fytinnovations\ClashFreaks\Components\TopHomeVillagePlayerList' => "topHomeVillagePlayerList",
+            'Fytinnovations\ClashFreaks\Components\TopBuilderVillagePlayerList' => "topBuilderVillagePlayerList",
+            'Fytinnovations\ClashFreaks\Components\TopBuilderVillageClanList' => "topBuilderVillageClanList",
+            'Fytinnovations\ClashFreaks\Components\UploadBase' => "uploadBase",
+            'Fytinnovations\ClashFreaks\Components\CreatePost' => "createPost",
+            'Fytinnovations\ClashFreaks\Components\PlayerProfile' => "playerProfile",
+            'Fytinnovations\ClashFreaks\Components\ClanProfile' => "clanProfile",
+            'Fytinnovations\ClashFreaks\Components\SearchBox' => "searchBox",
+            'Fytinnovations\ClashFreaks\Components\FavoritePlayers' => "favoritePlayers",
+            'Fytinnovations\ClashFreaks\Components\FavoriteClans' => "favoriteClans",
         ];
     }
 
     public function registerSettings()
-    {
-    }
+    { }
 
     public function pluginDetails()
     {
@@ -69,31 +74,31 @@ class Plugin extends PluginBase
         ];
     }
 
-    public function boot(){
-        FrontendUser::extend(function($model) {
-            $model->morphMany=[
+    public function boot()
+    {
+        FrontendUser::extend(function ($model) {
+            $model->morphMany = [
                 'basedesigns_created' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'created_by'],
                 'basedesigns_updated' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'updated_by']
             ];
         });
-        FrontendUser::extend(function($model) {
-            $model->hasMany=[
+        FrontendUser::extend(function ($model) {
+            $model->hasMany = [
                 'ratings' => ['Fytinnovations\ClashFreaks\Models\BaseRating'],
-                'favorite_clans'=>['Fytinnovations\ClashFreaks\Models\FavoriteClan'],
-                'favorite_players'=>['Fytinnovations\ClashFreaks\Models\FavoritePlayer'],
+                'favorite_clans' => ['Fytinnovations\ClashFreaks\Models\FavoriteClan'],
+                'favorite_players' => ['Fytinnovations\ClashFreaks\Models\FavoritePlayer'],
             ];
         });
-        BackendUser::extend(function($model) {
-            $model->morphMany=[
+        BackendUser::extend(function ($model) {
+            $model->morphMany = [
                 'basedesigns_created' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'created_by'],
                 'basedesigns_updated' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'updated_by']
             ];
         });
-        Post::extend(function($model){
-            $model->attachOne=[
-                'raw_file'=>['System\Models\File']
+        Post::extend(function ($model) {
+            $model->attachOne = [
+                'raw_file' => ['System\Models\File']
             ];
         });
     }
-
 }
