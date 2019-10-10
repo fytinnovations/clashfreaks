@@ -1,90 +1,106 @@
 <style>
-    .base-card img{
+    .base-card img {
         height: 464px;
     }
+
     .disabled-star {
         float: right;
     }
-    
+
     @media only screen and (max-width: 600px) {
         .disabled-star {
             float: unset;
             display: block;
             margin: auto;
         }
-        .base-card img{
+
+        .base-card img {
             width: 100%;
             height: 180px;
         }
-        .base-card-buttons{
+
+        .base-card-buttons {
             text-align: center;
         }
-        .base-card-buttons > a,.copy_url_btn,input{
+
+        .base-card-buttons>a,
+        .copy_url_btn,
+        input {
             width: 100%;
         }
-        .base-card-buttons > a,.copy_url_btn{
-            margin-left:0px;
+
+        .base-card-buttons>a,
+        .copy_url_btn {
+            margin-left: 0px;
         }
     }
 </style>
 {% set baseDesigns=__SELF__.baseDesigns%}
 {% for baseDesign in baseDesigns%}
-    <div class="card mb-5 text-white bg-dark base-card">
-        <!-- Card image -->
-        <img class="card-img-top" src="{{baseDesign.images[0].getPath}}" alt="Card image cap">
-        <!-- Card content -->
-        <div class="card-body base-body">
-            <!-- Title -->
-            <h4 class="card-title">{{baseDesign.name}}</h4>
-            <!-- Text -->
-            <p class="card-text">{{baseDesign.description}}</p>
-            <!-- Button -->
-            <div class="card-buttons base-card-buttons">
-                <a href="{{ 'base-design'|page({ slug: baseDesign.slug }) }}" class="btn btn-sm btn-success"><i class="fas fa-angle-double-right"></i> More Details</a>
-                <input type="text" value="{{baseDesign.url}}">
-                <button class="btn btn-sm btn-primary copy_url_btn"><i class="far fa-clone"></i> Copy Url</button>
-                <span class="text-center disabled-star">
-                        {% for i in 1..baseDesign.ratings %}
-                        <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
-                        {% endfor %}
-                        <br>Out of 5
-                </span>
-            </div>
+<div class="card mb-5 text-white bg-dark base-card">
+    <!-- Card image -->
+    <img class="card-img-top" src="{{baseDesign.images[0].getPath}}" alt="Card image cap">
+    <!-- Card content -->
+    <div class="card-body base-body">
+        <!-- Title -->
+        <h4 class="card-title">{{baseDesign.name}}</h4>
+        <!-- Text -->
+        <p class="card-text">{{baseDesign.description}}</p>
+        <!-- Button -->
+        <div class="card-buttons base-card-buttons">
+            <a href="{{ 'base-design'|page({ slug: baseDesign.slug }) }}" class="btn btn-sm btn-success"><i
+                    class="fas fa-angle-double-right"></i> More Details</a>
+            <input type="text" value="{{baseDesign.url}}">
+            <button class="btn btn-sm btn-primary copy_url_btn"><i class="far fa-clone"></i> Copy Url</button>
+            <span class="text-center disabled-star">
+                {% for i in 1..baseDesign.ratings %}
+                <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
+                {% endfor %}
+                <br>Out of 5
+            </span>
         </div>
     </div>
-    <!-- Card -->
+</div>
+<!-- Card -->
+{% else %}
+<h3>No base Designs Found</h3>
 {% endfor %}
 <div class="base-designs-pagination float-right">
     <nav aria-label="Page navigation example">
         <ul class="pagination pg-blue">
-            {% if baseDesigns.currentPage > 1 %}
+            {% if baseDesigns.currentPage > 1%}
             <li class="page-item ">
-                <a class="page-link" href="{{ this.page.baseFileName|page~'?page='}}{{baseDesigns.currentPage - 1}}" tabindex="-1">Previous</a>
+                <a class="page-link" href="{{ this.page.baseFileName|page~'?page='}}{{baseDesigns.currentPage - 1}}"
+                    tabindex="-1">Previous</a>
             </li>
             {% endif %}
+            {% if baseDesigns.length>0%}
+
             {% for counter in 1..baseDesigns.lastPage %}
-                 <li class="page-item {{ baseDesigns.currentPage == counter ? 'active' : null }}">
-                     <a class="page-link" href="{{ this.page.baseFileName|page~'?page='~counter}}">{{counter}}</a>
-                 </li>
+            <li class="page-item {{ baseDesigns.currentPage == counter ? 'active' : null }}">
+                <a class="page-link" href="{{ this.page.baseFileName|page~'?page='~counter}}">{{counter}}</a>
+            </li>
             {% endfor %}
+
+            {% endif %}
             {% if baseDesigns.lastPage > baseDesigns.currentPage %}
             <li class="page-item ">
-                <a class="page-link" href="{{ this.page.baseFileName|page~'?page='}}{{baseDesigns.currentPage + 1}}">Next</a>
+                <a class="page-link"
+                    href="{{ this.page.baseFileName|page~'?page='}}{{baseDesigns.currentPage + 1}}">Next</a>
             </li>
             {% endif %}
         </ul>
     </nav>
 </div>
 {% put scripts %}
-    <script>
-            $(document).ready(function() {
-                $('.copy_url_btn').click(function(){
-                    var copyText = $(this).closest("div.card-buttons").find("input");
-                    copyText.select();
-                    document.execCommand("copy");
-                    displayToaster("Copied Link","Link copied to clipboard");
-                   
-                });
-            });
-    </script>
+<script>
+    $(document).ready(function () {
+        $('.copy_url_btn').click(function () {
+            var copyText = $(this).closest("div.card-buttons").find("input");
+            copyText.select();
+            document.execCommand("copy");
+            displayToaster("Copied Link", "Link copied to clipboard");
+        });
+    });
+</script>
 {% endput %}
