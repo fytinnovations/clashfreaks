@@ -3,8 +3,7 @@
 namespace Fytinnovations\ClashFreaks\Classes;
 
 use Cache;
-use October\Rain\Exception\ApplicationException;
-use App;
+use October\Rain\Exception\SystemException;
 
 class ClashOfClans
 {
@@ -131,17 +130,13 @@ class ClashOfClans
             ),
         ));
         $response = curl_exec($curl);
+        $response= \json_decode($response);
         $err = curl_error($curl);
-        if ($err) {
-            throw new ApplicationException("Eror making request to the server. Try again later");
-        } else {
-            switch ($http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE)) {
-                case 200:  # OK
-                    return json_decode($response);
-                default:
-                App::abort(500);
-            }
+        $http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if ($err || $http_code!=200) {
+            throw new SystemException($response->reason??"System error!.Please try again later");
         }
+        return $response;
         curl_close($curl);
     }
 }

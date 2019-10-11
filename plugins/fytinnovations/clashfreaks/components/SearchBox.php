@@ -30,15 +30,24 @@ class SearchBox extends ComponentBase
     public function onPlayerSearch()
     {
         $tag = post('player_tag');
-        $player = $this->request->getPlayerProfile($tag);
+        try {
+            $player = $this->request->getPlayerProfile($tag);
+        } catch (\Throwable $err) {
+            return ['#player_search_list' => "<p class='bg-danger'>" . $err->getMessage() . "</p>"];
+        }
         return ['#player_search_list' => $this->renderPartial('@player_search_list.htm', ['player' => $player])];
     }
 
     public function onClanSearch()
     {
         $clan_name = post('clan_name');
-        $location_id=post('location_id');
-        $clans = $this->request->searchClans($clan_name,$location_id);
+        $location_id = post('location_id');
+        try {
+            $clans = $this->request->searchClans($clan_name, $location_id);
+        } catch (\Throwable $err) {
+            return ['#clan_search_list' => "<p class='bg-danger'>" . $err->getMessage() . "</p>"];
+        }
+        
         return ['#clan_search_list' => $this->renderPartial('@clan_search_list.htm', ['clans' => $clans->items])];
     }
 
@@ -46,5 +55,4 @@ class SearchBox extends ComponentBase
     {
         return $this->request->getLocations();
     }
-
 }
