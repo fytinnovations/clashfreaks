@@ -24,6 +24,7 @@
 <h2 class="text-wrap">Upload a base</h2>
 <p class="lead">You can upload a base using the below form.</p>
 <hr>
+{% if user %}
 {{ form_open({ request: 'onBaseUpload',files:true}) }}
 {% flash %}
 <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
@@ -84,3 +85,6 @@
 </script>
 {% endput %} 
 {{ form_close() }}
+{% else %}
+<p class="text-wrap">You need to login <a href="{{'account'|page}}">Login</a> to create a base</p>
+{% endif%}

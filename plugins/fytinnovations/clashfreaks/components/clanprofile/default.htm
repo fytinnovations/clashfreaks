@@ -36,15 +36,16 @@
     <p class="lead mt-2">
         {{clan.description}}
     </p>
+    <hr>
     <h5>Clan Statistics</h5>
     <p>
         <span class="badge badge-primary">Level: {{clan.clanLevel}}</span>
         <span class="badge badge-secondary">Required Trophies: {{clan.requiredTrophies}}</span>
         <span class="badge badge-warning">War Frequency: {{clan.warFrequency}}</span>
-        <span class="badge badge-success">War Wins: {{clan.warWins}}</span>
-        <span class="badge badge-danger">War Lost: {{clan.warLosses}}</span>
-        <span class="badge badge-light">War Ties: {{clan.warTies}}</span>
-        <span class="badge badge-info">Total Members: {{clan.members}}</span>
+        <span class="badge badge-success">War Wins: {{clan.warWins|default('N.A')}}</span>
+        <span class="badge badge-danger">War Lost: {{clan.warLosses|default('N.A')}}</span>
+        <span class="badge badge-light">War Ties: {{clan.warTies|default('N.A')}}</span>
+        <span class="badge badge-info">Total Members: {{clan.members|default('N.A')}}</span>
     </p>
     <div class="action-btns">
         {% if user.favorite_clans %}
@@ -60,8 +61,12 @@
             aria-controls="army-stats" aria-selected="true">Members</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+        <a class="nav-link" id="clan-wars-tab" data-toggle="tab" href="#clan-wars" role="tab" aria-controls="clan-wars"
             aria-selected="false">War Log</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="war-league-tab" data-toggle="tab" href="#war-league" role="tab" aria-controls="war-league"
+            aria-selected="false">Clan war league</a>
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
@@ -95,28 +100,18 @@
             {% endfor%}
         </div>
     </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="tab-pane fade" id="clan-wars" role="tabpanel" aria-labelledby="clan-wars-tab">
         <div class="row mt-3">
-            {% for achievement in clan.achievements%}
-            <div class="col-md-6 col-sm-12 col-xs-12 mb-3">
-                <div class="card text-white bg-dark">
-                    <div class="card-header">{{achievement.name}}</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{achievement.completionInfo|default(achievement.info)}}</h5>
-                        <p class="card-text text-white">
-                            <span class="text-center disabled-star">
-                                {% for i in 1..achievement.stars %}
-                                <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
-                                {% endfor %}
-                            </span>
-                            <span class="float-right">
-                                {{achievement.value}}/ {{achievement.target}}
-                            </span>
-                        </p>
-                    </div>
-                </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                    <p class="lead text-center">Coming Soon</p>
             </div>
-            {% endfor%}
+        </div>
+    </div>
+    <div class="tab-pane fade" id="war-league" role="tabpanel" aria-labelledby="war-league-tab">
+        <div class="row mt-3">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                    <p class="lead text-center">Coming Soon</p>
+            </div>
         </div>
     </div>
 </div>
