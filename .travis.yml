@@ -1,36 +1,41 @@
 matrix:
   allow_failures:
-    - php: nightly
-
+  - php: nightly
+  fast_finish: true
   include:
-    - language: php
-      services:
-        - mysql
-      php:
-        - 7.1
-        - 7.2
-        - 7.3
-        - nightly
-      sudo: false
-      if: (type = pull_request OR type=push) AND branch = develop
-      before_install:
-        - mysql -e 'CREATE DATABASE IF NOT EXISTS clashfreaks;'
-      install:
-        - composer self-update
-        - travis_retry composer install --no-interaction --prefer-source
-      cache:
-        directories:
-          - $HOME/.composer/cache/files
-      before_script:
-        - php artisan october:env
-        - php artisan key:generate
-        - echo "DB_HOST=127.0.0.1" > .env
-        - echo "DB_DATABASE=clashfreaks" >> .env
-        - echo "DB_USERNAME=root" >> .env
-        - echo "DB_PASSWORD=" >> .env
-        - php artisan october:up -v
-      script:
-        - ./vendor/bin/phpunit
-        - cd plugins/fytinnovations/clashfreaks
-        - ../../../vendor/bin/phpunit
-        
+  - language: php
+    services:
+    - mysql
+    php:
+    - 7.1
+    - 7.2
+    - 7.3
+    - nightly
+    sudo: false
+    if: "(type = pull_request OR type=push) AND branch = develop"
+    before_install:
+    - mysql -e 'CREATE DATABASE IF NOT EXISTS clashfreaks;'
+    install:
+    - composer self-update
+    - travis_retry composer install --no-interaction --prefer-source
+    cache:
+      directories:
+      - "$HOME/.composer/cache/files"
+    before_script:
+    - php artisan october:env
+    - php artisan key:generate
+    - echo "DB_HOST=127.0.0.1" > .env
+    - echo "DB_DATABASE=clashfreaks" >> .env
+    - echo "DB_USERNAME=root" >> .env
+    - echo "DB_PASSWORD=" >> .env
+    - php artisan october:up -v
+    script:
+    - "./vendor/bin/phpunit"
+    - cd plugins/fytinnovations/clashfreaks
+    - "../../../vendor/bin/phpunit"
+    deploy:
+      provider: heroku
+      api_key:
+        secure: VEDpeMpZYZefb4CsfFTerEXAWhMFvl4tsSdFTK19wP0MUR8IC+Md2/BIaYvY0zBp8lX6iSaKrrWUE1XzPRS75nti2OKPicVsesiIOZmo0Y4F1VGaykjyzZ6Dj3kYfuieVaC8ux8ithYFTRK2XW5uwWUu40/UtumvgC+e4CXMzdABD2HkleOsoN/BrCfC8IbFDzdm6ojP8keDHJcTBOuTVtj9ajm1MT443TleJcCgMkiaCR9ux0CQjh1dOqm5ZcjB03sPd8B/yLDaLhkTGJHuxov3UhwtcTgS51fFto/X4qvhd/dXS9AKBv/8jc+3mm2hcbl8AA88oeCOAsi64jN3ACha86UNsNPpW11D2zYk+UjO1ewhjWXRdoTk4+uKRDmxzmOnVpUqtZ7drttPKUjj7prs14+vcDJI9Mlq0bzNRd3aHvOOba9fYLqve3R6adlaI+7h5LNNdQtxWdgUSKoXewpHFsNBkLidUSS+B2ROVIGE/8Sk72bREhxpt8qiSHrKu9Gzm+juyWjwjY73hodpYNgSkCwpBv6/vAdeMned+MimF8UnIkM1lxaPREtluAyTCQoqsvVYndOuze+ZE0g85aIkt7O7UTKzl48cXQUF5rYZiwq265w9gv9ha3EXvEGm8jvYXDWrZ65Ee8P7N8K56Zvk1v57lanwaEIPNgBRGkw=
+      on:
+        branch: develop
