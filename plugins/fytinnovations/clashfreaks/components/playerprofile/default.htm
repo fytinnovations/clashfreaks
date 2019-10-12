@@ -56,14 +56,8 @@
         <span class="badge badge-light">Best Season Trophies: {{player.legendStatistics.bestSeason.trophies}}</span>
     </p>
     {% endif%}
-    <div class="action-btns">
-        {% if user %}
-        <button id="add-to-favorite-btn" class="btn btn-sm btn-warning" data-request="onAddToFavorite"
-            data-request-success="this.innerHTML='Added to favorites'">Add to
-            Favorite</button>
-        {% endif %}
-        <a id="visit-clan-btn" class="btn btn-sm btn-success"
-            href="{{'clan'|page({ tag: '%23'~player.clan.tag|ltrim('#') })}}">Visit Player Clan</a>
+    <div class="action-btns" id="favorite_btns">
+        {% partial __SELF__ ~ '::favorite' isFavorite=__SELF__.isFavorite user = user%}
     </div>
 </div>
 <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">

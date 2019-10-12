@@ -12,7 +12,7 @@ matrix:
     - 7.3
     - nightly
     sudo: false
-    if: "(type = pull_request OR type=push) AND branch = develop OR branch=master"
+    if: "(type = pull_request OR type=push) AND branch = develop"
     before_install:
     - mysql -e 'CREATE DATABASE IF NOT EXISTS clashfreaks;'
     install:
