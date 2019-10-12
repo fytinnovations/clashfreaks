@@ -38,4 +38,6 @@ matrix:
         api_key:
           secure: "X95EQA68umUc6D7ziS6xgKot5d9hsmevFhLuFCQ30UpyOHVkWFPlNTYGLkhxAvQCkxpivC7D+Y8kYb9T/XY5LxZiZz5+I8HDgif+kyLmtWChrJxGyjZK7KkTFFYe7S/6xDe6gGDQXmO7ELTnaPtLwOn1Kt64vK/GNkLZDtFjBTfQvVYYemCWWDBSvIzD7CmUcgE3kJli6oOZXvtxppCXSzacIcnVi3SPNE8mB8J2qHZoxIQkPeEHe3TxjB91pfJOjGhs+vYBCtOO0WvXYixdTs5LGYQ1y2kYJUnLVfsitGXgqIqUDSELzjaJn+RQmqxiMtt+fCioSHEmyH2vphg6TQ6w086yz6mRoyvqAlbBYWr8DSI1yQbU1u19Js2K96VSCs5IzqiXtpTO5lkJaG3R5PDeePJGEArUqSG/MoskWqlq+sDlW3yS2H5tLILmasIUssOswDAFg1cF+/TUjjK7Wpv4uaYpO6DXkGlfUAXJjMhzw11JqTw2mKUPsbTFQATdZxtf+kp8XQ2lKH6A+psesHERuo2+JFBWOqI22Ny25+chXZVFXYaiTppEh6x/EqUxOgC24MXHUbAIy/9ZZK2nYyOFK2WA7qT1f3W+6Tf1gVmfmw25b504Vnynb6NhlFUMZL1/nJJJ72hLaRnu6w4vBZnE1nLT83JA9r/U06t8KqM="
           app: Clashfreaks
+        on:
+          branch: develop
       
