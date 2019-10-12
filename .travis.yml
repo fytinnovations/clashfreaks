@@ -1,43 +1,42 @@
 matrix:
   allow_failures:
-    - php: nightly
-
+  - php: nightly
   include:
-    - language: php
-      services:
-        - mysql
-      php:
-        - 7.1
-        - 7.2
-        - 7.3
-        - nightly
-      sudo: false
-      if: (type = pull_request OR type=push) AND branch = develop
-      before_install:
-        - mysql -e 'CREATE DATABASE IF NOT EXISTS clashfreaks;'
-      install:
-        - composer self-update
-        - travis_retry composer install --no-interaction --prefer-source
-      cache:
-        directories:
-          - $HOME/.composer/cache/files
-      before_script:
-        - php artisan october:env
-        - php artisan key:generate
-        - echo "DB_HOST=127.0.0.1" > .env
-        - echo "DB_DATABASE=clashfreaks" >> .env
-        - echo "DB_USERNAME=root" >> .env
-        - echo "DB_PASSWORD=" >> .env
-        - php artisan october:up -v
-      script:
-        - ./vendor/bin/phpunit
-        - cd plugins/fytinnovations/clashfreaks
-        - ../../../vendor/bin/phpunit
-      deploy:
-        provider: heroku
-        api_key:
-          secure: "X95EQA68umUc6D7ziS6xgKot5d9hsmevFhLuFCQ30UpyOHVkWFPlNTYGLkhxAvQCkxpivC7D+Y8kYb9T/XY5LxZiZz5+I8HDgif+kyLmtWChrJxGyjZK7KkTFFYe7S/6xDe6gGDQXmO7ELTnaPtLwOn1Kt64vK/GNkLZDtFjBTfQvVYYemCWWDBSvIzD7CmUcgE3kJli6oOZXvtxppCXSzacIcnVi3SPNE8mB8J2qHZoxIQkPeEHe3TxjB91pfJOjGhs+vYBCtOO0WvXYixdTs5LGYQ1y2kYJUnLVfsitGXgqIqUDSELzjaJn+RQmqxiMtt+fCioSHEmyH2vphg6TQ6w086yz6mRoyvqAlbBYWr8DSI1yQbU1u19Js2K96VSCs5IzqiXtpTO5lkJaG3R5PDeePJGEArUqSG/MoskWqlq+sDlW3yS2H5tLILmasIUssOswDAFg1cF+/TUjjK7Wpv4uaYpO6DXkGlfUAXJjMhzw11JqTw2mKUPsbTFQATdZxtf+kp8XQ2lKH6A+psesHERuo2+JFBWOqI22Ny25+chXZVFXYaiTppEh6x/EqUxOgC24MXHUbAIy/9ZZK2nYyOFK2WA7qT1f3W+6Tf1gVmfmw25b504Vnynb6NhlFUMZL1/nJJJ72hLaRnu6w4vBZnE1nLT83JA9r/U06t8KqM="
-          app: Clashfreaks
-        on:
-          branch: develop
-      
+  - language: php
+    services:
+    - mysql
+    php:
+    - 7.1
+    - 7.2
+    - 7.3
+    - nightly
+    sudo: false
+    if: "(type = pull_request OR type=push) AND branch = develop"
+    before_install:
+    - mysql -e 'CREATE DATABASE IF NOT EXISTS clashfreaks;'
+    install:
+    - composer self-update
+    - travis_retry composer install --no-interaction --prefer-source
+    cache:
+      directories:
+      - "$HOME/.composer/cache/files"
+    before_script:
+    - php artisan october:env
+    - php artisan key:generate
+    - echo "DB_HOST=127.0.0.1" > .env
+    - echo "DB_DATABASE=clashfreaks" >> .env
+    - echo "DB_USERNAME=root" >> .env
+    - echo "DB_PASSWORD=" >> .env
+    - php artisan october:up -v
+    script:
+    - "./vendor/bin/phpunit"
+    - cd plugins/fytinnovations/clashfreaks
+    - "../../../vendor/bin/phpunit"
+    deploy:
+      provider: heroku
+      api_key:
+        secure: BeXqtdGJhdSB04UY1X0u5LKxp3uRZWIASPrPC8+4aoJmtwO0X3+KnvfmOm+hr0f8NpQIWn9GISfaLlkziuBlxEKtu1CYq35HQyHZ0Zz7Sor8GqBou3hDv+aWw9PouvKTkELe+153jEGEkWodEMDKqPn9YMukjLFZe8d/xbWKhCUKNcdsBcrns6lfr8u6zmUTDwL2XBqLXojDR+DVEOdRvrp0dDVAHXM3Ji2rmD2US9nzXz8vfo3/K/to4Bg1Zi6ynXNgYolaWSM0G/9oXfNTptPm9CUAz/y7djMw/l++eRxMuLNoh5I624GJOH4QMB7QDfFeIbMQLIsUfRqf0Dzv7Y91WkIMhfufAM24q944VgU2WeFeHBNzkySR743g/BgeGXgRa564CMy+JL/DdCfkymmpeQsqMItYOz7ZLr/HPZKM5mTP86i/v/ovQhSVb349i+HyrTIO8++YulFOLEGxAJWqRWeXmtzf4OTKumaDafJrD0q8U06/Tl7uKIsMDPXdVQ8lsjkhUN88JUd5SDCq91nblpWSWOHcSfsOPeafTXyT2wE629BXu8CdP/s7KVudevTMEeRw2yN3XAWWAst5lzRIaYd1ZZeEpwydEJCP73akKYru1fHsKzJn5XK4WxK2ta9riP+sZpjeKNXHRPbQ1HmBHJXhl9ALyN1uJ2x292c=
+        app: Clashfreaks
+      on:
+        branch: develop
+    
