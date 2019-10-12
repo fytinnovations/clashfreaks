@@ -1,6 +1,7 @@
 matrix:
   allow_failures:
   - php: nightly
+  fast_finish: true
   include:
   - language: php
     services:
@@ -36,6 +37,5 @@ matrix:
       provider: heroku
       api_key:
         secure: VEDpeMpZYZefb4CsfFTerEXAWhMFvl4tsSdFTK19wP0MUR8IC+Md2/BIaYvY0zBp8lX6iSaKrrWUE1XzPRS75nti2OKPicVsesiIOZmo0Y4F1VGaykjyzZ6Dj3kYfuieVaC8ux8ithYFTRK2XW5uwWUu40/UtumvgC+e4CXMzdABD2HkleOsoN/BrCfC8IbFDzdm6ojP8keDHJcTBOuTVtj9ajm1MT443TleJcCgMkiaCR9ux0CQjh1dOqm5ZcjB03sPd8B/yLDaLhkTGJHuxov3UhwtcTgS51fFto/X4qvhd/dXS9AKBv/8jc+3mm2hcbl8AA88oeCOAsi64jN3ACha86UNsNPpW11D2zYk+UjO1ewhjWXRdoTk4+uKRDmxzmOnVpUqtZ7drttPKUjj7prs14+vcDJI9Mlq0bzNRd3aHvOOba9fYLqve3R6adlaI+7h5LNNdQtxWdgUSKoXewpHFsNBkLidUSS+B2ROVIGE/8Sk72bREhxpt8qiSHrKu9Gzm+juyWjwjY73hodpYNgSkCwpBv6/vAdeMned+MimF8UnIkM1lxaPREtluAyTCQoqsvVYndOuze+ZE0g85aIkt7O7UTKzl48cXQUF5rYZiwq265w9gv9ha3EXvEGm8jvYXDWrZ65Ee8P7N8K56Zvk1v57lanwaEIPNgBRGkw=
-        app: Clashfreaks
       on:
         branch: develop
