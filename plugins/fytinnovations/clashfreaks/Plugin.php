@@ -77,15 +77,6 @@ class Plugin extends PluginBase
 
     public function boot()
     {
-
-        // App::error(function(\Exception $exception) {
-        //    dd($exception);
-        // });
-
-        App::error(function(\Twig\Error\RuntimeError $exception) {
-            dd($exception);
-        });
-
         FrontendUser::extend(function ($model) {
             $model->morphMany = [
                 'basedesigns_created' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'created_by'],
