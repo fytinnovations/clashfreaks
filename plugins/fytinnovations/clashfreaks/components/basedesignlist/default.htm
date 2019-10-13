@@ -39,7 +39,7 @@
 {% for baseDesign in baseDesigns%}
 <div class="card mb-5 text-white bg-dark base-card">
     <!-- Card image -->
-    <img class="card-img-top" src="{{baseDesign.images[0].getPath}}" alt="Card image cap">
+    <img class="card-img-top" src="{{baseDesign.scout_mode_img.getPath}}" alt="Card image cap">
     <!-- Card content -->
     <div class="card-body base-body">
         <!-- Title -->
@@ -53,10 +53,14 @@
             <input type="text" value="{{baseDesign.url}}">
             <button class="btn btn-sm btn-primary copy_url_btn"><i class="far fa-clone"></i> Copy Url</button>
             <span class="text-center disabled-star">
-                {% for i in 1..baseDesign.ratings %}
-                <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
-                {% endfor %}
-                <br>Out of 5
+                    {% if baseInfo.ratings!=0%}
+                    {% for i in 1..baseInfo.ratings %}
+                    <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
+                    {% endfor %}
+                    &nbsp;Out of 5
+                    {% else %}
+                        No Ratings
+                    {% endif %}
             </span>
         </div>
     </div>
@@ -74,7 +78,7 @@
                     tabindex="-1">Previous</a>
             </li>
             {% endif %}
-            {% if baseDesigns.length>0%}
+           
 
             {% for counter in 1..baseDesigns.lastPage %}
             <li class="page-item {{ baseDesigns.currentPage == counter ? 'active' : null }}">
@@ -82,7 +86,6 @@
             </li>
             {% endfor %}
 
-            {% endif %}
             {% if baseDesigns.lastPage > baseDesigns.currentPage %}
             <li class="page-item ">
                 <a class="page-link"

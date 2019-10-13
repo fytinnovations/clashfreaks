@@ -19,11 +19,15 @@
 </style>
 <div id="base_design_carousel" class="carousel slide mb-3" data-ride="carousel">
     <div class="carousel-inner">
-        {% for images in baseInfo.images %}
-        <div class="carousel-item {{ loop.index==1 ? 'active' : null }}">
-            <img class="d-block w-100" src="{{images.getPath}}" alt="First slide">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="{{baseInfo.wall_mode_img.getPath}}" alt="First slide">
         </div>
-        {% endfor %}
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{{baseInfo.scout_mode_img.getPath}}" alt="First slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{{baseInfo.photo_mode_img.getPath}}" alt="First slide">
+        </div>
     </div>
     <a class="carousel-control-prev" href="#base_design_carousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -43,10 +47,14 @@
 <hr class="my-4">
 <h2 class="text-wrap">Average Ratings</h2>
 <span class="text-center disabled-star">
+    {% if baseInfo.ratings!=0%}
     {% for i in 1..baseInfo.ratings %}
     <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
     {% endfor %}
     &nbsp;Out of 5
+    {% else %}
+        No Ratings Provided for this base
+    {% endif %}
 </span>
 <hr class="my-4">
 {% if user %}

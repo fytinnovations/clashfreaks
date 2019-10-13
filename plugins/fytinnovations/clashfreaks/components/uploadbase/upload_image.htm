@@ -1,0 +1,141 @@
+{% put styles %}
+<style>
+    .file-upload {
+        background-color: #ffffff;
+        width: 30%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .file-upload-btn {
+        width: 100%;
+        margin: 0;
+        color: #fff;
+        background: #1FB264;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        border-bottom: 4px solid #15824B;
+        transition: all .2s ease;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .file-upload-btn:hover {
+        background: #1AA059;
+        color: #ffffff;
+        transition: all .2s ease;
+        cursor: pointer;
+    }
+
+    .file-upload-btn:active {
+        border: 0;
+        transition: all .2s ease;
+    }
+
+    .file-upload-content {
+        display: none;
+        text-align: center;
+    }
+
+    .file-upload-input {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .image-upload-wrap {
+        margin-top: 20px;
+        border: 4px dashed #1FB264;
+        position: relative;
+    }
+
+    .image-dropping,
+    .image-upload-wrap:hover {
+        background-color: #1FB264;
+        border: 4px dashed #ffffff;
+    }
+
+    .image-title-wrap {
+        padding: 0 15px 15px 15px;
+        color: #222;
+    }
+
+    .drag-text {
+        text-align: center;
+    }
+
+    .drag-text h3 {
+        font-weight: 100;
+        text-transform: uppercase;
+        color: #15824B;
+        padding: 20px 0;
+    }
+
+    .file-upload-image {
+        max-height: 200px;
+        max-width: 200px;
+        margin: auto;
+        padding: 20px;
+    }
+    @media only screen and (max-width: 600px) {
+        .file-upload {
+            width: 100%;
+        }
+    }
+</style>
+{% endput %}
+<div class="file-upload">
+    <div class="image-upload-wrap" id="{{ str_snake(type, '-') }}-upload-wrap">
+        <input class="file-upload-input" type='file' onchange="readURL('{{ str_snake(type, '-') }}');" accept="image/*"
+            id="{{ str_snake(type, '-') }}" name="{{ str_snake(type, '-') }}" />
+        <div class="drag-text">
+            <h3>{{type}}</h3>
+            <p>Click or drag to upload</p>
+        </div>
+    </div>
+    <div class="file-upload-content" id="{{ str_snake(type, '-') }}-file-upload-content">
+        <img class="file-upload-image" src="#" alt="your image" id="{{ str_snake(type, '-') }}-file-upload-image" />
+        <div class="image-title-wrap">
+            <button type="button" onclick="removeUpload('{{ str_snake(type, '-') }}')" class="btn btn-danger btn-sm">Remove</button>
+        </div>
+    </div>
+</div>
+{% put scripts %}
+<script>
+    function readURL(id) {
+        var input = document.getElementById(id);
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#'+id+'-upload-wrap').hide();
+                $('#'+id+'-file-upload-image').attr('src', e.target.result);
+                $('#'+id+'-file-upload-content').show();
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        } else {
+            removeUpload(id);
+        }
+    }
+
+    function removeUpload(id) {
+        $('#'+id+'').replaceWith($('#'+id+'').clone());
+        $('#'+id+'-file-upload-content').hide();
+        $('#'+id+'-upload-wrap').show();
+    }
+    $('#{{ str_snake(type, '-') }}-upload-wrap').bind('dragover', function () {
+        $('#{{ str_snake(type, '-') }}-upload-wrap').addClass('image-dropping');
+    });
+    $('#{{ str_snake(type, '-') }}-upload-wrap').bind('dragleave', function () {
+        $('#{{ str_snake(type, '-') }}-upload-wrap').removeClass('image-dropping');
+    });
+</script>
+{% endput %}
