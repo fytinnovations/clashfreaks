@@ -1,0 +1,28 @@
+title = "Base Design"
+url = "/my-base-designs"
+layout = "default"
+description = "This page displays a list of bases uploaded by a user"
+is_hidden = 0
+
+[baseDesignList]
+filterByUser=true
+==
+<main class="container">
+
+    <!--Main layout-->
+    <div class="mt-5">
+        <!-- First row -->
+        <div class="row">
+            <div class="col-md-9">
+                <div class="jumbotron">
+                    <hr>
+                    {% component 'baseDesignList' %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                Hello Advertise
+            </div>
+        </div>
+        <!-- /.First row -->
+    </div>
+</main>
