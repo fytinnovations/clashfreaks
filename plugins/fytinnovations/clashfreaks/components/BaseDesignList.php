@@ -19,6 +19,6 @@ class BaseDesignList extends ComponentBase
     }
 
     public function baseDesigns(){
-        return BaseDesign::paginate(5);
+        return BaseDesign::where('is_active',1)->paginate(5);
     }
 }
