@@ -24,13 +24,15 @@
         }
 
         .base-card-buttons>a,
-        .copy_url_btn,
+        .copy_url_btn
+        .edit_btn,
         input {
             width: 100%;
         }
 
         .base-card-buttons>a,
         .copy_url_btn {
+            width: 100%;
             margin-left: 0px;
         }
     }
@@ -39,7 +41,7 @@
 {% for baseDesign in baseDesigns%}
 <div class="card mb-5 text-white bg-dark base-card">
     <!-- Card image -->
-    <img class="card-img-top" src="{{baseDesign.scout_mode_img.getPath}}" alt="Card image cap">
+    <img class="card-img-top" src="{{baseDesign.scout_mode.getPath}}" alt="Card image cap">
     <!-- Card content -->
     <div class="card-body base-body">
         <!-- Title -->
@@ -52,15 +54,18 @@
                     class="fas fa-angle-double-right"></i> More Details</a>
             <input type="text" value="{{baseDesign.url}}">
             <button class="btn btn-sm btn-primary copy_url_btn"><i class="far fa-clone"></i> Copy Url</button>
+            {% if __SELF__.properties.filterByUser %}
+            <a class="btn btn-sm btn-secondary edit_btn" href="{{ 'upload-base'|page({ slug: baseDesign.slug }) }}"><i class="fas fa-edit"></i> Edit</a>
+            {% endif%}
             <span class="text-center disabled-star">
-                    {% if baseInfo.ratings!=0%}
-                    {% for i in 1..baseInfo.ratings %}
-                    <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
-                    {% endfor %}
-                    &nbsp;Out of 5
-                    {% else %}
-                        No Ratings
-                    {% endif %}
+                {% if baseInfo.ratings!=0%}
+                {% for i in 1..baseInfo.ratings %}
+                <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
+                {% endfor %}
+                &nbsp;Out of 5
+                {% else %}
+                No Ratings
+                {% endif %}
             </span>
         </div>
     </div>
@@ -78,7 +83,7 @@
                     tabindex="-1">Previous</a>
             </li>
             {% endif %}
-           
+
 
             {% for counter in 1..baseDesigns.lastPage %}
             <li class="page-item {{ baseDesigns.currentPage == counter ? 'active' : null }}">

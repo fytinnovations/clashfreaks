@@ -47,9 +47,9 @@ class BaseDesign extends Model
     public $morphOne = [];
     public $morphMany = [];
     public $attachOne = [
-        'photo_mode_img'=>'System\Models\File',
-        'wall_mode_img'=>'System\Models\File',
-        'scout_mode_img'=>'System\Models\File'
+        'photo_mode'=>'System\Models\File',
+        'wall_mode'=>'System\Models\File',
+        'scout_mode'=>'System\Models\File'
     ];
     public $attachMany = [];
 

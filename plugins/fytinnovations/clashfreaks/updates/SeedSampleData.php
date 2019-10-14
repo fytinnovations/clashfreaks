@@ -36,13 +36,13 @@ class SeedSampleData extends Seeder
 
             $photo_mode = new File;
             $photo_mode->fromUrl('https://picsum.photos/640/360');
-            $base_design->photo_mode_img()->add($photo_mode);
+            $base_design->photo_mode()->add($photo_mode);
             $wall_mode = new File;
             $wall_mode->fromUrl('https://picsum.photos/640/360');
-            $base_design->wall_mode_img()->add($wall_mode);
+            $base_design->wall_mode()->add($wall_mode);
             $scout_mode = new File;
             $scout_mode->fromUrl('https://picsum.photos/640/360');
-            $base_design->scout_mode_img()->add($scout_mode);
+            $base_design->scout_mode()->add($scout_mode);
             $base_design->ratings()->create([
                 'user_id' => 1,
                 'ratings' => $faker->numberBetween($min = 1, $max = 5)

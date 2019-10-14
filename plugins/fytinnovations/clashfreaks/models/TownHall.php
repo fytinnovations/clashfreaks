@@ -26,7 +26,9 @@ class TownHall extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'base_designs' =>'Fytinnovations\ClashFreaks\Models\BaseDesign'
+    ];
     public $belongsTo = [
         'village_type' => "Fytinnovations\ClashFreaks\Models\VillageType"
     ];

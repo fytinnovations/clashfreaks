@@ -1,10 +1,11 @@
 title = "Upload a base"
-url = "/upload-base"
+url = "/upload-base/:slug?"
 layout = "default"
 description = "This page displays a form to upload a base"
 is_hidden = 0
 
 [uploadBase]
+[editBase]
 ==
 <main class="container">
 
@@ -14,7 +15,11 @@ is_hidden = 0
         <div class="row">
             <div class="col-md-9">
                 <div class="jumbotron">
-                   {% component 'uploadBase' %}
+                    {% if this.param.slug %}
+                    {% component 'editBase' %}
+                    {% else %}
+                    {% component 'uploadBase' %}
+                    {% endif%}
                 </div>
             </div>
             <div class="col-md-3">

@@ -25,6 +25,7 @@ class Plugin extends PluginBase
             'Fytinnovations\ClashFreaks\Components\TopBuilderVillagePlayerList' => "topBuilderVillagePlayerList",
             'Fytinnovations\ClashFreaks\Components\TopBuilderVillageClanList' => "topBuilderVillageClanList",
             'Fytinnovations\ClashFreaks\Components\UploadBase' => "uploadBase",
+            'Fytinnovations\ClashFreaks\Components\EditBase' => "editBase",
             'Fytinnovations\ClashFreaks\Components\CreatePost' => "createPost",
             'Fytinnovations\ClashFreaks\Components\PlayerProfile' => "playerProfile",
             'Fytinnovations\ClashFreaks\Components\ClanProfile' => "clanProfile",

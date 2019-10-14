@@ -9,12 +9,12 @@ use Fytinnovations\ClashFreaks\Models\BaseDesign;
 use October\Rain\Support\Facades\Flash;
 use Input;
 
-class UploadBase extends ComponentBase
+class EditBase extends ComponentBase
 {
     public function componentDetails()
     {
         return [
-            'name'        => 'UploadBase Component',
+            'name'        => 'EditBase Component',
             'description' => 'Create a form to allow base upload'
         ];
     }
@@ -48,10 +48,14 @@ class UploadBase extends ComponentBase
         $baseDesign->description = post('description');
         $baseDesign->url = post('url');
         $baseDesign->town_hall_id = post('town_hall');
-        $baseDesign->photo_mode= Input::file('photo-mode');
-        $baseDesign->wall_mode= Input::file('wall-mode');
-        $baseDesign->scout_mode= Input::file('scout-mode');
+        $baseDesign->photo_mode_img= Input::file('photo-mode');
+        $baseDesign->wall_mode_img= Input::file('wall-mode');
+        $baseDesign->scout_mode_img= Input::file('scout-mode');
         $baseDesign->save();
         Flash::success("Thankyou for contributing we will upload the base after reviewing it.");
+    }
+
+    public function basedesign(){
+        return BaseDesign::where('slug',$this->param('slug'))->first();
     }
 }
