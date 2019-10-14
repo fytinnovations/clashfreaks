@@ -46,10 +46,12 @@ class BaseDesign extends Model
     ];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [
-        'images'=>'System\Models\File'
+    public $attachOne = [
+        'photo_mode'=>'System\Models\File',
+        'wall_mode'=>'System\Models\File',
+        'scout_mode'=>'System\Models\File'
     ];
+    public $attachMany = [];
 
     public function afterCreate(){
         if(App::runningInBackend()){

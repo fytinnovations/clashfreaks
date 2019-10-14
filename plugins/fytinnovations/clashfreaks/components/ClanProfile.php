@@ -1,4 +1,6 @@
-<?php namespace Fytinnovations\ClashFreaks\Components;
+<?php
+
+namespace Fytinnovations\ClashFreaks\Components;
 
 use Cms\Classes\ComponentBase;
 use Fytinnovations\ClashFreaks\Classes\ClashOfClans;
@@ -17,7 +19,8 @@ class ClanProfile extends ComponentBase
         ];
     }
 
-    public function init(){
+    public function init()
+    {
         $this->request = new ClashOfClans;
     }
 
@@ -26,18 +29,40 @@ class ClanProfile extends ComponentBase
         return [];
     }
 
-    public function clan(){
+
+    public function isFavorite()
+    {
         $slug = $this->param('tag');
-        $data= $this->request->getClanProfile($slug);
+        if (Auth::getUser()->favorite_clans()->where('clan_tag', $slug)->first()) {
+            return true;
+        }
+        return false;
+    }
+    public function clan()
+    {
+        $slug = $this->param('tag');
+        $data = $this->request->getClanProfile($slug);
         return $data;
     }
 
-    public function onAddToFavorite(){
+    public function onAddToFavorite()
+    {
         $slug = $this->param('tag');
-        $favorite_clan=FavoriteClan::firstOrNew([
+        $favorite_clan = FavoriteClan::firstOrNew([
             'clan_tag'                 => $slug,
         ]);
-        return Auth::getUser()->favorite_clans()->add($favorite_clan);
+        Auth::getUser()->favorite_clans()->add($favorite_clan);
+        return ['#favorite_btns' => $this->renderPartial('@favorite.htm', ['isFavorite' => 1, 'user' => Auth::getUser()])];
     }
 
+    public function onDelete()
+    {
+        $slug = $this->param('tag');
+        $favorite_clan = FavoriteClan::where([
+            'clan_tag' => $slug,
+            'user_id' => Auth::getUser()->id
+        ])->first();
+        $favorite_clan->delete();
+        return ['#favorite_btns' => $this->renderPartial('@favorite.htm', ['isFavorite' => 0, 'user' => Auth::getUser()])];
+    }
 }

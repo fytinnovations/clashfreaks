@@ -1,0 +1,12 @@
+{% if user %}
+{% if isFavorite%}
+<button id="add-to-favorite-btn" class="btn btn-sm btn-danger" data-request="onDelete"
+    >Remove from favorites&nbsp;<i
+        class="far fa-trash-alt "></i></button>
+
+{% else %}
+<button id="add-to-favorite-btn" class="btn btn-sm btn-info" data-request="onAddToFavorite"
+    >Add to
+    Favorite</button>
+{% endif %}
+{% endif %}

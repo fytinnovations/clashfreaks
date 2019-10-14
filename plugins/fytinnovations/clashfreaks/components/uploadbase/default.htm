@@ -1,26 +1,3 @@
-{% put styles %}
-<style>
-    .base-images {
-        width: 100%;
-        height: 150px;
-        overflow: scroll;
-        padding: 15px;
-        margin: auto;
-    }
-
-    .base-images img {
-        width: 20%;
-    }
-
-    .custom-file-label {
-        overflow: hidden;
-    }
-
-    #base-image-uploads {
-        display: none;
-    }
-</style>
-{% endput %}
 <h2 class="text-wrap">Upload a base</h2>
 <p class="lead">You can upload a base using the below form.</p>
 <hr>
@@ -51,39 +28,14 @@
     {% partial __SELF__ ~ '::town_hall_list' town_halls= __SELF__.town_halls%}
 </select>
 <div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="base-image-uploads">Upload Base Images</span>
-    </div>
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="base_upload_inp" aria-describedby="base-image-uploads" multiple
-            name="images[]">
-        <label class="custom-file-label" for="base_upload_inp">Choose Base Images</label>
-    </div>
-    <div class="base-images mt-4 text-center" id="base_image_preview">
-        <h3 class="text-center">Base Images Preview</h3>
-        <p class="text-center">Upload atleast 3 base images of ratio 16:9 for better display</p>
-    </div>
+    {% partial __SELF__ ~ '::upload_image' type='Photo Mode'%}
+    {% partial __SELF__ ~ '::upload_image' type='Wall Mode'%}
+    {% partial __SELF__ ~ '::upload_image' type='Scout Mode'%}
 </div>
 <div class="buttons text-center">
     <input type="submit" class="btn btn-success" value="Submit Base">
 </div>
-{% put scripts %}
-<script>
-    $(function () {
-        $("#base_upload_inp").change(function () {
-            $("#base_image_preview").html("");
-            let files = $(this)[0].files;
-            let preview_images = "";
-            for (var i = 0; i < files.length; i++) {
-                let img = document.createElement("img");
-                img.setAttribute("src", URL.createObjectURL(files[i]))
-                img.classList.add("img-fluid", "z-depth-1", "img-responsive", "mr-2");
-                $("#base_image_preview").append(img);
-            }
-        });
-    });
-</script>
-{% endput %} 
+
 {{ form_close() }}
 {% else %}
 <p class="text-wrap">You need to login <a href="{{'account'|page}}">Login</a> to create a base</p>
