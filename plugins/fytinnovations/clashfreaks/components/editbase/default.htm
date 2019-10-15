@@ -1,7 +1,11 @@
 {% set basedesign=__SELF__.basedesign%}
 {% set villageTypeId= __SELF__.basedesign.town_hall.village_type.id%}
 <h2 class="text-wrap">Edit Base</h2>
-<p class="lead">You can upload a base using the below form.</p>
+{% if basedesign.is_active %}
+<p class="lead bg-danger">This base is not verified.</p>
+{% else %}
+<p class="lead bg-success">This base design is successfully published. Changes will require re-verification</p>
+{% endif %}
 <hr>
 {% if user %}
 {{ form_open({ request: 'onBaseUpdate',files:true}) }}

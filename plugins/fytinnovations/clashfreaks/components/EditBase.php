@@ -47,6 +47,7 @@ class EditBase extends ComponentBase
         $baseDesign->description = post('description');
         $baseDesign->url = post('url');
         $baseDesign->town_hall_id = post('town_hall');
+        $baseDesign->is_active=false;
         if(Input::file('photo-mode')){
             $baseDesign->photo_mode= Input::file('photo-mode');
         }else if(Input::file('wall-mode')){

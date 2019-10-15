@@ -97,7 +97,6 @@
 </style>
 {% endput %}
 <div class="file-upload">
-    {{ str_snake(type, '-') }}
     <div class="image-upload-wrap" id="{{ str_snake(type, '-') }}-upload-wrap">
         <input class="file-upload-input" type='file' onchange="readURL('{{ str_snake(type, '-') }}');" accept="image/*"
             id="{{ str_snake(type, '-') }}" name="{{ str_snake(type, '-') }}" />
