@@ -1,5 +1,7 @@
 {% set basedesign=__SELF__.basedesign%}
 
+{% set image = basedesign.attribute(str_snake(type, '_')).getPath%}
+
 {% put styles %}
 <style>
     .file-upload {
@@ -37,7 +39,6 @@
     }
 
     .file-upload-content {
-        display: none;
         text-align: center;
     }
 
@@ -53,6 +54,7 @@
     }
 
     .image-upload-wrap {
+        display: none;
         margin-top: 20px;
         border: 4px dashed #1FB264;
         position: relative;
@@ -86,6 +88,7 @@
         margin: auto;
         padding: 20px;
     }
+
     @media only screen and (max-width: 600px) {
         .file-upload {
             width: 100%;
@@ -104,9 +107,11 @@
         </div>
     </div>
     <div class="file-upload-content" id="{{ str_snake(type, '-') }}-file-upload-content">
-        <img class="file-upload-image" src="#" alt="your image" id="{{ str_snake(type, '-') }}-file-upload-image" />
+        <img class="file-upload-image" src="{{image}}" alt="your image"
+            id="{{ str_snake(type, '-') }}-file-upload-image" />
         <div class="image-title-wrap">
-            <button type="button" onclick="removeUpload('{{ str_snake(type, '-') }}')" class="btn btn-danger btn-sm">Remove</button>
+            <button type="button" onclick="removeUpload('{{ str_snake(type, '-') }}')"
+                class="btn btn-danger btn-sm">Remove</button>
         </div>
     </div>
 </div>
@@ -117,9 +122,9 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('#'+id+'-upload-wrap').hide();
-                $('#'+id+'-file-upload-image').attr('src', e.target.result);
-                $('#'+id+'-file-upload-content').show();
+                $('#' + id + '-upload-wrap').hide();
+                $('#' + id + '-file-upload-image').attr('src', e.target.result);
+                $('#' + id + '-file-upload-content').show();
             };
 
             reader.readAsDataURL(input.files[0]);
@@ -130,15 +135,15 @@
     }
 
     function removeUpload(id) {
-        $('#'+id+'').replaceWith($('#'+id+'').clone());
-        $('#'+id+'-file-upload-content').hide();
-        $('#'+id+'-upload-wrap').show();
+        $('#' + id + '').replaceWith($('#' + id + '').clone());
+        $('#' + id + '-file-upload-content').hide();
+        $('#' + id + '-upload-wrap').show();
     }
-    $('#{{ str_snake(type, '-') }}-upload-wrap').bind('dragover', function () {
-        $('#{{ str_snake(type, '-') }}-upload-wrap').addClass('image-dropping');
+    $('#{{ str_snake(type, ' - ') }}-upload-wrap').bind('dragover', function () {
+        $('#{{ str_snake(type, ' - ') }}-upload-wrap').addClass('image-dropping');
     });
-    $('#{{ str_snake(type, '-') }}-upload-wrap').bind('dragleave', function () {
-        $('#{{ str_snake(type, '-') }}-upload-wrap').removeClass('image-dropping');
+    $('#{{ str_snake(type, ' - ') }}-upload-wrap').bind('dragleave', function () {
+        $('#{{ str_snake(type, ' - ') }}-upload-wrap').removeClass('image-dropping');
     });
 </script>
 {% endput %}

@@ -4,7 +4,7 @@
 <p class="lead">You can upload a base using the below form.</p>
 <hr>
 {% if user %}
-{{ form_open({ request: 'onBaseUpload',files:true}) }}
+{{ form_open({ request: 'onBaseUpdate',files:true}) }}
 {% flash %}
 <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
     {{ message }}
