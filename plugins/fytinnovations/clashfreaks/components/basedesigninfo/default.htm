@@ -70,19 +70,17 @@
     <!-- Card header -->
     <div class="card-header border-0 font-weight-bold d-flex justify-content-between">
         <p class="mr-4 mb-0">About the author</p>
-        <ul class="list-unstyled list-inline mb-0">
-            <li class="list-inline-item"><a href="" class="mr-3"><i class="fas fa-user mr-1"></i>See profile</a></li>
-        </ul>
     </div>
     <div class="media mt-4 px-1">
         <img class="card-img-100 d-flex z-depth-1 mr-3" src="{{baseInfo.created_by.avatarThumb(50)}}"
             alt="Generic placeholder image">
         <div class="media-body">
             <h5 class="font-weight-bold mt-0">
-                <a href="">{{baseInfo.created_by.name}}</a>
+               {{baseInfo.created_by.name}}
             </h5>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod consectetur accusamus velit nostrum et
-            magnam.
+            <b>Base Designs</b>: <span class="badge badge-dark">{{baseInfo.created_by.total_base_designs}}</span> |
+            <b>Favorite Clans</b>: <span class="badge badge-dark">{{baseInfo.created_by.total_favorite_clans}}</span> | 
+            <b>Favorite Players</b>: <span class="badge badge-dark">{{baseInfo.created_by.total_favorite_players}}</span> 
         </div>
     </div>
 </section>

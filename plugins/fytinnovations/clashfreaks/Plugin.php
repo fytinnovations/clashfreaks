@@ -81,8 +81,20 @@ class Plugin extends PluginBase
         FrontendUser::extend(function ($model) {
             $model->morphMany = [
                 'basedesigns_created' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'created_by'],
-                'basedesigns_updated' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'updated_by']
+                'basedesigns_updated' => ['Fytinnovations\ClashFreaks\Models\BaseDesign', 'name' => 'updated_by'],
             ];
+        });
+
+        FrontendUser::extend(function($model) {     
+            $model->addDynamicMethod('getTotalBaseDesignsAttribute', function() use ($model) {
+                return $model->basedesigns_created->where('is_active',1)->count();
+            });
+            $model->addDynamicMethod('getTotalFavoriteClansAttribute', function() use ($model) {
+                return $model->favorite_clans->count();
+            });
+            $model->addDynamicMethod('getTotalFavoritePlayersAttribute', function() use ($model) {
+                return $model->favorite_players->count();
+            });
         });
         FrontendUser::extend(function ($model) {
             $model->hasMany = [
@@ -102,5 +114,6 @@ class Plugin extends PluginBase
                 'raw_file' => ['System\Models\File']
             ];
         });
+
     }
 }
