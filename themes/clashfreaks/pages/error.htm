@@ -1,11 +1,7 @@
-[viewBag]
 title = "Error page (500)"
 url = "/error"
 layout = "default"
 is_hidden = 0
-navigation_hidden = 1
-meta_title = "Error"
-meta_description = "This is a error on the server side . Please Contact Site Administrator"
 ==
 <main class="container d-flex justify-content-center mx-auto h-100 align-items-center">
 	<!--Main layout-->
@@ -21,14 +17,14 @@ meta_description = "This is a error on the server side . Please Contact Site Adm
 				<p class="wow fadeIn animated" data-wow-delay="0.4s"
 					style="font-size: 1.25rem; visibility: visible; animation-name: fadeIn; animation-iteration-count: 1; animation-delay: 0.4s;">
 					Please, try visiting the website later or try <a
-						href="https://clashfreaks.test/contact-us">contacting us.</a></p>
+						href="{{ url('/') }}/contact-us">contacting us.</a></p>
 			</div>
 		</div>
 		<!-- /.Second row -->
 		<!-- First row -->
 		<div class="row">
 			<div class="col-md-12 text-center float-md-none mx-auto"><img
-					src="https://clashfreaks.test/themes/clashfreaks/assets/img/error.png" alt="Error 404"
+					src="{{ url('/') }}/themes/clashfreaks/assets/img/error.png" alt="Error 404"
 					class="img-fluid wow fadeIn animated fr-fic fr-dii oc-img-rounded"
 					style="visibility: visible; animation-name: fadeIn; animation-iteration-count: 1; width: 464px;"
 					data-result="success"></div>
