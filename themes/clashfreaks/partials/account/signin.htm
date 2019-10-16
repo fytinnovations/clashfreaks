@@ -1,7 +1,7 @@
 <!-- Default form login -->
-{{ form_ajax('onSignin',{class:'text-center border border-light p-5'}) }}
+{{ form_ajax('onSignin') }}
 
-    <p class="h4 mb-4">Sign in</p>
+    <p class="h4 mb-4 text-center">Login </p>
 
     <!-- Email -->
     <input type="text" id="userSigninLogin"  name="login" class="form-control mb-4" placeholder="Enter your {{ loginAttributeLabel|lower }}">
@@ -21,7 +21,7 @@
         {% endif %}
         <div>
             <!-- Forgot password -->
-            <a href="">Forgot password?</a>
+            <a href="{{'forgot-password'|page}}">Forgot password?</a>
         </div>
     </div>
 
@@ -30,7 +30,7 @@
 
     <!-- Register -->
     <p>Not a member?
-        <a href="#register_title">Register</a>
+        <a href="{{'register'|page}}">Register</a>
     </p>
 
     <!-- Social login -->

@@ -3,11 +3,11 @@ url = "/account"
 layout = "default"
 description = "Manage User Account"
 meta_title = "ClashFreaks Account Page"
-meta_description = "Register and login to the clashfreaks website."
+meta_description = "Manage your clashfreaks account"
 is_hidden = 0
 
 [account]
-redirect = "home"
+redirect = "account"
 paramCode = "code"
 forceSecure = 0
 
@@ -33,8 +33,6 @@ function onInit()
 {
     if(Auth::getUser()){
         $this->imageUploader->bindModel('avatar', Auth::getUser());
-    }else{
-        $this->imageUploader->bindModel('avatar', new User());
     }
 }
 ?>
@@ -42,16 +40,12 @@ function onInit()
 <main class="container">
     <!--Main layout-->
     <div class="mt-3 mb-3 pt-5">
-        {% if user %}
         <div class="jumbotron">
             <h2 class="display-4">Account settings</h2>
             <p class="lead">Manage your account settings.</p>
             <hr class="my-4">
             {% component 'account' %}
         </div>
-        {% else %}
-        {% component 'account' %}
-        {% endif%}
     </div>
     <!--/.Main layout-->
 </main>
