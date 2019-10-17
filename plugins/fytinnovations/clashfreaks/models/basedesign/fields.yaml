@@ -27,7 +27,7 @@ fields:
     town_hall:
         label: Town Hall
         type: relation
-    photo_mode_img:
+    photo_mode:
         label: Photo Mode Image
         type: fileupload
         mode: image
@@ -35,7 +35,7 @@ fields:
         cssClass: col-xs-4
         imageHeight: 260
         imageWidth: 260
-    wall_mode_img:
+    wall_mode:
         label: Wall Mode Image
         type: fileupload
         mode: image
@@ -43,7 +43,7 @@ fields:
         cssClass: col-xs-4
         imageHeight: 260
         imageWidth: 260
-    scout_mode_img:
+    scout_mode:
         label: Scout Mode Image
         type: fileupload
         span: storm

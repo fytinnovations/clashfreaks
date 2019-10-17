@@ -1,11 +1,7 @@
-[viewBag]
 title = "Page Not Found (404)"
 url = "/404"
 layout = "default"
 is_hidden = 0
-navigation_hidden = 1
-meta_title = "Page not found error"
-meta_description = "Unable to find the page on the server"
 ==
 <main class="container d-flex justify-content-center mx-auto h-100 align-items-center">
 	<!--Main layout-->
@@ -28,7 +24,7 @@ meta_description = "Unable to find the page on the server"
 		<!-- First row -->
 		<div class="row">
 			<div class="col-md-12 text-center float-md-none mx-auto"><img
-					src="https://clashfreaks.test/themes/clashfreaks/assets/img/notfound.png" alt="Error 404"
+					src="{{ url('/') }}/themes/clashfreaks/assets/img/notfound.png" alt="Error 404"
 					class="img-fluid wow fadeIn animated fr-fic fr-dii oc-img-rounded"
 					style="visibility: visible; animation-name: fadeIn; animation-iteration-count: 1; width: 464px;"
 					data-result="success"></div>

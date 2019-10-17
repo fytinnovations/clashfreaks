@@ -41,18 +41,22 @@ class EditBase extends ComponentBase
         return ['#base_th_level_inp' => $this->renderPartial('@town_hall_list.htm', ['town_halls' => $town_halls])];
     }
 
-    public function onBaseUpload()
+    public function onBaseUpdate()
     {
-        $baseDesign = new BaseDesign();
-        $baseDesign->name = post('name');
+        $baseDesign = BaseDesign::where('slug',$this->param('slug'))->first();
         $baseDesign->description = post('description');
         $baseDesign->url = post('url');
         $baseDesign->town_hall_id = post('town_hall');
-        $baseDesign->photo_mode_img= Input::file('photo-mode');
-        $baseDesign->wall_mode_img= Input::file('wall-mode');
-        $baseDesign->scout_mode_img= Input::file('scout-mode');
+        $baseDesign->is_active=false;
+        if(Input::file('photo-mode')){
+            $baseDesign->photo_mode= Input::file('photo-mode');
+        }else if(Input::file('wall-mode')){
+            $baseDesign->wall_mode= Input::file('wall-mode');
+        }else if(Input::file('scout-mode')){
+            $baseDesign->scout_mode= Input::file('scout-mode');
+        }
         $baseDesign->save();
-        Flash::success("Thankyou for contributing we will upload the base after reviewing it.");
+        Flash::success("Your base has been updated.");
     }
 
     public function basedesign(){

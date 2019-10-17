@@ -58,8 +58,8 @@
             <a class="btn btn-sm btn-secondary edit_btn" href="{{ 'upload-base'|page({ slug: baseDesign.slug }) }}"><i class="fas fa-edit"></i> Edit</a>
             {% endif%}
             <span class="text-center disabled-star">
-                {% if baseInfo.ratings!=0%}
-                {% for i in 1..baseInfo.ratings %}
+                {% if baseDesign.ratings!=0%}
+                {% for i in 1..baseDesign.ratings %}
                 <i class="py-2 px-1 rate-popover fas fa-star amber-text"></i>
                 {% endfor %}
                 &nbsp;Out of 5

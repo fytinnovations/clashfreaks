@@ -14,10 +14,27 @@ items:
             cssClass: ''
             isExternal: '0'
     -
-        title: Blogs
+        title: Favorites
+        nesting: ''
         type: cms-page
+        url: ''
+        code: ''
+        reference: favorites
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Blogs
+        nesting: ''
+        type: cms-page
+        url: ''
         code: strategy-guides
         reference: blogs
+        cmsPage: ''
+        replace: ''
         viewBag:
             isHidden: '0'
             cssClass: ''
@@ -29,19 +46,6 @@ items:
         url: ''
         code: contactUs
         reference: contact-us
-        cmsPage: ''
-        replace: ''
-        viewBag:
-            isHidden: '0'
-            cssClass: ''
-            isExternal: '0'
-    -
-        title: Favorites
-        nesting: ''
-        type: cms-page
-        url: ''
-        code: ''
-        reference: favorites
         cmsPage: ''
         replace: ''
         viewBag:

@@ -31,4 +31,5 @@ class BaseDesignInfo extends ComponentBase
         $baseRating->ratings=post('ratedStars');
         $baseRating->save();
     }
+
 }
