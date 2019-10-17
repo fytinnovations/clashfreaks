@@ -1,40 +1,42 @@
 <!-- Default form login -->
 {{ form_ajax('onSignin') }}
 
-    <p class="h4 mb-4 text-center">Login </p>
+<p class="h4 mb-4 text-center">Login </p>
 
-    <!-- Email -->
-    <input type="text" id="userSigninLogin"  name="login" class="form-control mb-4" placeholder="Enter your {{ loginAttributeLabel|lower }}">
+<!-- Email -->
+<input type="text" id="userSigninLogin" name="login" class="form-control mb-4"
+    placeholder="Enter your {{ loginAttributeLabel|lower }}">
 
-    <!-- Password -->
-    <input type="password" name="password" id="userSigninPassword" class="form-control mb-4" placeholder="Enter your password">
+<!-- Password -->
+<input type="password" name="password" id="userSigninPassword" class="form-control mb-4"
+    placeholder="Enter your password">
 
-    <div class="d-flex justify-content-around">
-        {% if rememberLoginMode == 'ask' %}
-        <div>
-            <!-- Remember me -->
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" id="userSigninRememberMe" class="custom-control-input" name="remember" value="1">
-                <label class="custom-control-label" for="userSigninRememberMe">Remember me</label>
-            </div>
-        </div>
-        {% endif %}
-        <div>
-            <!-- Forgot password -->
-            <a href="{{'forgot-password'|page}}">Forgot password?</a>
+<div class="d-flex justify-content-around">
+    {% if rememberLoginMode == 'ask' %}
+    <div>
+        <!-- Remember me -->
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" id="userSigninRememberMe" class="custom-control-input" name="remember" value="1">
+            <label class="custom-control-label" for="userSigninRememberMe">Remember me</label>
         </div>
     </div>
+    {% endif %}
+    <div>
+        <!-- Forgot password -->
+        <a href="{{'forgot-password'|page}}">Forgot password?</a>
+    </div>
+</div>
 
-    <!-- Sign in button -->
-    <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+<!-- Sign in button -->
+<button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
 
-    <!-- Register -->
-    <p>Not a member?
-        <a href="{{'register'|page}}">Register</a>
-    </p>
+<!-- Register -->
+<p>Not a member?
+    <a href="{{'register'|page}}">Register</a>
+</p>
 
-    <!-- Social login -->
-    <!--<p>or sign in with:</p>
+<!-- Social login -->
+<!--<p>or sign in with:</p>
 
     <a  class="light-blue-text mx-2">
         <i class="fab fa-facebook-f"></i>

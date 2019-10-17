@@ -5,13 +5,20 @@ description = "Register to clashfreaks"
 is_hidden = 0
 
 [account]
-redirect = "home"
+redirect = "login"
 paramCode = "code"
 forceSecure = 0
 
 [session]
 security = "all"
 redirect = "home"
+==
+public function onEnd()
+{
+    if($this['user']){
+        return Redirect::to('account');
+    }
+}
 ==
 <main class="container">
     <!--Main layout-->
@@ -22,6 +29,9 @@ redirect = "home"
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="jumbotron">
+                    {% flash %}
+                    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
+                    {% endflash %}
                     {% partial 'account/register.htm' %}
                 </div>
             </div>

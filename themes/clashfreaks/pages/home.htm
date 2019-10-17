@@ -34,6 +34,13 @@ is_hidden = 0
     <div class="mt-5">
         <!-- First row -->
         <div class="row">
+            <div class="col-md-12">
+                {% flash %}
+                <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
+                {% endflash %}
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 {% component 'searchBox' %}
             </div>

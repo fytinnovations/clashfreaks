@@ -22,7 +22,10 @@ redirect = "home"
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="jumbotron">
-                        {% partial 'account/signin.htm' %}
+                    {% flash %}
+                    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
+                    {% endflash %}
+                    {% partial 'account/signin.htm' %}
                 </div>
             </div>
         </div>
