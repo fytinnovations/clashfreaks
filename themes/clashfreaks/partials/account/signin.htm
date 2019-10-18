@@ -1,7 +1,7 @@
 <!-- Default form login -->
-{{ form_ajax('onSignin') }}
-
+<form data-request="onSignin" data-request-validate id="loginForm">
 <p class="h4 mb-4 text-center">Login </p>
+<p class="bg-danger text-white text-center" id="login_error_container"></p>
 
 <!-- Email -->
 <input type="text" id="userSigninLogin" name="login" class="form-control mb-4"
@@ -35,21 +35,17 @@
     <a href="{{'register'|page}}">Register</a>
 </p>
 
-<!-- Social login -->
-<!--<p>or sign in with:</p>
-
-    <a  class="light-blue-text mx-2">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a  class="light-blue-text mx-2">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a  class="light-blue-text mx-2">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-    <a  class="light-blue-text mx-2">
-        <i class="fab fa-github"></i>
-    </a>
-    -->
 </form>
+{% put scripts %}
+<script>
+    $(window).on('ajaxErrorMessage', function (event, message) {
+        var $container=$('#login_error_container');
+        $container.html(message);
+        event.preventDefault();
+    });
+    $(document).on('ajaxPromise', '[data-request]', function () {
+        
+    });
+</script>
+{% endput %}
 <!-- Default form login -->
