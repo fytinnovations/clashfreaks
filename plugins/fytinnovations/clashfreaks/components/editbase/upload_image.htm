@@ -1,10 +1,7 @@
 {% set basedesign=__SELF__.basedesign%}
 
-<<<<<<< HEAD
 {% set image = basedesign.attribute(str_snake(type, '_')).getPath%}
 
-=======
->>>>>>> f4086a36fdfe1ff3b652c4e97da7de9bab1b81dd
 {% put styles %}
 <style>
     .file-upload {
@@ -42,10 +39,6 @@
     }
 
     .file-upload-content {
-<<<<<<< HEAD
-=======
-        display: none;
->>>>>>> f4086a36fdfe1ff3b652c4e97da7de9bab1b81dd
         text-align: center;
     }
 
@@ -95,10 +88,6 @@
         margin: auto;
         padding: 20px;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> f4086a36fdfe1ff3b652c4e97da7de9bab1b81dd
     @media only screen and (max-width: 600px) {
         .file-upload {
             width: 100%;
@@ -107,10 +96,6 @@
 </style>
 {% endput %}
 <div class="file-upload">
-<<<<<<< HEAD
-=======
-    {{ str_snake(type, '-') }}
->>>>>>> f4086a36fdfe1ff3b652c4e97da7de9bab1b81dd
     <div class="image-upload-wrap" id="{{ str_snake(type, '-') }}-upload-wrap">
         <input class="file-upload-input" type='file' onchange="readURL('{{ str_snake(type, '-') }}');" accept="image/*"
             id="{{ str_snake(type, '-') }}" name="{{ str_snake(type, '-') }}" />
@@ -120,17 +105,11 @@
         </div>
     </div>
     <div class="file-upload-content" id="{{ str_snake(type, '-') }}-file-upload-content">
-<<<<<<< HEAD
         <img class="file-upload-image" src="{{image}}" alt="your image"
             id="{{ str_snake(type, '-') }}-file-upload-image" />
         <div class="image-title-wrap">
             <button type="button" onclick="removeUpload('{{ str_snake(type, '-') }}')"
                 class="btn btn-danger btn-sm">Remove</button>
-=======
-        <img class="file-upload-image" src="#" alt="your image" id="{{ str_snake(type, '-') }}-file-upload-image" />
-        <div class="image-title-wrap">
-            <button type="button" onclick="removeUpload('{{ str_snake(type, '-') }}')" class="btn btn-danger btn-sm">Remove</button>
->>>>>>> f4086a36fdfe1ff3b652c4e97da7de9bab1b81dd
         </div>
     </div>
 </div>
@@ -141,15 +120,9 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-<<<<<<< HEAD
                 $('#' + id + '-upload-wrap').hide();
                 $('#' + id + '-file-upload-image').attr('src', e.target.result);
                 $('#' + id + '-file-upload-content').show();
-=======
-                $('#'+id+'-upload-wrap').hide();
-                $('#'+id+'-file-upload-image').attr('src', e.target.result);
-                $('#'+id+'-file-upload-content').show();
->>>>>>> f4086a36fdfe1ff3b652c4e97da7de9bab1b81dd
             };
 
             reader.readAsDataURL(input.files[0]);
@@ -160,7 +133,6 @@
     }
 
     function removeUpload(id) {
-<<<<<<< HEAD
         $('#' + id + '').replaceWith($('#' + id + '').clone());
         $('#' + id + '-file-upload-content').hide();
         $('#' + id + '-upload-wrap').show();
@@ -170,17 +142,6 @@
     });
     $('#{{ str_snake(type, ' - ') }}-upload-wrap').bind('dragleave', function () {
         $('#{{ str_snake(type, ' - ') }}-upload-wrap').removeClass('image-dropping');
-=======
-        $('#'+id+'').replaceWith($('#'+id+'').clone());
-        $('#'+id+'-file-upload-content').hide();
-        $('#'+id+'-upload-wrap').show();
-    }
-    $('#{{ str_snake(type, '-') }}-upload-wrap').bind('dragover', function () {
-        $('#{{ str_snake(type, '-') }}-upload-wrap').addClass('image-dropping');
-    });
-    $('#{{ str_snake(type, '-') }}-upload-wrap').bind('dragleave', function () {
-        $('#{{ str_snake(type, '-') }}-upload-wrap').removeClass('image-dropping');
->>>>>>> f4086a36fdfe1ff3b652c4e97da7de9bab1b81dd
     });
 </script>
 {% endput %}

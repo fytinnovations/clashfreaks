@@ -44,6 +44,9 @@ function onInit()
             <h2 class="display-4">Account settings</h2>
             <p class="lead">Manage your account settings.</p>
             <hr class="my-4">
+            {% flash %}
+            <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
+            {% endflash %}
             {% component 'account' %}
         </div>
     </div>
