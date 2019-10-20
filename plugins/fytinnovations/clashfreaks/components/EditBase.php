@@ -43,23 +43,28 @@ class EditBase extends ComponentBase
 
     public function onBaseUpdate()
     {
-        $baseDesign = BaseDesign::where('slug',$this->param('slug'))->first();
+        $baseDesign = BaseDesign::where('slug', $this->param('slug'))->first();
         $baseDesign->description = post('description');
         $baseDesign->url = post('url');
         $baseDesign->town_hall_id = post('town_hall');
-        $baseDesign->is_active=false;
-        if(Input::file('photo-mode')){
-            $baseDesign->photo_mode= Input::file('photo-mode');
-        }else if(Input::file('wall-mode')){
-            $baseDesign->wall_mode= Input::file('wall-mode');
-        }else if(Input::file('scout-mode')){
-            $baseDesign->scout_mode= Input::file('scout-mode');
+        $baseDesign->is_active = false;
+        if (Input::hasFile('photo-mode')) {
+            $baseDesign->photo_mode = Input::file('photo-mode');
+        } else if (Input::hasFile('wall-mode')) {
+            $baseDesign->wall_mode = Input::file('wall-mode');
+        } else if (Input::hasFile('scout-mode')) {
+            $baseDesign->scout_mode = Input::file('scout-mode');
         }
-        $baseDesign->save();
-        Flash::success("Your base has been updated.");
+        try {
+            $baseDesign->save();
+            Flash::success("Your base has been updated.");
+        } catch (\October\Rain\Database\ModelException $ex) {
+            Flash::error($ex->getMessage());
+        }
     }
 
-    public function basedesign(){
-        return BaseDesign::where('slug',$this->param('slug'))->first();
+    public function basedesign()
+    {
+        return BaseDesign::where('slug', $this->param('slug'))->first();
     }
 }

@@ -12,6 +12,18 @@ class BaseDesign extends Model
 {
     use \October\Rain\Database\Traits\Sluggable;
 
+    use \October\Rain\Database\Traits\Validation;
+
+    public $rules = [
+        'name'                  => 'required',
+        'description'                 => 'required',
+        'url'              => 'required|active_url',
+        'town_hall_id' => 'required|exists:fytinnovations_clashfreaks_town_halls,id',
+        'photo_mode' => 'required|image',
+        'wall_mode' => 'required|image',
+        'scout_mode' => 'required|image',
+    ];
+
     protected $slugs = ['slug' => 'name'];
     /**
      * @var string The database table used by the model.

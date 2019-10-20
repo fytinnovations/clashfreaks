@@ -1,10 +1,14 @@
 title = "Player"
-url = "/player/:tag"
+url = "/player/clash-of-clans/:name/:tag"
 layout = "default"
 description = "Displays a single player profile"
 is_hidden = 0
-
 [playerProfile]
+==
+function onEnd() {
+    $this->page->title = "Clash of Clans - ".$this->param('name');
+    $this->page->meta_description = "Player Profile of ".$this->param('name')."-Clash of Clans";
+}
 ==
 <main class="container">
 

@@ -1,3 +1,286 @@
 .list-image-icons{
     width: 40px;
 }
+
+#category_list .active a {
+    color: white;
+}
+
+#top_stats_home li.list-group-item {
+    height: 60px;
+}
+
+#top_stats_home a {
+    color: black;
+}
+
+.section-header img {
+    width: 100px;
+    height: 100px;
+}
+
+.section-header h2 {
+    display: inline;
+}
+
+#base_design_carousel img {
+    height: 464px;
+}
+
+#base_ratings .fa-star {
+    width: 200%;
+    height: 200%;
+    ;
+}
+
+@media only screen and (max-width: 600px) {
+    #base_design_carousel img {
+        width: 100%;
+        height: 180px;
+    }
+}
+
+.base-card img {
+    height: 464px;
+}
+
+.disabled-star {
+    float: right;
+}
+
+@media only screen and (max-width: 600px) {
+    .disabled-star {
+        float: unset;
+        display: block;
+        margin: auto;
+    }
+
+    .base-card img {
+        width: 100%;
+        height: 180px;
+    }
+
+    .base-card-buttons {
+        text-align: center;
+    }
+
+    .base-card-buttons>a,
+    .copy_url_btn
+    .edit_btn,
+    input {
+        width: 100%;
+    }
+
+    .base-card-buttons>a,
+    .copy_url_btn {
+        width: 100%;
+        margin-left: 0px;
+    }
+}
+
+
+#clan-heading {
+    position: relative;
+}
+
+#clan-heading .action-btns {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#clan-heading h2 img {
+    width: 40px;
+}
+
+.card-header img {
+    width: 40px;
+}
+
+.card .card-body .card-text {
+    line-height: 0.5;
+}
+
+@media only screen and (max-width: 600px) {
+    #clan-heading .action-btns {
+        position: static;
+    }
+}
+
+.file-upload {
+    background-color: #ffffff;
+    width: 30%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.file-upload-btn {
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    background: #1FB264;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #15824B;
+    transition: all .2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.file-upload-btn:hover {
+    background: #1AA059;
+    color: #ffffff;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.file-upload-btn:active {
+    border: 0;
+    transition: all .2s ease;
+}
+
+.file-upload-content {
+    text-align: center;
+}
+
+.file-upload-input {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.image-upload-wrap {
+    display: none;
+    margin-top: 20px;
+    border: 4px dashed #1FB264;
+    position: relative;
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+    background-color: #1FB264;
+    border: 4px dashed #ffffff;
+}
+
+.image-title-wrap {
+    padding: 0 15px 15px 15px;
+    color: #222;
+}
+
+.drag-text {
+    text-align: center;
+}
+
+.drag-text h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #15824B;
+    padding: 20px 0;
+}
+
+.file-upload-image {
+    max-height: 200px;
+    max-width: 200px;
+    margin: auto;
+    padding: 20px;
+}
+@media only screen and (max-width: 600px) {
+    .file-upload {
+        width: 100%;
+    }
+}
+
+.trophy-display .fa-trophy {
+    color: goldenrod;
+}
+
+#army-stats img {
+    width: 60px;
+}
+
+.troop-stats {
+    display: inline-block;
+    position: relative;
+}
+
+.troop-stats span {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+#player-heading {
+    position: relative;
+}
+
+#player-heading h2 img {
+    width: 40px;
+}
+
+#player-heading .action-btns {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    #player-heading .action-btns {
+        position: static;
+    }
+}
+
+#searchbox {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
+
+.search-pane button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 4px;
+}
+
+.search-pane {
+    position: relative;
+}
+
+#searchbox #searchTab a.active {
+    color: black;
+}
+
+#searchbox #searchTab a {
+    color: white;
+}
+
+#searchTab li {
+    width: 50%;
+}
+
+#player_search_list img {
+    width: 40px;
+}
+
+#clan_search_list img {
+    width: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+    #searchbox {
+        text-align: center;
+        margin: auto;
+        width: 100%;
+    }
+}
+
+.clan-list-icons {
+    width: 30px;
+}

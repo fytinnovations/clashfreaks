@@ -2,9 +2,9 @@
 {% set villageTypeId= __SELF__.basedesign.town_hall.village_type.id%}
 <h2 class="text-wrap">Edit Base</h2>
 {% if basedesign.is_active %}
-<p class="lead bg-success p-2">This base design is successfully published. Changes will require re-verification</p>
+<p class="lead bg-success text-white p-2">This base design is successfully published. Changes will require re-verification</p>
 {% else %}
-<p class="lead bg-danger p-2">This base is not verified.</p>
+<p class="lead bg-danger text-white p-2">This base is not verified.</p>
 {% endif %}
 <hr>
 {% if user %}
