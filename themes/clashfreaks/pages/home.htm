@@ -1,8 +1,9 @@
-title = "Home"
+title = "Clashfreaks - Enhance your clash gameplay"
 url = "/"
 layout = "default"
 is_hidden = 0
-
+description = "Clashfreaks.com is a tool for clash of clans player with features such as uploading base designs,
+checking player and clan details, adding favorite players and clan and tracking their progress"
 [topHomeVillageClanList]
 [topHomeVillagePlayerList]
 [topBuilderVillagePlayerList]
@@ -14,7 +15,7 @@ is_hidden = 0
     <div class="mt-5">
         <!-- First row -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 {% flash %}
                 <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
                 {% endflash %}
@@ -30,24 +31,26 @@ is_hidden = 0
     <div class="mt-5" id="top_stats_home">
         <!-- First row -->
         <div class="row">
-            <div class="col-md-6 border-right">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 border-right">
                 <div class="text-center section-header">
                     <img src="{{'assets/img/th12.png'|theme}}" class="img-responsive" alt="th12">
                     <h2 class="h1-responsive font-weight-bold my-5">Home Village</h2>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">{% component 'topHomeVillageClanList' %}</div>
-                    <div class="col-md-6">{% component 'topHomeVillagePlayerList' %}</div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">{% component 'topHomeVillageClanList' %}</div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">{% component 'topHomeVillagePlayerList' %}</div>
                 </div>
             </div>
-            <div class="col-md-6 ">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
                 <div class="text-center section-header">
                     <img src="{{'assets/img/bb8.png'|theme}}" class="img-responsive" alt="th12">
                     <h2 class="h1-responsive font-weight-bold my-5">Builder Village</h2>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">{% component 'topBuilderVillageClanList' %}</div>
-                    <div class="col-md-6">{% component 'topBuilderVillagePlayerList' %}</div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">{% component 'topBuilderVillageClanList' %}
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">{% component 'topBuilderVillagePlayerList' %}
+                    </div>
                 </div>
             </div>
         </div>

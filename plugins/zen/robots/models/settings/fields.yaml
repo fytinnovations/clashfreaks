@@ -1,0 +1,9 @@
+fields:
+    content:
+        label: 'robots.txt'
+        oc.commentPosition: ''
+        size: large
+        language: plain_text
+        span: full
+        type: codeeditor
+        default: "User-agent: *\nAllow: /\nHost: $domain\nSitemap: $domain/sitemap.xml"

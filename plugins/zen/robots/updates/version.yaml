@@ -1,0 +1,7 @@
+1.0.1: 'First version of robots.txt'
+1.0.2:
+    - 'Set default settings after install'
+    - robots_init.php
+1.0.3: 'Added translations and permission control'
+1.0.4: 'Added Hungarian translate (thanks to Szabó Gergő)'
+1.0.5: 'Small fixes'
