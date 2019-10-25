@@ -2,9 +2,11 @@
 
 namespace Fytinnovations\EasyPWA;
 
-use Backend;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
+use App;
+use Illuminate\Foundation\AliasLoader;
+use Fytinnovations\EasyPWA\Classes\Manifest;
 /**
  * EasyPWA Plugin Information File
  */
@@ -59,5 +61,16 @@ class Plugin extends PluginBase
                 'permissions' => ['fytinnovations.easypwa.access_settings'],
             ]
         ];
+    }
+
+    public function register(){
+        $alias = AliasLoader::getInstance();
+        $alias->alias('PWAManifest', 'Fytinnovations\EasyPWA\Facades\PWAManifest');
+
+        App::singleton('pwaManifest', function() {
+            $manifest=new  Manifest;
+            $manifest->generate();
+            return $manifest;
+        });
     }
 }

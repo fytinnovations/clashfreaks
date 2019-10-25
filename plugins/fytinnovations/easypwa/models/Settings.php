@@ -12,7 +12,7 @@ class Settings extends Model
     // Reference to field configuration
     public $settingsFields = 'fields.yaml';
 
-    public $attachMany = [
-        'icons' => 'System\Models\File'
+    public $attachOne = [
+        'icon' => 'System\Models\File'
     ];
 }

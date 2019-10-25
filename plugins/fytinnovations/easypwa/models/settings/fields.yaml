@@ -26,18 +26,19 @@ fields:
   background_color:
     label: Background Color
     type: colorpicker
-  icons:
-    label: Avatar
+  icon:
+    label: Icon
     type: fileupload
     mode: image
-    imageHeight: 260
-    imageWidth: 260
+    imageHeight: 192
+    imageWidth: 192
     thumbOptions:
-      mode: crop
-      offset:
-          - 0
-          - 0
-      quality: 90
-      sharpen: 0
-      interlace: false
-      extension: auto
+        mode: crop
+        offset:
+            - 0
+            - 0
+        quality: 90
+        sharpen: 0
+        interlace: false
+        extension: auto
+
