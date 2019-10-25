@@ -34,7 +34,12 @@ class SeedSampleData extends Seeder
                 'town_hall_id' => $faker->numberBetween($min = 1, $max = 3)
             ]);
 
-            $base_design->forceSave();
+            //Modify rules to allow seeding 
+            $base_design->rules['photo_mode'] = '';
+            $base_design->rules['wall_mode'] = '';
+            $base_design->rules['scout_mode'] = '';
+            
+            $base_design->save();
             $photo_mode = new File;
             $photo_mode->fromUrl('https://picsum.photos/640/360');
             $base_design->photo_mode()->add($photo_mode);
