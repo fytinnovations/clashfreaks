@@ -15,8 +15,10 @@
                     class="fas fa-angle-double-right"></i> More Details</a>
             <input type="text" value="{{baseDesign.url}}">
             <button class="btn btn-sm btn-primary copy_url_btn"><i class="far fa-clone"></i> Copy Url</button>
+            <a class="btn btn-sm btn-deep-purple" href="{{baseDesign.url}}"><i class="far fa-clone"></i> Copy Base</a>
             {% if __SELF__.properties.filterByUser %}
-            <a class="btn btn-sm btn-secondary edit_btn" href="{{ 'upload-base'|page({ slug: baseDesign.slug }) }}"><i class="fas fa-edit"></i> Edit</a>
+            <a class="btn btn-sm btn-secondary edit_btn" href="{{ 'upload-base'|page({ slug: baseDesign.slug }) }}"><i
+                    class="fas fa-edit"></i> Edit</a>
             {% endif%}
             <span class="text-center disabled-star">
                 {% if baseDesign.ratings!=0%}

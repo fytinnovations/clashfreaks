@@ -8,6 +8,7 @@ use Fytinnovations\ClashFreaks\Models\TownHall;
 use Fytinnovations\ClashFreaks\Models\BaseDesign;
 use October\Rain\Support\Facades\Flash;
 use Input;
+use Redirect;
 
 class EditBase extends ComponentBase
 {
@@ -58,8 +59,9 @@ class EditBase extends ComponentBase
         try {
             $baseDesign->save();
             Flash::success("Your base has been updated.");
-        } catch (\October\Rain\Database\ModelException $ex) {
-            Flash::error($ex->getMessage());
+            return Redirect::refresh();
+        } catch (\October\Rain\Exception\ValidationException $ex) {
+            throw new ValidationException($ex->getFields());
         }
     }
 

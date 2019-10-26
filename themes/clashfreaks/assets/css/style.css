@@ -74,6 +74,14 @@
         width: 100%;
         margin-left: 0px;
     }
+
+    .base-design-info-buttons> a{
+        width: 100%;
+    }
+
+    #author-info .stats{
+        display: block;
+    }
 }
 
 
@@ -152,7 +160,6 @@
 }
 
 .image-upload-wrap {
-    display: none;
     margin-top: 20px;
     border: 4px dashed #1FB264;
     position: relative;

@@ -1,5 +1,4 @@
 <?php
-if(!ob_start("ob_gzhandler")) ob_start();
 /**
  * October - The PHP platform that gets back to basics.
  *

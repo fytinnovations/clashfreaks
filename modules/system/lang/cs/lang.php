@@ -56,8 +56,7 @@ return [
         'name' => [
             'label' => 'Název pluginu',
             'help' => 'Pojmenujte plugin unikátním kódem, například RainLab.Blog'
-        ],
-        'by_author' => 'Vytvořil :name'
+        ]
     ],
     'plugins' => [
         'manage' => 'Správa pluginů',

@@ -1,6 +1,7 @@
 <?php namespace Fytinnovations\EasyPWA\Classes;
 
 use Fytinnovations\EasyPWA\Models\Settings;
+use stdClass;
 
 class Manifest
 {
@@ -21,20 +22,17 @@ class Manifest
     public function generate()
     {
         $settings = Settings::instance();
+        $icon = new stdClass;
         foreach ($this->attributes as $key=>$value) {
            if($key=="icons"){
-               $icon= new \stdClass();
-               $storedIcon= $settings->icon;
-               $path=storage_path('app/'. $storedIcon->getDiskPath());
-               list($width, $height) = getimagesize($path);
-               $icon->src= $storedIcon->getPath();
-               $icon->sizes=$width."x".$height;
-               $icon->type= $storedIcon->getContentType();
-               array_push($this->attributes["icons"],$icon);
+               $icon->src= "https://clashfreaks.test/themes/clashfreaks/assets/img/logo.jpg";
+               $icon->sizes="192x192";
+               $icon->type= "image/png";
                break;
            }
            $this->attributes[$key]=$settings->$key;
         }
+        
         return $this;
     }
 
