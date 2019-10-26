@@ -1,0 +1,44 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+  name:
+    label: Name
+    type: text
+    span: auto
+  short_name:
+    label: Short Name
+    type: text
+    span: auto
+  display:
+    label: Display
+    type: text
+    span: auto
+  start_url:
+    label: Start Url
+    type: text
+    default: "/"
+    span: auto
+  theme_color:
+    label: Theme Color
+    type: colorpicker
+  background_color:
+    label: Background Color
+    type: colorpicker
+  icon:
+    label: Icon
+    type: fileupload
+    mode: image
+    imageHeight: 192
+    imageWidth: 192
+    thumbOptions:
+        mode: crop
+        offset:
+            - 0
+            - 0
+        quality: 90
+        sharpen: 0
+        interlace: false
+        extension: auto
+

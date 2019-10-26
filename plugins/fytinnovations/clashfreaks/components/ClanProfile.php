@@ -33,7 +33,7 @@ class ClanProfile extends ComponentBase
     public function isFavorite()
     {
         $slug = $this->param('tag');
-        if (Auth::getUser()->favorite_clans()->where('clan_tag', $slug)->first()) {
+        if ($user=Auth::getUser() && Auth::getUser()->favorite_clans()->where('clan_tag', $slug)->first()) {
             return true;
         }
         return false;

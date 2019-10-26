@@ -2,22 +2,19 @@
 
 {% set image = basedesign.attribute(str_snake(type, '_')).getPath%}
 
-<div class="file-upload">
-    <div class="image-upload-wrap" id="{{ str_snake(type, '-') }}-upload-wrap">
-        <input class="file-upload-input" type='file' onchange="readURL('{{ str_snake(type, '-') }}');" accept="image/*"
-            id="{{ str_snake(type, '-') }}" name="{{ str_snake(type, '-') }}" />
-        <div class="drag-text">
-            <h3>{{type}}</h3>
-            <p>Click or drag to upload</p>
-        </div>
+<div class="image-upload-wrap" id="{{ str_snake(type, '-') }}-upload-wrap" style="display: none;">
+    <input class="file-upload-input" type='file' onchange="readURL('{{ str_snake(type, '-') }}');" accept="image/*"
+        id="{{ str_snake(type, '-') }}" name="{{ str_snake(type, '-') }}" />
+    <div class="drag-text">
+        <h3>{{type}}</h3>
+        <p>Click or drag to upload</p>
     </div>
-    <div class="file-upload-content" id="{{ str_snake(type, '-') }}-file-upload-content">
-        <img class="file-upload-image" src="{{image}}" alt="your image"
-            id="{{ str_snake(type, '-') }}-file-upload-image" />
-        <div class="image-title-wrap">
-            <button type="button" onclick="removeUpload('{{ str_snake(type, '-') }}')"
-                class="btn btn-danger btn-sm">Remove</button>
-        </div>
+</div>
+<div class="file-upload-content" id="{{ str_snake(type, '-') }}-file-upload-content">
+    <img class="file-upload-image" src="{{image}}" alt="your image" id="{{ str_snake(type, '-') }}-file-upload-image" />
+    <div class="image-title-wrap">
+        <button type="button" onclick="removeUpload('{{ str_snake(type, '-') }}')"
+            class="btn btn-danger btn-sm">Remove</button>
     </div>
 </div>
 {% put scripts %}

@@ -55,7 +55,6 @@ return [
             'label' => '플러그인명',
             'help' => '중복없는 플러그인명을 사용해주세요. (예:RainLab.Blog)',
         ],
-        'by_author' => 'By :name'
     ],
     'plugins' => [
         'manage' => '플러그인 관리',

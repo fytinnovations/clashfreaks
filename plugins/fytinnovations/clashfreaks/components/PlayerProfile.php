@@ -27,7 +27,7 @@ class PlayerProfile extends ComponentBase
     public function isFavorite()
     {
         $slug = $this->param('tag');
-        if (Auth::getUser()->favorite_players()->where('player_tag', $slug)->first()) {
+        if (Auth::getUser() && Auth::getUser()->favorite_players()->where('player_tag', $slug)->first()) {
             return true;
         }
         return false;

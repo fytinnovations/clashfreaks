@@ -87,6 +87,7 @@
   font-style: normal;
   text-decoration: inherit;
   -webkit-font-smoothing: antialiased;
+  *margin-right: .3em;
   content: "\f07b";
   color: #a1aab1;
   font-size: 14px;
@@ -123,6 +124,7 @@
   font-style: normal;
   text-decoration: inherit;
   -webkit-font-smoothing: antialiased;
+  *margin-right: .3em;
   content: "\f053";
 }
 .control-assetlist p.parent a.link:hover {

@@ -8,6 +8,8 @@ use Fytinnovations\ClashFreaks\Models\TownHall;
 use Fytinnovations\ClashFreaks\Models\BaseDesign;
 use October\Rain\Support\Facades\Flash;
 use Input;
+use October\Rain\Exception\ValidationException;
+use Illuminate\Support\Facades\Redirect;
 
 class UploadBase extends ComponentBase
 {
@@ -54,8 +56,9 @@ class UploadBase extends ComponentBase
         try {
             $baseDesign->save();
             Flash::success("Thankyou for contributing we will upload the base after reviewing it.");
-        } catch (\October\Rain\Database\ModelException $ex) {
-            Flash::error($ex->getMessage());
+            return Redirect::refresh();
+        } catch (\October\Rain\Exception\ValidationException $ex) {
+            throw new ValidationException($ex->getFields());
         }
     }
 }
