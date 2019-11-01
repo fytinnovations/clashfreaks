@@ -66,7 +66,6 @@ class Plugin extends PluginBase
     public function register(){
         $alias = AliasLoader::getInstance();
         $alias->alias('PWAManifest', 'Fytinnovations\EasyPWA\Facades\PWAManifest');
-
         App::singleton('pwaManifest', function() {
             $manifest=new  Manifest;
             $manifest->generate();

@@ -23,22 +23,31 @@ fields:
   theme_color:
     label: Theme Color
     type: colorpicker
+    span: auto
   background_color:
     label: Background Color
     type: colorpicker
-  icon:
-    label: Icon
+    span: auto
+  icons:
+    label: Icons
     type: fileupload
+    comment: Add atleast a 192-pixel icon to generate your Web App Manifest.
     mode: image
     imageHeight: 192
     imageWidth: 192
     thumbOptions:
-        mode: crop
-        offset:
-            - 0
-            - 0
-        quality: 90
-        sharpen: 0
-        interlace: false
-        extension: auto
-
+      mode: crop
+      offset:
+        - 0
+        - 0
+      quality: 90
+      sharpen: 0
+      interlace: false
+      extension: auto
+  orientation:
+    label: Orientation
+    type: dropdown
+    options:
+      portrait: Portrait
+      landscape: Landscape
+    span: auto
