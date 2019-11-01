@@ -27,6 +27,12 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerComponents()
+    {
+        return [
+            'Fytinnovations\EasyPWA\Components\PWATags'=>"pwaTags"
+        ];
+    }
     /**
      * Registers any back-end permissions used by this plugin.
      *

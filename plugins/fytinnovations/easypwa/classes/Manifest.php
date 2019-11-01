@@ -20,7 +20,7 @@ class Manifest
 
     public function get()
     {
-        return \json_encode($this->attributes);
+        return $this->attributes;
     }
 
     public function generate()

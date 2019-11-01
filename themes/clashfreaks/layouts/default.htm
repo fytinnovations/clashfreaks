@@ -9,6 +9,8 @@ code = "top-left"
 
 [session]
 security = "all"
+
+[pwaTags]
 ==
 <!DOCTYPE html>
 <html lang="en">
@@ -17,10 +19,11 @@ security = "all"
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no,user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="manifest" href="manifest.json" />
+    
     <title>{{ this.page.title }}</title>
     <meta name="title" content="{{ this.page.title }}">
     <meta name="description" content="{{ this.page.description }}">
+    {% component 'pwaTags' %}
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link href="{{ [
