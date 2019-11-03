@@ -17,7 +17,3 @@ document.addEventListener('readystatechange', event => {
         ReLoadImages();
     }
 });
-
-navigator.serviceWorker && navigator.serviceWorker.register('/themes/clashfreaks/assets/js/sw.js').then(function (registration) {
-    
-});

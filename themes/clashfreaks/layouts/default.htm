@@ -19,7 +19,7 @@ security = "all"
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no,user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    
+
     <title>{{ this.page.title }}</title>
     <meta name="title" content="{{ this.page.title }}">
     <meta name="description" content="{{ this.page.description }}">
@@ -35,6 +35,7 @@ security = "all"
 </head>
 
 <body>
+    <noscript>Your browser does not support JavaScript!</noscript>
     <!-- Header -->
     <header id="layout-header" class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark clashfreaks-special-color-dark">
@@ -107,8 +108,21 @@ security = "all"
         'assets/js/mdb.min.js',
         'assets/js/script.js',
     ]|theme }}"></script>
+
     {% framework extras %}
     {% scripts %}
+
+    <script>
+        // CODELAB: Register service worker.
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((reg) => {
+                        console.log('Service worker registered.', reg);
+                    });
+            });
+        }
+    </script>
 </body>
 
 </html>

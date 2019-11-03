@@ -21,4 +21,13 @@ class PWATags extends ComponentBase
     public function themeColor(){
         return PWAManifest::get()["theme_color"];
     }
+
+    public function appName(){
+        return PWAManifest::get()["name"];
+    }
+
+    public function iosIcon(){
+        return PWAManifest::getIosIconPath();
+    }
+
 }

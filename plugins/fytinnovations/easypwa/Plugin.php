@@ -74,8 +74,7 @@ class Plugin extends PluginBase
         $alias->alias('PWAManifest', 'Fytinnovations\EasyPWA\Facades\PWAManifest');
         App::singleton('pwaManifest', function() {
             $manifest=new  Manifest;
-            $manifest->generate();
-            return $manifest;
+            return $manifest->generate();
         });
     }
 }

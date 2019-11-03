@@ -1,4 +1,6 @@
-<?php namespace Fytinnovations\EasyPWA\Models;
+<?php
+
+namespace Fytinnovations\EasyPWA\Models;
 
 use Model;
 
@@ -12,7 +14,11 @@ class Settings extends Model
     // Reference to field configuration
     public $settingsFields = 'fields.yaml';
 
+    public $attachOne = [
+        'ios_icon' => 'System\Models\File',
+    ];
+
     public $attachMany = [
-        'icons' => 'System\Models\File'
+        'icons' => 'System\Models\File',
     ];
 }
