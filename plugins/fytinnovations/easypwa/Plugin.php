@@ -27,6 +27,12 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerComponents()
+    {
+        return [
+            'Fytinnovations\EasyPWA\Components\PWATags'=>"pwaTags"
+        ];
+    }
     /**
      * Registers any back-end permissions used by this plugin.
      *
@@ -66,11 +72,9 @@ class Plugin extends PluginBase
     public function register(){
         $alias = AliasLoader::getInstance();
         $alias->alias('PWAManifest', 'Fytinnovations\EasyPWA\Facades\PWAManifest');
-
         App::singleton('pwaManifest', function() {
             $manifest=new  Manifest;
-            $manifest->generate();
-            return $manifest;
+            return $manifest->generate();
         });
     }
 }

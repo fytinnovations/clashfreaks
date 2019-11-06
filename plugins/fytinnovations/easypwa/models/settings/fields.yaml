@@ -1,44 +1,92 @@
 # ===================================
 #  Form Field Definitions
 # ===================================
-
-fields:
-  name:
-    label: Name
-    type: text
-    span: auto
-  short_name:
-    label: Short Name
-    type: text
-    span: auto
-  display:
-    label: Display
-    type: text
-    span: auto
-  start_url:
-    label: Start Url
-    type: text
-    default: "/"
-    span: auto
-  theme_color:
-    label: Theme Color
-    type: colorpicker
-  background_color:
-    label: Background Color
-    type: colorpicker
-  icon:
-    label: Icon
-    type: fileupload
-    mode: image
-    imageHeight: 192
-    imageWidth: 192
-    thumbOptions:
+tabs:
+  stretch: true
+  default: Manifest Generator
+  fields:
+    name:
+      label: Name
+      type: text
+      span: auto
+      tab: Manifest Generator
+    short_name:
+      label: Short Name
+      type: text
+      span: auto
+      tab: Manifest Generator
+    display:
+      label: Display
+      type: dropdown
+      span: auto
+      tab: Manifest Generator
+      options:
+        fullscreen: fullscreen
+        standalone: standalone
+        minimal-ui: minimal-ui
+    start_url:
+      label: Start Url
+      type: text
+      default: "/"
+      span: auto
+      tab: Manifest Generator
+    theme_color:
+      label: Theme Color
+      type: colorpicker
+      span: auto
+      tab: Manifest Generator
+    background_color:
+      label: Background Color
+      type: colorpicker
+      span: auto
+      tab: Manifest Generator
+    icons:
+      label: Icons
+      type: fileupload
+      comment: Add atleast a 192-pixel icon to generate your Web App Manifest.
+      mode: image
+      imageHeight: 192
+      imageWidth: 192
+      tab: Manifest Generator
+      span: auto
+      thumbOptions:
         mode: crop
         offset:
-            - 0
-            - 0
+          - 0
+          - 0
         quality: 90
         sharpen: 0
         interlace: false
         extension: auto
-
+    ios_icon:
+      label: iOS icon
+      type: fileupload
+      comment: Add a 192-pixel icon for ioS.
+      mode: image
+      imageHeight: 192
+      imageWidth: 192
+      span: auto
+      tab: Manifest Generator
+      thumbOptions:
+        mode: crop
+        offset:
+          - 0
+          - 0
+        quality: 90
+        sharpen: 0
+        interlace: false
+        extension: auto
+    orientation:
+      label: Orientation
+      type: dropdown
+      options:
+        portrait: Portrait
+        landscape: Landscape
+      span: auto
+      tab: Manifest Generator
+    service_worker:
+      label: Service Worker File
+      type: codeeditor
+      size: huge
+      language: javascript
+      tab: Service Worker
