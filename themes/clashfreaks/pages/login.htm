@@ -13,19 +13,65 @@ forceSecure = 0
 security = "all"
 redirect = "home"
 ==
+use Fytinnovations\Clashfreaks\Classes\ClashOfClans;
+function onStart(){
+$request= new ClashOfClans;
+$claninfo = $request->getClanProfile("#8U0JCOCG");
+$this['sponsorclan']=$claninfo;
+}
+==
 <main class="container">
     <!--Main layout-->
     <div class="mt-3 mb-3 pt-5">
         <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
-
-            </div>
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="jumbotron">
                     {% flash %}
                     <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">{{ message }}</div>
                     {% endflash %}
                     {% partial 'account/signin.htm' %}
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="card mb-5 text-white bg-dark">
+                    <div class="card-body">
+                        <h5 class="font-weight-bold mb-3">Our Sponsors</h5>
+                        <ul class="list-group text-dark list-group-flush" id="top_clans_list">
+                            <li class="list-group-item">
+                                <div class="card mb-4">
+                                    <!-- Card image -->
+                                    <div class="view overlay text-center">
+                                        <img class="card-img-top img-responsive" src="{{sponsorclan.badgeUrls.large}}"
+                                            alt="{{sponsorclan.name}}" style="height: 300px;">
+                                        <a href="{{'clan'|page({ tag: '%23'~sponsorclan.tag|ltrim('#') , name:str_snake(sponsorclan.name, '-')})}}">
+                                            <div class="mask rgba-white-slight"></div>
+                                        </a>
+                                    </div>
+
+                                    <!-- Card content -->
+                                    <div class="card-body">
+
+                                        <!-- Title -->
+                                        <h4 class="card-title">{{sponsorclan.name}}</h4>
+                                        <!-- Text -->
+                                        <p class="card-text">{{sponsorclan.description}}</p>
+                                        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                                        <div class="sponsor_card_links">
+                                            <a class="btn btn-primary btn-sm sponsor_link"
+                                                href="{{'clan'|page({ tag: '%23'~sponsorclan.tag|ltrim('#') , name:str_snake(sponsorclan.name, '-')})}}">Visit
+                                                clan</a>
+                                            <a href="//patreon.com/fytinnovations"
+                                                class="btn btn-secondary btn-sm sponsor_link">Become a
+                                                sponsor</a>
+                                        </div>
+                                    </div>
+                                    <!-- Card content -->
+
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
                 </div>
             </div>
         </div>
