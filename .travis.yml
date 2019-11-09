@@ -24,10 +24,10 @@ matrix:
     before_script:
     - php artisan october:env
     - php artisan key:generate
-    - echo "DB_HOST=127.0.0.1" > .env
-    - echo "DB_DATABASE=clashfreaks" >> .env
-    - echo "DB_USERNAME=root" >> .env
-    - echo "DB_PASSWORD=" >> .env
+    - echo "RDS_HOST=127.0.0.1" > .env
+    - echo "RDS_DATABASE=clashfreaks" >> .env
+    - echo "RDS_USERNAME=root" >> .env
+    - echo "RDS_PASSWORD=" >> .env
     - php artisan october:up -v
     script:
     - "./vendor/bin/phpunit"
