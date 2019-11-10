@@ -9,8 +9,6 @@ code = "top-left"
 
 [session]
 security = "all"
-
-[pwaTags]
 ==
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +21,13 @@ security = "all"
     <title>{{ this.page.title }}</title>
     <meta name="title" content="{{ this.page.title }}">
     <meta name="description" content="{{ this.page.description }}">
-    {% component 'pwaTags' %}
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#FFFFFF" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#FFFFFF">
+    <meta name="apple-mobile-web-app-title" content="{{__SELF__.appName}}">
+    <link rel="apple-touch-icon" href="{{__SELF__.iosIcon}}">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
@@ -40,7 +44,7 @@ security = "all"
     <!-- Header -->
     <header id="layout-header" class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark clashfreaks-special-color-dark">
-            <a class="navbar-brand" href="{{ 'home'|page }}" style="font-family: 'Baloo Bhai', cursive;" >
+            <a class="navbar-brand" href="{{ 'home'|page }}" style="font-family: 'Baloo Bhai', cursive;">
                 <img src="{{'assets/img/logo.jpg'|theme}}" height="30" class="d-inline-block align-top"
                     alt="clashfreaks logo"> Clashfreaks
             </a>

@@ -56,7 +56,7 @@ return [
             'driver'    => 'mysql',
             'host' => env('RDS_HOSTNAME', 'localhost'),
             'port' => env('RDS_PORT', 3306),
-            'database' => env('RDS_DATABASE', 'clashfreaks'),
+            'database' => env('RDS_DB_NAME', 'clashfreaks'),
             'username' => env('RDS_USERNAME', ''),
             'password' => env('RDS_PASSWORD', ''),
             'charset'   => 'utf8mb4',
