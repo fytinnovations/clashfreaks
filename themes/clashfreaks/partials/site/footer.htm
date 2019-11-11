@@ -9,8 +9,11 @@ code = "footer-2"
 <!-- Footer Elements -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 col-sm-12 col-xs-12">
-
+        <div class="col-md-3 col-sm-12 col-xs-12 text-center mb-3">
+            <a href="{{ 'home'|page }}" style="font-family: 'Baloo Bhai', cursive;" >
+                <img src="{{'assets/img/logo.jpg'|theme}}" class="img-responsive w-50"
+                    alt="clashfreaks logo">
+            </a>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-6" style="width:50%">
             {% component 'staticMenu' %}
