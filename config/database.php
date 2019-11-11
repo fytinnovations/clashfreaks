@@ -54,11 +54,11 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host' => env('RDS_HOSTNAME', 'localhost'),
-            'port' => env('RDS_PORT', 3306),
-            'database' => env('RDS_DB_NAME', 'clashfreaks'),
-            'username' => env('RDS_USERNAME', ''),
-            'password' => env('RDS_PASSWORD', ''),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', 3306),
+            'database' => env('DB_DATABASE', 'clashfreaks'),
+            'username' => env('DB_USERNAME', ''),
+            'password' => env('DB_PASSWORD', ''),
             'charset'   => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix'    => '',
