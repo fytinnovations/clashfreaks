@@ -105,19 +105,6 @@ security = "all"
     </footer>
 
     <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script src="{{ [
-        'assets/js/jquery-3.4.1.min.js',
-        'assets/js/addons/rating.js',
-        'assets/js/popper.min.js',
-        'assets/js/bootstrap.min.js',
-        'assets/js/mdb.min.js',
-        'assets/js/script.js',
-    ]|theme }}"></script>
-
-    {% framework extras %}
-    {% scripts %}
-
     <script>
         // CODELAB: Register service worker.
         if ('serviceWorker' in navigator) {
@@ -129,6 +116,19 @@ security = "all"
             });
         }
     </script>
+    <!-- JQuery -->
+    <script src="{{ [
+        'assets/js/jquery-3.4.1.min.js',
+        'assets/js/addons/rating.js',
+        'assets/js/popper.min.js',
+        'assets/js/bootstrap.min.js',
+        'assets/js/mdb.min.js',
+        'assets/js/script.js',
+        'assets/js/install.js',
+    ]|theme }}"></script>
+
+    {% framework extras %}
+    {% scripts %}
 </body>
 
 </html>
