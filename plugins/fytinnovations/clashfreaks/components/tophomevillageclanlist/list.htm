@@ -2,7 +2,7 @@
 {% for clan in clans %}
 <li class="list-group-item">
     <span class="badge badge-dark mr-2">{{clan.rank}}</span>
-    <img data-lazysrc="{{clan.badgeUrls.small}}" alt="{{clan.name}}-logo" class="clan-list-icons mr-2">
+    <img src="{{clan.badgeUrls.small}}" alt="{{clan.name}}-logo" class="clan-list-icons mr-2">
     <a href="{{'clan'|page({ tag: '%23'~clan.tag|ltrim('#') , name:str_snake(clan.name, '-')})}}">{{clan.name}}</a>
     <span class="float-right trophy-display"><i class="fas fa-trophy"></i>&nbsp;{{clan.clanPoints}}</span>
 </li>

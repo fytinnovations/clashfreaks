@@ -1,7 +1,7 @@
 {% for player in players %}
 <li class="list-group-item">
     <span class="badge badge-dark mr-2">{{player.rank}}</span>
-    <img data-lazysrc="{{player.league.iconUrls.tiny}}" alt="{{player.name}}-league" class="clan-list-icons mr-2">
+    <img src="{{player.league.iconUrls.tiny}}" alt="{{player.name}}-league" class="clan-list-icons mr-2">
     <a href="{{'player'|page({ tag: '%23'~player.tag|ltrim('#'),name:str_snake(player.name, '-')})}}">{{player.name}}</a>
     <span class="float-right trophy-display"><i class="fas fa-trophy"></i>&nbsp;{{player.trophies}}</span>
 </li>
