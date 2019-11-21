@@ -5,6 +5,11 @@ description = "Displays a single clan profile"
 is_hidden = 0
 [clanProfile]
 ==
+function onEnd() {
+    $this->page->title = "Clash of Clans - ".$this->param('name');
+    $this->page->description = "Clan Profile of ".$this->param('name')."-Clash of Clans";
+}
+==
 <main class="container">
 
     <!--Main layout-->
