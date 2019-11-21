@@ -303,14 +303,14 @@ return [
     'storage' => [
 
         'uploads' => [
-            'disk'            => 'local',
+            'disk'            => env('RESOURCE_STORAGE'),
             'folder'          => 'uploads',
             'path'            => '/storage/app/uploads',
             'temporaryUrlTTL' => 3600,
         ],
 
         'media' => [
-            'disk'   => 'local',
+            'disk'   => env('RESOURCE_STORAGE'),
             'folder' => 'media',
             'path'   => '/storage/app/media',
         ],
