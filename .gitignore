@@ -22,3 +22,4 @@ nbproject
 /public/*
 !/public/manifest.json
 !/public/service-worker.js
+!/public/robots.txt
