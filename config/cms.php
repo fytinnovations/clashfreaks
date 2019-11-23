@@ -303,16 +303,16 @@ return [
     'storage' => [
 
         'uploads' => [
-            'disk'            => env('RESOURCE_STORAGE'),
+            'disk'            => env('FILESYSTEM_DRIVER', 'local'),
             'folder'          => 'uploads',
-            'path'            => '/storage/app/uploads',
+            'path'            => env('FILESYSTEM_PATH').'uploads',
             'temporaryUrlTTL' => 3600,
         ],
 
         'media' => [
-            'disk'   => env('RESOURCE_STORAGE'),
+            'disk'   => env('FILESYSTEM_DRIVER', 'local'),
             'folder' => 'media',
-            'path'   => '/storage/app/media',
+            'path'   => env('FILESYSTEM_PATH').'media'
         ],
 
     ],

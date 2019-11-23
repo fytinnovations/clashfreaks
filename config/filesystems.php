@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('RESOURCE_STORAGE'),
+    'default' => env('FILESYSTEM_DRIVER', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return [
             'key'    => env('S3_ACCESS_KEY'),
             'secret' => env('S3_SECRET'),
             'region' => env('S3_REGION'),
-            'bucket' => env('S3_BUCKET'),
+            'bucket' => env('S3_BUCKET')
         ],
 
         'rackspace' => [
