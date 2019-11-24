@@ -26,7 +26,9 @@ postPage = "blog"
             <div class="col-md-9">
                 <div class="jumbotron">
                     <h2 class="display-4">{{ this.param.slug ? blogPosts.category.name : 'Blogs' }}</h2>
-                    <p class="lead">{{ this.param.slug ? blogPosts.category.description : 'Posts Related to Clash Of Clans and Clash Royale' }}</p>
+                    <p class="lead">
+                        {{ this.param.slug ? blogPosts.category.description : 'Posts Related to Clash Of Clans and Clash Royale' }}
+                    </p>
                     <hr class="my-4">
                     {% set posts = blogPosts.posts %}
                     {% for post in posts %}
@@ -125,6 +127,13 @@ postPage = "blog"
                         {% endif %}
                     </div>
                 </div>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Side banner -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5745787316839400"
+                    data-ad-slot="7899868645" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </div>
         <!-- /.First row -->
