@@ -26,6 +26,11 @@ embedCode = "{{ :slug }}"
 channelSlug = "blog"
 memberPage = "account"
 ==
+function onEnd() {
+    $this->page->title = $this->post->title;
+    $this->page->description = $this->post->excerpt;
+}
+==
 <main class="container">
     <!--Main layout-->
     <div class="mt-5">
@@ -34,7 +39,7 @@ memberPage = "account"
             <div class="col-md-9">
                 {% set post = blogPost.post %}
                 <div class="jumbotron">
-                    <h2 class="display-4">{{ post.title }}</h2>
+                    <h5>{{ post.title }}</h5>
                     <hr>
                     <div class="content" id="blog-content">{{ post.content_html|raw }}</div>
                     {% if post.featured_images.count %}
