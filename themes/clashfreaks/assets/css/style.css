@@ -295,3 +295,7 @@
 .clan-list-icons {
   width: 30px;
 }
+
+#blog-content img{
+  width: 100%;
+}

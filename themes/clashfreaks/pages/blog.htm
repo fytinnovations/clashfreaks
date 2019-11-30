@@ -23,7 +23,7 @@ order_linkedin = 5
 
 [forumEmbedTopic]
 embedCode = "{{ :slug }}"
-channelSlug = "blogs"
+channelSlug = "blog"
 memberPage = "account"
 ==
 <main class="container">
@@ -36,7 +36,7 @@ memberPage = "account"
                 <div class="jumbotron">
                     <h2 class="display-4">{{ post.title }}</h2>
                     <hr>
-                    <div class="content">{{ post.content_html|raw }}</div>
+                    <div class="content" id="blog-content">{{ post.content_html|raw }}</div>
                     {% if post.featured_images.count %}
                     <div id="base_design_carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
