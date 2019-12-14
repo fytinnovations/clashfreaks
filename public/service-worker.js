@@ -1,4 +1,4 @@
-const CACHE_NAME = 'clashfreaks-cache';
+const CACHE_NAME = 'clashfreaks-cache2';
 
 // CODELAB: Add list of files to cache here.
 const FILES_TO_CACHE = [
