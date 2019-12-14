@@ -63,6 +63,8 @@
     <a class="btn btn-sm btn-deep-purple ml-0" href="{{baseInfo.url}}"><i class="far fa-clone"></i> Copy
         Base</a>
 </div>
+{% if(baseInfo.is_active) %}
+
 <hr class="my-4">
 <h2 class="text-wrap">Average Ratings</h2>
 <span class="disabled-star">
@@ -75,13 +77,16 @@
     No Ratings Provided for this base
     {% endif %}
 </span>
+
+
 <hr class="my-4">
-{% if user %}
+{% if (user) %}
 <h2 class="text-wrap">Your Ratings</h2>
 <span id="baseRatings"></span>
 {% else %}
 <p class="text-wrap"><a href="{{'login'|page}}">Login</a> to rate this base</p>
 {% endif %}
+{% endif%}
 
 <hr class="my-4">
 <!--Section: Author Box-->
@@ -101,7 +106,8 @@
                 <b>Base Designs</b>: <span class="badge badge-dark">{{baseInfo.created_by.total_base_designs}}</span>
             </span>
             <span class="stats">
-                <b>Favorite Clans</b>: <span class="badge badge-dark">{{baseInfo.created_by.total_favorite_clans}}</span>
+                <b>Favorite Clans</b>: <span
+                    class="badge badge-dark">{{baseInfo.created_by.total_favorite_clans}}</span>
             </span>
             <span class="stats">
                 <b>Favorite Players</b>: <span
@@ -110,6 +116,11 @@
         </div>
     </div>
 </section>
+{% if(baseInfo.is_active)%}
+<hr>
+{% component 'ssbuttons' %}
+<hr>
+{% endif%}
 <!--Section: Author Box-->
 {% put scripts %}
 <script>

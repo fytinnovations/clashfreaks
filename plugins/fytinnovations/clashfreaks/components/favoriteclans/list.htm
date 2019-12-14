@@ -1,7 +1,7 @@
 {% for clan in clans%}
 <li class="list-group-item d-flex justify-content-between align-items-center text-dark">
     <img src="{{clan.badgeUrls.small}}" alt="thumbnail" class="list-image-icons mr-2">
-    <a href="{{'clan'|page({ tag: '%23'~clan.tag|ltrim('#') , studly_case(name:clan.name)})}}">{{clan.name}}</a>
+    <a href="{{'clan'|page({ tag: '%23'~clan.tag|ltrim('#') , name:str_studly(clan.name)})}}">{{clan.name}}</a>
     <span class="float-right trophy-display mr-2"><i class="fas fa-trophy"></i>&nbsp;{{clan.clanPoints}}</span>
     <button data-request="{{__SELF__}}::onDelete"data-request-data="tag: '{{clan.tag}}'"><i class="far fa-trash-alt text-danger"></i></button>
 </li>

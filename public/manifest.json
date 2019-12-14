@@ -4,7 +4,7 @@
     "start_url": "/",
     "icons": [
       {
-        "src": "/themes/clashfreaks/assets/img/logo.jpg",
+        "src": "/themes/clashfreaks/assets/img/logo.png",
         "sizes": "512x512",
         "type": "image/png"
       }
